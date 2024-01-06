@@ -6,13 +6,12 @@ const Layout = (props) => {
 
   return (
     <>
-      <div className="flex">
-        <div className="w-full font-sans">
-          <Navbar />
-            <div className="content">{props.page}</div>
-          <Footer />
-        </div>
+      <div className="jp_top_header_img_wrapper">
+        <div className="jp_slide_img_overlay"></div>
+        <Navbar />
+        <div className="content">{props.page}</div>
       </div>
+      <Footer />
     </>
   );
 };
