@@ -1,32 +1,34 @@
 import { useEffect, useState } from 'react';
 import AuthUser from '../components/AuthUser';
 import Layout from "../layouts/Layout";
+import { useSelector } from "react-redux";
 
 export default function User() {
-    const {http} = AuthUser();
-    const [userInfo,setUserInfo] = useState('');
+    // const {http} = AuthUser();
+    // const [userInfo,setUserInfo] = useState('');
+    const user = useSelector((state)=> state.user.value);
 
-    useEffect(()=>{
-        fetchUserDetail();
-    },[]);
+    // useEffect(()=>{
+    //     fetchUserDetail();
+    // },[]);
 
-    const fetchUserDetail = async () =>{
-        try {
-            await http.post('/me').then((res)=>{
-            setUserInfo(res.data);
-        });
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const fetchUserDetail = async () =>{
+    //     try {
+    //         await http.post('/me').then((res)=>{
+    //         setUserInfo(res.data);
+    //     });
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
     function renderElement(){
-        if(userInfo){
+        if(user){
             return <div>
                 <h4>Name</h4>
-                <p>{userInfo.name}</p>
+                <p>{user.name}</p>
                 <h4>Email</h4>
-                <p>{userInfo.email}</p>
+                <p>{user.email}</p>
             </div>
         }else{
             return <p>Loading.....</p>

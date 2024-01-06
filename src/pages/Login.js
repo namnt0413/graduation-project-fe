@@ -2,17 +2,21 @@ import { useState } from "react"
 import AuthUser from '../components/AuthUser';
 import { Link } from 'react-router-dom';
 import '../styles/Login.scss' ;
+import { useDispatch } from "react-redux";
+import { setUser } from "../slices/user";
 
 export default function Login() {
     const {http,setToken} = AuthUser();
     const [email,setEmail] = useState();
     const [password,setPassword] = useState();
+    const dispatch = useDispatch();
 
     const submitForm = async () =>{
         // call api login
         try {
             await  http.post('/login',{email:email,password:password}).then((res)=>{
                 console.log(res.data);
+                dispatch(setUser(res.data.user));
                 setToken(res.data.user,res.data.access_token);
             })
         } catch (error) {

@@ -12,7 +12,7 @@ const Navbar = () => {
         console.log(res.data);
       });
       sessionStorage.clear();
-      navigate("login");
+      navigate("/");
     }
   };
 
@@ -54,11 +54,6 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/cv">
                 CV
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/texteditor">
-                TextEditor
               </Link>
             </li>
             <li className="nav-item">

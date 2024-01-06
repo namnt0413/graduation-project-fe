@@ -1,12 +1,13 @@
 import Layout from "../layouts/Layout";
+import { useState } from "react";
 
 const Home = () => {
 
-  const HomeContent = (
-    <>
-        Home Content
-    </>
-  )
+    const HomeContent = (
+      <>
+          Home Content
+      </>
+    )
 
   return <Layout page={HomeContent} />;
 };

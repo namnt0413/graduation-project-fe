@@ -13,6 +13,7 @@ const PublicRoutes = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/password-reset/:token" element={<ResetPassword />} />
+      <Route path="*" element={null} />
     </Routes>
   );
 };

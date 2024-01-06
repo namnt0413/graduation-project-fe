@@ -52,7 +52,7 @@ export default function CV() {
                 </div>
               </div>
               <div className="avatar col-4">
-                <img src="http://localhost:8000/images/avatar.jpg" />
+                <img src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg" />
               </div>
             </div>
 
