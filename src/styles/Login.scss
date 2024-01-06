@@ -1,0 +1,35 @@
+.limiter {
+    
+    .container-login100 {
+        
+        .wrap-login100 {
+            margin: 50px 0 50px 0;
+    
+            .login100-form {
+
+                .signup {
+                    display: inline-block;
+                    text-align: center;
+                    width: inherit;
+
+                    span {
+                        padding: 5px;
+                    }
+
+                    .nav-link {
+                        display: inline-block;
+                        font-weight: 600;
+                    }
+                }
+
+                .wrap-input100 {
+                    span.input-field {
+                        float: left;
+                    }
+                }
+            }
+        }
+    
+    }
+
+}
