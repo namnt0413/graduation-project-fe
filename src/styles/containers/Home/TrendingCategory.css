@@ -1,0 +1,9 @@
+.trending-category {
+    float:left; 
+    width:100%; 
+    margin-top:30px;
+}
+
+.jp_tittle_slider_content_wrapper .slick-slider .slick-arrow {
+    display: none !important;
+}

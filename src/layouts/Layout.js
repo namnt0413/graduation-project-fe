@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./NavBar";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Banner from "./Banner";
 
@@ -9,7 +9,7 @@ const Layout = (props) => {
     <>
       <div className="jp_top_header_img_wrapper">
         <div className="jp_slide_img_overlay"></div>
-        <NavBar />
+        <Navbar />
         <Banner />
       </div>
       <div className="content">{props.page}</div>

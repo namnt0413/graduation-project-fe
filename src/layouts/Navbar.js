@@ -5,7 +5,7 @@ import "../styles/components/Navbar.css";
 import { useSelector } from "react-redux";
 import { useState,useEffect } from "react";
 
-const NavBar = () => {
+const Navbar = () => {
   const user = useSelector((state) => state.user.value);
   const navigate = useNavigate();
   const { getToken } = AuthUser();
@@ -17,12 +17,14 @@ const NavBar = () => {
   },[]);
 
   const fetchUserDetail = async () =>{
-      try {
-          await http.post('/me').then((res)=>{
-          setUserInfo(res.data);
-      });
-      } catch (error) {
-          console.log(error)
+      if(getToken()){
+        try {
+            await http.post('/me').then((res)=>{
+            setUserInfo(res.data);
+        });
+        } catch (error) {
+            console.log(error)
+        }
       }
   }
     
@@ -420,4 +422,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;
