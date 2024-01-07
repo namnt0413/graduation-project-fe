@@ -1,14 +1,12 @@
 import "../../styles/containers/Home/TrendingCategory.css";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const TrendingCategory = () => {
   const settings = {
     dots: false,
     infinite: true,
     initialSlide: 0,
-    speed: 500,
+    speed: 600,
     slidesToShow: 3,
     slidesToScroll: 3,
     autoplay: true,
@@ -27,9 +25,9 @@ const TrendingCategory = () => {
             </div>
           </div>
           <div className="jp_tittle_slider_wrapper">
-            <div className="jp_tittle_slider_content_wrapper">
+            <div className="jp_tittle_slider_content_wrapper trending-category">
               <Slider {...settings}>
-              <div className="jp_tittle_slides_one">
+                <div className="jp_tittle_slides_one">
                   <div className="jp_tittle_side_img_wrapper">
                     <img
                       src="images/content/tittle_img1.png"

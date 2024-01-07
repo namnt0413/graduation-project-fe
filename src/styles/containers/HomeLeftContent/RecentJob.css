@@ -1,0 +1,11 @@
+.jp_job_post_right_btn_wrapper li:last-child {
+    margin-top: 0;
+}
+
+.jp_job_post_right_btn_wrapper li:last-child a {
+    background: #37d09c;
+}
+
+.jp_job_post_right_btn_wrapper li:last-child a:hover {
+    background: #09ae77;
+}

@@ -1,0 +1,31 @@
+.jp_hiring_heading_wrapper.top-company-title {
+    text-align: left;
+}
+
+.company-item {
+    padding-right: 20px;
+}
+
+.jp_hiring_content_wrapper p {
+    margin-bottom: 10px;
+}
+
+.top-campany-list button.slick-arrow {
+    background: #dedede;
+    z-index: 10 !important;
+    height: 32px !important;
+    width: 32px !important;
+    border-radius: 50% !important;
+}
+.top-campany-list button.slick-arrow:hover {
+    background: #23c0e9;
+    transition: all 0.5s;
+}
+.top-campany-list button.slick-arrow.slick-prev {
+    top: -60px;
+    left: 690px;
+}
+.top-campany-list button.slick-arrow.slick-next {
+    top: -60px;
+    right: 16px;
+}
