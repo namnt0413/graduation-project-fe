@@ -2,11 +2,32 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthUser from "../components/AuthUser";
 import { NavLink } from "react-router-dom";
 import "../styles/components/Navbar.css";
+import { useSelector } from "react-redux";
+import { useState,useEffect } from "react";
 
 const Navbar = () => {
+  const user = useSelector((state) => state.user.value);
   const navigate = useNavigate();
   const { getToken } = AuthUser();
   const { token, http } = AuthUser();
+
+  const [userInfo,setUserInfo] = useState('');
+  useEffect(()=>{
+      fetchUserDetail();
+  },[]);
+
+  const fetchUserDetail = async () =>{
+      if(getToken()){
+        try {
+            await http.post('/me').then((res)=>{
+            setUserInfo(res.data);
+        });
+        } catch (error) {
+            console.log(error)
+        }
+      }
+  }
+    
   const logoutUser = () => {
     if (token !== undefined) {
       http.post("/logout").then((res) => {
@@ -30,7 +51,7 @@ const Navbar = () => {
                       src="images/header/logo.png"
                       alt="Logo"
                       title="Job Pro"
-                      class="img-responsive"
+                      className="img-responsive"
                     />
                   </a>
                 </div>
@@ -43,108 +64,108 @@ const Navbar = () => {
                     <ul>
                       <li id="search_button"></li>
                       <li>
-                        <div id="search_open" class="gc_search_box">
+                        <div id="search_open" className="gc_search_box">
                           <input type="text" placeholder="Search here" />
                           <button>
-                            <i class="fa fa-search" aria-hidden="true"></i>
+                            <i className="fa fa-search" aria-hidden="true"></i>
                           </button>
                         </div>
                       </li>
                     </ul>
                   </div>
-                  <ul class="float_left">
-                    <li class="has-mega gc_main_navigation">
-                      <a href="#" class="gc_main_navigation">
-                        Home&nbsp;<i class="fa fa-angle-down"></i>
+                  <ul className="float_left">
+                    <li className="has-mega gc_main_navigation">
+                      <a href="#" className="gc_main_navigation">
+                        Home&nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="index.html">Home1</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="index_II.html">Home2</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="index_map.html">Home3</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="index_iv.html">Home4</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="index_v.html">Home5</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="index_vi.html">Home6</a>
                         </li>
                       </ul>
                     </li>
-                    <li class="has-mega gc_main_navigation">
-                      <a href="#" class="gc_main_navigation">
+                    <li className="has-mega gc_main_navigation">
+                      <a href="#" className="gc_main_navigation">
                         {" "}
-                        Job&nbsp;<i class="fa fa-angle-down"></i>
+                        Job&nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="listing_left.html">Listing-Left</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="listing_right.html">Listing-Right</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="listing_single.html">Listing-Single</a>
                         </li>
                       </ul>
                     </li>
-                    <li class="parent gc_main_navigation">
-                      <a href="#" class="gc_main_navigation">
-                        candidates &nbsp;<i class="fa fa-angle-down"></i>
+                    <li className="parent gc_main_navigation">
+                      <a href="#" className="gc_main_navigation">
+                        candidates &nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="company_listing.html">Company-Listing</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="company_listing_single.html">
                             Company-Single
                           </a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="candidate_listing.html">candidate-Listing</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="candidate_profile.html">candidate-Profile</a>
                         </li>
                       </ul>
                     </li>
-                    <li class="has-mega gc_main_navigation">
-                      <a href="#" class="gc_main_navigation">
+                    <li className="has-mega gc_main_navigation">
+                      <a href="#" className="gc_main_navigation">
                         {" "}
-                        Pages&nbsp;<i class="fa fa-angle-down"></i>
+                        Pages&nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="about.html">About-Us</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="404_error.html">404</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="add_postin.html">Add-Posting</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="login.html">Login</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="register.html">Register</a>
                         </li>
-                        <li class="parent">
+                        <li className="parent">
                           <a href="pricing.html">Pricing</a>
                         </li>
                       </ul>
                     </li>
                   </ul>
                 </div>
-                <header class="mobail_menu">
+                <header className="mobail_menu">
                   <div className="container-fluid">
                     <div className="row">
                       <div className="col-xs-6 col-sm-6">
@@ -160,30 +181,30 @@ const Navbar = () => {
                       </div>
                       <div className="col-xs-6 col-sm-6">
                         <div className="cd-dropdown-wrapper">
-                          <a class="house_toggle" href="#0"></a>
-                          <nav class="cd-dropdown">
+                          <a className="house_toggle" href="#0"></a>
+                          <nav className="cd-dropdown">
                             <h2>
                               <a href="#">
                                 Job<span>Pro</span>
                               </a>
                             </h2>
-                            <a href="#0" class="cd-close">
+                            <a href="#0" className="cd-close">
                               Close
                             </a>
-                            <ul class="cd-dropdown-content">
+                            <ul className="cd-dropdown-content">
                               <li>
-                                <form class="cd-search">
+                                <form className="cd-search">
                                   <input
                                     type="search"
                                     placeholder="Search..."
                                   />
                                 </form>
                               </li>
-                              <li class="has-children">
+                              <li className="has-children">
                                 <a href="#">Home</a>
 
-                                <ul class="cd-secondary-dropdown is-hidden">
-                                  <li class="go-back">
+                                <ul className="cd-secondary-dropdown is-hidden">
+                                  <li className="go-back">
                                     <a href="#0">Menu</a>
                                   </li>
                                   <li>
@@ -207,11 +228,11 @@ const Navbar = () => {
                                 </ul>
                               </li>
 
-                              <li class="has-children">
+                              <li className="has-children">
                                 <a href="#">Listing</a>
 
-                                <ul class="cd-secondary-dropdown is-hidden">
-                                  <li class="go-back">
+                                <ul className="cd-secondary-dropdown is-hidden">
+                                  <li className="go-back">
                                     <a href="#0">Menu</a>
                                   </li>
                                   <li>
@@ -232,11 +253,11 @@ const Navbar = () => {
                                 </ul>
                               </li>
 
-                              <li class="has-children">
+                              <li className="has-children">
                                 <a href="#">candidates</a>
 
-                                <ul class="cd-secondary-dropdown is-hidden">
-                                  <li class="go-back">
+                                <ul className="cd-secondary-dropdown is-hidden">
+                                  <li className="go-back">
                                     <a href="#0">Menu</a>
                                   </li>
                                   <li>
@@ -261,11 +282,11 @@ const Navbar = () => {
                                   </li>
                                 </ul>
                               </li>
-                              <li class="has-children">
+                              <li className="has-children">
                                 <a href="#">Pages</a>
 
-                                <ul class="cd-secondary-dropdown is-hidden">
-                                  <li class="go-back">
+                                <ul className="cd-secondary-dropdown is-hidden">
+                                  <li className="go-back">
                                     <a href="#0">Menu</a>
                                   </li>
                                   <li>
@@ -289,11 +310,11 @@ const Navbar = () => {
                                 </ul>
                               </li>
 
-                              <li class="has-children">
+                              <li className="has-children">
                                 <a href="#">Blog</a>
 
-                                <ul class="cd-secondary-dropdown is-hidden">
-                                  <li class="go-back">
+                                <ul className="cd-secondary-dropdown is-hidden">
+                                  <li className="go-back">
                                     <a href="#0">Menu</a>
                                   </li>
                                   <li>
@@ -343,30 +364,21 @@ const Navbar = () => {
                   <ul>
                     <li>
                       <Link className="nav-link" to="/register">
-                        <i class="fa fa-user"></i>&nbsp; SIGN UP
+                        <i className="fa fa-user"></i>&nbsp; SIGN UP
                       </Link>
                     </li>
                     <li>
                       <Link className="nav-link" to="/login">
-                        <i class="fa fa-sign-in"></i>&nbsp; LOGIN
+                        <i className="fa fa-sign-in"></i>&nbsp; LOGIN
                       </Link>
                     </li>
                   </ul>
                 </div>
               </div>
             ) : (
-              <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-                <ul className="navbar-nav">
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/user">
-                      User
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/cv">
-                      CV
-                    </Link>
-                  </li>
+              <div className="user-bar col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
+                <div className="jp_navi_right_btn_wrapper">
+                  {userInfo.name}
                   <li className="nav-item">
                     <span
                       role="button"
@@ -376,8 +388,31 @@ const Navbar = () => {
                       Logout
                     </span>
                   </li>
-                </ul>
-              </nav>
+                </div>
+                {/* <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+                  <ul className="navbar-nav">
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/user">
+                        User
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/cv">
+                        CV
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <span
+                        role="button"
+                        className="nav-link"
+                        onClick={logoutUser}
+                      >
+                        Logout
+                      </span>
+                    </li>
+                  </ul>
+                </nav> */}
+              </div>
             )}
             {/* end user bar */}
           </div>

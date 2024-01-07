@@ -1,33 +1,3 @@
-/*------------------------------------------------------------------
-[Master Stylesheet]
-
-Project:	Job Pro
-Version:	1.0.0
-Author:     Webstrot
-Website: 
-Purchase: 
--------------------------------------------------------------------
-[Table of contents]
- 
-1. Body
-2. Custom css / a
-3. Preloader/ #preloader
-4. Navigation
-5. Slider
-6. Tranding Slider
-7. Hiring Slider
-8. Recent Jobs
-9. Caunter
-10. Offering Slider
-11. Testimonial Slider
-12. Pricing Section
-13. Mobail Apps Downlord Section
-14. Notification Section
-15. Footer
-
-*/
-
-/*--------- Body Strat -------*/
 body, html {
 	font-family: 'Lato', sans-serif;
 	font-size: 16px;
