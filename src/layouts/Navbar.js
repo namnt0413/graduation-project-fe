@@ -3,7 +3,7 @@ import AuthUser from "../components/AuthUser";
 import { NavLink } from "react-router-dom";
 import "../styles/components/Navbar.css";
 import { useSelector } from "react-redux";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const user = useSelector((state) => state.user.value);
@@ -11,23 +11,23 @@ const Navbar = () => {
   const { getToken } = AuthUser();
   const { token, http } = AuthUser();
 
-  const [userInfo,setUserInfo] = useState('');
-  useEffect(()=>{
-      fetchUserDetail();
-  },[]);
+  const [userInfo, setUserInfo] = useState("");
+  useEffect(() => {
+    fetchUserDetail();
+  }, []);
 
-  const fetchUserDetail = async () =>{
-      if(getToken()){
-        try {
-            await http.post('/me').then((res)=>{
-            setUserInfo(res.data);
+  const fetchUserDetail = async () => {
+    if (getToken()) {
+      try {
+        await http.post("/me").then((res) => {
+          setUserInfo(res.data);
         });
-        } catch (error) {
-            console.log(error)
-        }
+      } catch (error) {
+        console.log(error);
       }
-  }
-    
+    }
+  };
+
   const logoutUser = () => {
     if (token !== undefined) {
       http.post("/logout").then((res) => {
@@ -60,19 +60,6 @@ const Navbar = () => {
             <div className="col-lg-7 col-md-8 col-sm-12 col-xs-12 center_responsive">
               <div className="header-area hidden-menu-bar stick" id="sticker">
                 <div className="mainmenu">
-                  <div className="gc_right_menu">
-                    <ul>
-                      <li id="search_button"></li>
-                      <li>
-                        <div id="search_open" className="gc_search_box">
-                          <input type="text" placeholder="Search here" />
-                          <button>
-                            <i className="fa fa-search" aria-hidden="true"></i>
-                          </button>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
                   <ul className="float_left">
                     <li className="has-mega gc_main_navigation">
                       <a href="#" className="gc_main_navigation">
@@ -378,16 +365,50 @@ const Navbar = () => {
             ) : (
               <div className="user-bar col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                 <div className="jp_navi_right_btn_wrapper">
-                  {userInfo.name}
-                  <li className="nav-item">
-                    <span
-                      role="button"
-                      className="nav-link"
-                      onClick={logoutUser}
-                    >
-                      Logout
-                    </span>
-                  </li>
+                  <div className="user-info">
+                    {/* <img className="user-avatar" src={user?.avatar} />
+                    <div className="username dropdown">
+                      {userInfo.name}
+                    </div> */}
+                    {/* <ul>
+                    <li className="nav-item">
+                      <span
+                        role="button"
+                        className="nav-link"
+                        onClick={logoutUser}
+                      >
+                        Logout
+                      </span>
+                    </li>
+                  </ul> */}
+                    <li class="user-info nav-item dropdown">
+                      <div
+                        class="nav-link dropdown-toggle"
+                        id="navbarDropdownMenuLink"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <img className="user-avatar" src={user?.avatar} />
+                        {userInfo.name}
+                      </div>
+                      <div
+                        class="dropdown-menu"
+                        aria-labelledby="navbarDropdownMenuLink"
+                      >
+                        <a class="dropdown-item" href="#">
+                          Account infomation
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          Change password
+                        </a>
+                        <button class="dropdown-item" onClick={logoutUser}>
+                          Logout
+                        </button>
+                      </div>
+                    </li>
+
+                  </div>
                 </div>
                 {/* <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                   <ul className="navbar-nav">
