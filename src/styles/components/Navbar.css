@@ -1,3 +1,26 @@
 .mainmenu {
     right: 0px;
 }
+
+.user-bar .jp_navi_right_btn_wrapper li {
+    float: right;
+}
+
+.user-bar .nav-item span{
+	float:right;
+	width:130px;
+	height:50px;
+	line-height:50px;
+	color:#ffffff;
+	border:1px solid #ffffff40;
+	text-align:center;
+	background:transparent;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+}

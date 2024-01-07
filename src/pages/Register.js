@@ -1,53 +1,191 @@
-import { useState } from "react"
-import { useNavigate } from 'react-router-dom';
-import AuthUser from '../components/AuthUser';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import AuthUser from "../components/AuthUser";
+import "../styles/pages/Register.css";
 
 export default function Register() {
-    const navigate = useNavigate();
-    const {http,setToken} = AuthUser();
-    const [name,setName] = useState();
-    const [email,setEmail] = useState();
-    const [password,setPassword] = useState();
+  const navigate = useNavigate();
+  const { http, setToken } = AuthUser();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-    const submitForm = async () =>{
-        // api register 
-        try {
-            await http.post('/register',{email:email,password:password,name:name}).then((res)=>{
-            console.log(res);
-            navigate('/login')
-            })
-        } catch (error) {
-            console.log(error)
-        }
+  const submitForm = async () => {
+    // api register
+    try {
+      await http
+        .post("/register", { email: email, password: password, name: name })
+        .then((res) => {
+          console.log(res);
+          navigate("/login");
+        });
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    return(
-        <div className="row justify-content-left pt-5">
-            <div className="col-sm-6">
-                <div className="card p-4">
-                    <h1 className="text-center mb-3">Register </h1>
-                    <div className="form-group">
-                        <label>Name:</label>
-                        <input type="test" className="form-control" placeholder="Enter name"
-                            onChange={e=>setName(e.target.value)}
-                        id="email" />
-                    </div>
-                    <div className="form-group mt-3">
-                        <label>Email address:</label>
-                        <input type="email" className="form-control" placeholder="Enter email"
-                            onChange={e=>setEmail(e.target.value)}
-                        id="email" />
+  return (
+    <>
+      <div className="register_section">
+        <div className="register_tab_wrapper">
+          <div className="container">
+            <div className="row">
+              <h1 className="register-title">REGISTER NEW ACCOUNT</h1>
+              <div className="col-md-10 col-md-offset-1">
+                <div role="tabpanel">
+                  {/* <!-- Nav tabs --> */}
+                  <ul id="tabOne" className="nav register-tabs">
+                    <li className="active">
+                      <a href="#contentOne-1" data-toggle="tab">
+                        personal account <br />
+                        <span>i am looking for a job</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#contentOne-2" data-toggle="tab">
+                        company account <br />{" "}
+                        <span>We are hiring Employees</span>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <div className="tab-content">
+                    <div
+                      className="tab-pane fade in active register_left_form"
+                      id="contentOne-1"
+                    >
+                      <div className="row">
+                        <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                          <label htmlFor="">Name</label>
+                          <input
+                            className="field-name"
+                            id="name"
+                            type="text"
+                            placeholder="Username*"
+                            required
+                            onChange={(e) => setName(e.target.value)}
+                          />
+                        </div>
+                        <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                          <label htmlFor="">Email</label>
+                          <input
+                            className="field-name"
+                            id="email"
+                            type="email"
+                            placeholder="Email*"
+                            required
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
+                        </div>
+                        <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                          <label htmlFor="">Password</label>
+                          <input
+                            className="field-name"
+                            id="password"
+                            type="password"
+                            placeholder=" password*"
+                            required
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                        </div>
+                        <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                          <label htmlFor="">Confirm Password</label>
+                          <input
+                            className="field-name"
+                            type="password"
+                            name="confirm"
+                            placeholder="re-enter password*"
+                            required
+                          />
+                        </div>
+                        <div className="login_btn_wrapper register_btn_wrapper login_wrapper ">
+                          <button
+                            type="submit"
+                            className="btn btn-primary login_btn"
+                            onClick={submitForm}
+                          >
+                            register
+                          </button>
+                        </div>
+                      </div>
+                      <div className="login_message">
+                        <p>
+                          Already a member?
+                          <Link className="nav-link" to="/login">
+                            Login Here
+                          </Link>
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="form-group mt-3">
-                        <label>Password:</label>
-                        <input type="password" className="form-control" placeholder="Enter password"
-                            onChange={e => setPassword(e.target.value)}
-                        id="pwd" />
+                    <div
+                      className="tab-pane fade register_left_form"
+                      id="contentOne-2"
+                    >
+                      <div className="row clearfix">
+                        <form action="#" data-toggle="validator">
+                          <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                            <input
+                              className="field-name"
+                              type="text"
+                              name="field-name"
+                              placeholder="Company Name"
+                              required
+                            />
+                          </div>
+                          <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                            <input
+                              className="field-name"
+                              type="email"
+                              name="field-name"
+                              placeholder="Email*"
+                              required
+                            />
+                          </div>
+                          <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                            <input
+                              className="field-name"
+                              type="password"
+                              name="password"
+                              placeholder="password*"
+                              required
+                            />
+                          </div>
+                          <div className="form-group col-md-6 col-sm-6 col-xs-12">
+                            <input
+                              className="field-name"
+                              type="password"
+                              name="confirm"
+                              placeholder="re-enter password*"
+                              required
+                            />
+                          </div>
+                          <div className="login_btn_wrapper register_btn_wrapper login_wrapper">
+                            <button
+                              type="submit"
+                              className="btn btn-primary login_btn"
+                            >
+                              register
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      <div className="login_message">
+                        <p>
+                          Already a member?
+                          <Link className="nav-link" to="/login">
+                            Login Here
+                          </Link>
+                        </p>
+                      </div>
                     </div>
-                    <button type="button" onClick={submitForm} className="btn btn-primary mt-4">Register</button>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    )
+      </div>
+    </>
+  );
 }
