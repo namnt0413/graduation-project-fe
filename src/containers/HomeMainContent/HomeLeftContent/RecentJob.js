@@ -2,11 +2,15 @@ import "../../../styles/containers/HomeLeftContent/RecentJob.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "../../../lib/axios";
-import { NumericFormat } from 'react-number-format';
+import { NumericFormat } from "react-number-format";
+import UploadFile from "../../../components/files/UploadFile";
+import { useSelector } from "react-redux";
 
 const RecentJob = () => {
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
+  const [filename, setFilename] = useState("");
+  const user = useSelector((state) => state.user.value);
 
   useEffect(() => {
     const getJobs = async () => {
@@ -16,6 +20,21 @@ const RecentJob = () => {
     getJobs();
   }, []);
   console.log(jobs);
+
+  const getFilename = (data) => {
+    setFilename(data);
+  };
+
+  const apply = async (job_id) => {
+    axios.defaults.withCredentials = true;
+    const res = await axios.post('/api/apply/create', { user_id: user.id, job_id: job_id, file_url: filename ,date: '2024-01-09 22:57:03' }, {
+        xsrfHeaderName: "X-XSRF-TOKEN",
+        withCredentials: true
+    }).then(async => {
+        // setApplyBtn('Applied')
+        console.log("Apply OK")
+    })
+  }
 
   return (
     <>
@@ -60,9 +79,7 @@ const RecentJob = () => {
                 <div className="jp_job_post_main_wrapper_cont">
                   <div className="jp_job_post_main_wrapper">
                     <div className="row">
-                      <div
-                        className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
-                      >
+                      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                         <div className="jp_job_post_side_img">
                           <img
                             src="images/content/job_post_img1.jpg"
@@ -149,16 +166,14 @@ const RecentJob = () => {
                   <div className="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
                     <div className="jp_job_post_main_wrapper">
                       <div className="row">
-                        <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
+                        <div
+                          className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
                           onClick={() => {
                             navigate(`/job/${job.id}`);
                           }}
                         >
                           <div className="jp_job_post_side_img">
-                            <img
-                              src={job.company.avatar_url}
-                              alt="post_img"
-                            />
+                            <img src={job.company.avatar_url} alt="post_img" />
                           </div>
                           <div className="jp_job_post_right_cont">
                             <h4>{job.title}</h4>
@@ -166,7 +181,7 @@ const RecentJob = () => {
                             <ul>
                               <li>
                                 <i className="fa fa-cc-paypal"></i>&nbsp;
-                                <NumericFormat 
+                                <NumericFormat
                                   className="currency"
                                   value={job.budget}
                                   displayType="text"
@@ -189,9 +204,16 @@ const RecentJob = () => {
                                   <i className="fa fa-heart-o"></i>
                                 </a>
                               </li>
-
                               <li>
-                                <a href="#">Apply</a>
+                              <UploadFile
+                                onUpload={getFilename}
+                                jobId={job.id}
+                              />
+                              </li>
+                              <li>
+                                <button 
+                                  onClick={() => apply(job.id)}
+                                >Apply</button>
                               </li>
                             </ul>
                           </div>
