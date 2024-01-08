@@ -437,3 +437,8 @@
 .jp_job_post_main_wrapper_cont2{
 	margin-top:35px;
 }
+
+.jp_job_post_side_img img {
+	max-width: 70px;
+	height: 60px;
+}

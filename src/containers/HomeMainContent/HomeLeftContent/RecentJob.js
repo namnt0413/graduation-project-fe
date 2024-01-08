@@ -1,8 +1,21 @@
-import "../../../styles/containers/HomeLeftContent/RecentJob.css"
+import "../../../styles/containers/HomeLeftContent/RecentJob.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "../../../lib/axios";
+import { NumericFormat } from 'react-number-format';
 
 const RecentJob = () => {
   const navigate = useNavigate();
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    const getJobs = async () => {
+      const res = await axios.get("/api/job/get-all-jobs");
+      setJobs(res.data.data);
+    };
+    getJobs();
+  }, []);
+  console.log(jobs);
 
   return (
     <>
@@ -47,10 +60,8 @@ const RecentJob = () => {
                 <div className="jp_job_post_main_wrapper_cont">
                   <div className="jp_job_post_main_wrapper">
                     <div className="row">
-                      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
-                        onClick={() => {
-                          navigate(`/job/1`);
-                        }}
+                      <div
+                        className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
                       >
                         <div className="jp_job_post_side_img">
                           <img
@@ -89,31 +100,6 @@ const RecentJob = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="jp_job_post_keyword_wrapper">
-                    <ul>
-                      <li>
-                        <i className="fa fa-tags"></i>Keywords :
-                      </li>
-                      <li>
-                        <a href="#">ui designer,</a>
-                      </li>
-                      <li>
-                        <a href="#">developer,</a>
-                      </li>
-                      <li>
-                        <a href="#">senior</a>
-                      </li>
-                      <li>
-                        <a href="#">it company,</a>
-                      </li>
-                      <li>
-                        <a href="#">design,</a>
-                      </li>
-                      <li>
-                        <a href="#">call center</a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
                 <div className="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
@@ -158,236 +144,62 @@ const RecentJob = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="jp_job_post_keyword_wrapper">
-                    <ul>
-                      <li>
-                        <i className="fa fa-tags"></i>Keywords :
-                      </li>
-                      <li>
-                        <a href="#">ui designer,</a>
-                      </li>
-                      <li>
-                        <a href="#">developer,</a>
-                      </li>
-                      <li>
-                        <a href="#">senior</a>
-                      </li>
-                      <li>
-                        <a href="#">it company,</a>
-                      </li>
-                      <li>
-                        <a href="#">design,</a>
-                      </li>
-                      <li>
-                        <a href="#">call center</a>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
-                <div className="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
-                  <div className="jp_job_post_main_wrapper">
-                    <div className="row">
-                      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <div className="jp_job_post_side_img">
-                          <img
-                            src="images/content/job_post_img3.jpg"
-                            alt="post_img"
-                          />
+                {jobs.map((job, index) => (
+                  <div className="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
+                    <div className="jp_job_post_main_wrapper">
+                      <div className="row">
+                        <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
+                          onClick={() => {
+                            navigate(`/job/${job.id}`);
+                          }}
+                        >
+                          <div className="jp_job_post_side_img">
+                            <img
+                              src={job.company.avatar_url}
+                              alt="post_img"
+                            />
+                          </div>
+                          <div className="jp_job_post_right_cont">
+                            <h4>{job.title}</h4>
+                            <p>{job.company.name}</p>
+                            <ul>
+                              <li>
+                                <i className="fa fa-cc-paypal"></i>&nbsp;
+                                <NumericFormat 
+                                  className="currency"
+                                  value={job.budget}
+                                  displayType="text"
+                                  thousandSeparator={true}
+                                  suffix=" đ"
+                                />
+                              </li>
+                              <li>
+                                <i className="fa fa-map-marker"></i>&nbsp;
+                                {job.city.name}
+                              </li>
+                            </ul>
+                          </div>
                         </div>
-                        <div className="jp_job_post_right_cont">
-                          <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                          <p>Webstrot Technology Pvt. Ltd.</p>
-                          <ul>
-                            <li>
-                              <i className="fa fa-cc-paypal"></i>&nbsp; $12K -
-                              15k P.A.
-                            </li>
-                            <li>
-                              <i className="fa fa-map-marker"></i>&nbsp;
-                              Caliphonia, PO 455001
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div className="jp_job_post_right_btn_wrapper">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <i className="fa fa-heart-o"></i>
-                              </a>
-                            </li>
+                        <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                          <div className="jp_job_post_right_btn_wrapper">
+                            <ul>
+                              <li>
+                                <a href="#">
+                                  <i className="fa fa-heart-o"></i>
+                                </a>
+                              </li>
 
-                            <li>
-                              <a href="#">Apply</a>
-                            </li>
-                          </ul>
+                              <li>
+                                <a href="#">Apply</a>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="jp_job_post_keyword_wrapper">
-                    <ul>
-                      <li>
-                        <i className="fa fa-tags"></i>Keywords :
-                      </li>
-                      <li>
-                        <a href="#">ui designer,</a>
-                      </li>
-                      <li>
-                        <a href="#">developer,</a>
-                      </li>
-                      <li>
-                        <a href="#">senior</a>
-                      </li>
-                      <li>
-                        <a href="#">it company,</a>
-                      </li>
-                      <li>
-                        <a href="#">design,</a>
-                      </li>
-                      <li>
-                        <a href="#">call center</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
-                  <div className="jp_job_post_main_wrapper">
-                    <div className="row">
-                      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <div className="jp_job_post_side_img">
-                          <img
-                            src="images/content/job_post_img4.jpg"
-                            alt="post_img"
-                          />
-                        </div>
-                        <div className="jp_job_post_right_cont">
-                          <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                          <p>Webstrot Technology Pvt. Ltd.</p>
-                          <ul>
-                            <li>
-                              <i className="fa fa-cc-paypal"></i>&nbsp; $12K -
-                              15k P.A.
-                            </li>
-                            <li>
-                              <i className="fa fa-map-marker"></i>&nbsp;
-                              Caliphonia, PO 455001
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div className="jp_job_post_right_btn_wrapper">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <i className="fa fa-heart-o"></i>
-                              </a>
-                            </li>
-
-                            <li>
-                              <a href="#">Apply</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="jp_job_post_keyword_wrapper">
-                    <ul>
-                      <li>
-                        <i className="fa fa-tags"></i>Keywords :
-                      </li>
-                      <li>
-                        <a href="#">ui designer,</a>
-                      </li>
-                      <li>
-                        <a href="#">developer,</a>
-                      </li>
-                      <li>
-                        <a href="#">senior</a>
-                      </li>
-                      <li>
-                        <a href="#">it company,</a>
-                      </li>
-                      <li>
-                        <a href="#">design,</a>
-                      </li>
-                      <li>
-                        <a href="#">call center</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
-                  <div className="jp_job_post_main_wrapper">
-                    <div className="row">
-                      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <div className="jp_job_post_side_img">
-                          <img
-                            src="images/content/job_post_img5.jpg"
-                            alt="post_img"
-                          />
-                        </div>
-                        <div className="jp_job_post_right_cont">
-                          <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                          <p>Webstrot Technology Pvt. Ltd.</p>
-                          <ul>
-                            <li>
-                              <i className="fa fa-cc-paypal"></i>&nbsp; $12K -
-                              15k P.A.
-                            </li>
-                            <li>
-                              <i className="fa fa-map-marker"></i>&nbsp;
-                              Caliphonia, PO 455001
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div className="jp_job_post_right_btn_wrapper">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <i className="fa fa-heart-o"></i>
-                              </a>
-                            </li>
-
-                            <li>
-                              <a href="#">Apply</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="jp_job_post_keyword_wrapper">
-                    <ul>
-                      <li>
-                        <i className="fa fa-tags"></i>Keywords :
-                      </li>
-                      <li>
-                        <a href="#">ui designer,</a>
-                      </li>
-                      <li>
-                        <a href="#">developer,</a>
-                      </li>
-                      <li>
-                        <a href="#">senior</a>
-                      </li>
-                      <li>
-                        <a href="#">it company,</a>
-                      </li>
-                      <li>
-                        <a href="#">design,</a>
-                      </li>
-                      <li>
-                        <a href="#">call center</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             {/* pagination */}

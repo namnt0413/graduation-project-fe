@@ -1,7 +1,7 @@
-import "../../styles/containers/Home/TrendingCategory.css";
+import "../../styles/containers/Home/TrendingJob.css";
 import Slider from "react-slick";
 
-const TrendingCategory = () => {
+const TrendingJob = () => {
   const settings = {
     dots: false,
     infinite: true,
@@ -47,7 +47,7 @@ const TrendingCategory = () => {
                     />
                   </div>
                   <div className="jp_tittle_side_cont_wrapper">
-                    <h4>Graphic Designer (UI / UX)</h4>
+                    <h4>IT Engineer</h4>
                     <p>Webstrot Pvt. Ltd.</p>
                   </div>
                 </div>
@@ -59,7 +59,7 @@ const TrendingCategory = () => {
                     />
                   </div>
                   <div className="jp_tittle_side_cont_wrapper">
-                    <h4>Graphic Designer (UI / UX)</h4>
+                    <h4>Accountant</h4>
                     <p>Webstrot Pvt. Ltd.</p>
                   </div>
                 </div>
@@ -83,7 +83,7 @@ const TrendingCategory = () => {
                     />
                   </div>
                   <div className="jp_tittle_side_cont_wrapper">
-                    <h4>Graphic Designer (UI / UX)</h4>
+                    <h4>Bussiness Analyst</h4>
                     <p>Webstrot Pvt. Ltd.</p>
                   </div>
                 </div>
@@ -144,4 +144,4 @@ const TrendingCategory = () => {
   );
 };
 
-export default TrendingCategory;
+export default TrendingJob;
