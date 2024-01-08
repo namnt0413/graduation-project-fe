@@ -1,7 +1,10 @@
 import Slider from "react-slick";
 import "../../../styles/containers/HomeLeftContent/TopCompany.css";
+import { useNavigate } from "react-router-dom";
 
 const TopCompany = () => {
+  const navigate = useNavigate();
+
   const settings = {
     dots: false,
     infinite: true,
@@ -24,7 +27,11 @@ const TopCompany = () => {
           <div className="jp_hiring_slider_wrapper top-campany-list">
             <Slider {...settings}>
               <div className="company-item">
-                <div className="jp_hiring_content_main_wrapper">
+                <div className="jp_hiring_content_main_wrapper"
+                  onClick={() => {
+                    navigate(`/company/1`);
+                  }}
+                >
                   <div className="jp_hiring_content_wrapper">
                     <img
                       src="images/content/hiring_img1.png"

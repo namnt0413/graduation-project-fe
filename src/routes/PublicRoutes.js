@@ -16,7 +16,7 @@ const PublicRoutes = () => {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/password-reset/:token" element={<ResetPassword />} />
       <Route path="/job/:id" element={<JobDetail />} />
-      <Route path="/company" element={<CompanyDetail />} />
+      <Route path="/company/:id" element={<CompanyDetail />} />
       <Route path="*" element={null} />
     </Routes>
   );
