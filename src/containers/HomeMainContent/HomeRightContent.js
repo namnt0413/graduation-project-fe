@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+import "../../styles/containers/HomeRightContent/HomeRightContent.css"
 
 const HomeRightContent = () => {
   const settings = {

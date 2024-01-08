@@ -1,6 +1,9 @@
 import "../../../styles/containers/HomeLeftContent/RecentJob.css"
+import { useNavigate } from "react-router-dom";
 
 const RecentJob = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -44,7 +47,11 @@ const RecentJob = () => {
                 <div className="jp_job_post_main_wrapper_cont">
                   <div className="jp_job_post_main_wrapper">
                     <div className="row">
-                      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
+                        onClick={() => {
+                          navigate(`/job/1`);
+                        }}
+                      >
                         <div className="jp_job_post_side_img">
                           <img
                             src="images/content/job_post_img1.jpg"

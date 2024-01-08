@@ -1,3 +1,74 @@
+.jp_tittle_name_wrapper{
+	float:left;
+	width:15%;
+	text-align:center;
+	background:#23c0e9;
+	padding-top: 35px;
+    padding-bottom: 30px;
+}
+.jp_tittle_name{
+	display:inline-block;
+}
+.jp_tittle_name h3{
+	font-size:16px;
+	font-weight:bold;
+	text-transform:uppercase;
+	color:#ffffff;
+}
+.jp_tittle_name h4{
+	font-size:16px;
+	font-weight:bold;
+	text-transform:uppercase;
+	color:#ffffff;
+	padding-top:5px;
+}
+.jp_tittle_slider_wrapper{
+	float:left;
+	width:85%;
+	background:#ffffff;
+	border:1px solid #e9e9e9;
+	border-left:0;
+	border-right:0;
+}
+.jp_tittle_slider_content_wrapper{
+	float:left;
+	width:100%;
+}
+.jp_tittle_slider_content_wrapper .owl-theme .owl-dots{
+	display:none;
+}
+.jp_tittle_slider_content_wrapper .owl-theme .owl-nav {
+	display:none;
+}
+.jp_tittle_slides_one{
+	float:left;
+	width:33.33%;
+	padding-top: 20px;
+    padding-bottom: 20px;
+	border-right:1px solid #e9e9e9;
+	padding-left:20px;
+}
+.jp_tittle_side_img_wrapper{
+	float:left;
+	width:65px;
+}
+.jp_tittle_side_cont_wrapper{
+	float:left;
+	width:calc(100% - 65px);
+	padding-top: 16px;
+    padding-left: 11px;
+}
+.jp_tittle_side_cont_wrapper h4{
+	font-size:14px;
+	color:#000000;
+	font-weight:bold;
+}
+.jp_tittle_side_cont_wrapper p{
+	font-size:14px;
+	color:#23c0e9;
+}
+/*---------- jp tittle slider Wrapper End -------*/
+
 .trending-category {
     float:left; 
     width:100%; 
