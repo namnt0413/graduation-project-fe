@@ -1,4 +1,5 @@
 import "../../../styles/containers/HomeLeftContent/RegisterSection.css"
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterSection = () => {
   return (
@@ -34,10 +35,10 @@ const RegisterSection = () => {
               </p>
               <ul>
                 <li>
-                  <a href="#">
+                  <Link className="nav-link" to="/register">
                     <i className="fa fa-plus-circle"></i> &nbsp;REGISTER AS
                     CANDIDATE
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

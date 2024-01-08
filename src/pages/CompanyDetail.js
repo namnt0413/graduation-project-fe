@@ -36,7 +36,10 @@ const CompanyDetail = () => {
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div className="jp_cs_com_info_wrapper">
                 <div className="jp_cs_com_info_img">
-                  <img src="https://firebasestorage.googleapis.com/v0/b/crowdsourcing-9c7fd.appspot.com/o/Image%2Fimages.png?alt=media&token=3b3116da-2a46-4e9a-b710-b0940198e57e" alt="job_img" />
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/crowdsourcing-9c7fd.appspot.com/o/Image%2Fimages.png?alt=media&token=3b3116da-2a46-4e9a-b710-b0940198e57e"
+                    alt="job_img"
+                  />
                 </div>
                 <div className="jp_cs_com_info_img_cont">
                   <h2>
@@ -197,223 +200,150 @@ const CompanyDetail = () => {
                   </li>
                 </ul>
               </div>
+
+              {/* posting jobs */}
               <div className="jp_listing_related_heading_wrapper">
                 <h2>Posting Jobs</h2>
                 <div className="jp_listing_related_slider_wrapper">
-                    <div className="item">
-                      <div className="row">
-                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                            <div className="jp_job_post_main_wrapper">
-                              <div className="row">
-                                <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                  <div className="jp_job_post_side_img">
-                                    <img
-                                      src="images/content/job_post_img1.jpg"
-                                      alt="post_img"
-                                    />
-                                  </div>
-                                  <div className="jp_job_post_right_cont">
-                                    <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                                    <p>Webstrot Technology Pvt. Ltd.</p>
-                                    <ul>
-                                      <li>
-                                        <i className="fa fa-cc-paypal"></i>
-                                        &nbsp; $12K - 15k P.A.
-                                      </li>
-                                      <li>
-                                        <i className="fa fa-map-marker"></i>
-                                        &nbsp; Caliphonia, PO 455001
-                                      </li>
-                                    </ul>
-                                  </div>
+                  <div className="item">
+                    <div className="row">
+                      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
+                          <div className="jp_job_post_main_wrapper">
+                            <div className="row">
+                              <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <div className="jp_job_post_side_img">
+                                  <img
+                                    src="https://firebasestorage.googleapis.com/v0/b/crowdsourcing-9c7fd.appspot.com/o/Image%2Fimages.png?alt=media&token=3b3116da-2a46-4e9a-b710-b0940198e57e"
+                                    alt="post_img"
+                                  />
                                 </div>
-                                <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                  <div className="jp_job_post_right_btn_wrapper">
-                                    <ul>
-                                      <li>
-                                        <a href="#">
-                                          <i className="fa fa-heart-o"></i>
-                                        </a>
-                                      </li>
-
-                                      <li>
-                                        <a href="#">Apply</a>
-                                      </li>
-                                    </ul>
-                                  </div>
+                                <div className="jp_job_post_right_cont">
+                                  <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
+                                  <p>Webstrot Technology Pvt. Ltd.</p>
+                                  <ul>
+                                    <li>
+                                      <i className="fa fa-cc-paypal"></i>
+                                      &nbsp; $12K - 15k P.A.
+                                    </li>
+                                    <li>
+                                      <i className="fa fa-map-marker"></i>
+                                      &nbsp; Caliphonia, PO 455001
+                                    </li>
+                                  </ul>
                                 </div>
                               </div>
-                            </div>
-                            <div className="jp_job_post_keyword_wrapper">
-                              <ul>
-                                <li>
-                                  <i className="fa fa-tags"></i>Keywords :
-                                </li>
-                                <li>
-                                  <a href="#">ui designer,</a>
-                                </li>
-                                <li>
-                                  <a href="#">developer,</a>
-                                </li>
-                                <li>
-                                  <a href="#">senior</a>
-                                </li>
-                                <li>
-                                  <a href="#">it company,</a>
-                                </li>
-                                <li>
-                                  <a href="#">design,</a>
-                                </li>
-                                <li>
-                                  <a href="#">call center</a>
-                                </li>
-                              </ul>
+                              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div className="jp_job_post_right_btn_wrapper">
+                                  <ul>
+                                    <li>
+                                      <a href="#">
+                                        <i className="fa fa-heart-o"></i>
+                                      </a>
+                                    </li>
+
+                                    <li>
+                                      <a href="#">Apply</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                            <div className="jp_job_post_main_wrapper">
-                              <div className="row">
-                                <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                  <div className="jp_job_post_side_img">
-                                    <img
-                                      src="images/content/job_post_img2.jpg"
-                                      alt="post_img"
-                                    />
-                                  </div>
-                                  <div className="jp_job_post_right_cont">
-                                    <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                                    <p>Webstrot Technology Pvt. Ltd.</p>
-                                    <ul>
-                                      <li>
-                                        <i className="fa fa-cc-paypal"></i>
-                                        &nbsp; $12K - 15k P.A.
-                                      </li>
-                                      <li>
-                                        <i className="fa fa-map-marker"></i>
-                                        &nbsp; Caliphonia, PO 455001
-                                      </li>
-                                    </ul>
-                                  </div>
+                      </div>
+                      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
+                          <div className="jp_job_post_main_wrapper">
+                            <div className="row">
+                              <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <div className="jp_job_post_side_img">
+                                  <img
+                                    src="https://firebasestorage.googleapis.com/v0/b/crowdsourcing-9c7fd.appspot.com/o/Image%2Fimages.png?alt=media&token=3b3116da-2a46-4e9a-b710-b0940198e57e"
+                                    alt="post_img"
+                                  />
                                 </div>
-                                <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                  <div className="jp_job_post_right_btn_wrapper">
-                                    <ul>
-                                      <li>
-                                        <a href="#">
-                                          <i className="fa fa-heart-o"></i>
-                                        </a>
-                                      </li>
-
-                                      <li>
-                                        <a href="#">Apply</a>
-                                      </li>
-                                    </ul>
-                                  </div>
+                                <div className="jp_job_post_right_cont">
+                                  <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
+                                  <p>Webstrot Technology Pvt. Ltd.</p>
+                                  <ul>
+                                    <li>
+                                      <i className="fa fa-cc-paypal"></i>
+                                      &nbsp; $12K - 15k P.A.
+                                    </li>
+                                    <li>
+                                      <i className="fa fa-map-marker"></i>
+                                      &nbsp; Caliphonia, PO 455001
+                                    </li>
+                                  </ul>
                                 </div>
                               </div>
-                            </div>
-                            <div className="jp_job_post_keyword_wrapper">
-                              <ul>
-                                <li>
-                                  <i className="fa fa-tags"></i>Keywords :
-                                </li>
-                                <li>
-                                  <a href="#">ui designer,</a>
-                                </li>
-                                <li>
-                                  <a href="#">developer,</a>
-                                </li>
-                                <li>
-                                  <a href="#">senior</a>
-                                </li>
-                                <li>
-                                  <a href="#">it company,</a>
-                                </li>
-                                <li>
-                                  <a href="#">design,</a>
-                                </li>
-                                <li>
-                                  <a href="#">call center</a>
-                                </li>
-                              </ul>
+                              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div className="jp_job_post_right_btn_wrapper">
+                                  <ul>
+                                    <li>
+                                      <a href="#">
+                                        <i className="fa fa-heart-o"></i>
+                                      </a>
+                                    </li>
+
+                                    <li>
+                                      <a href="#">Apply</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                            <div className="jp_job_post_main_wrapper">
-                              <div className="row">
-                                <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                  <div className="jp_job_post_side_img">
-                                    <img
-                                      src="images/content/job_post_img3.jpg"
-                                      alt="post_img"
-                                    />
-                                  </div>
-                                  <div className="jp_job_post_right_cont">
-                                    <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                                    <p>Webstrot Technology Pvt. Ltd.</p>
-                                    <ul>
-                                      <li>
-                                        <i className="fa fa-cc-paypal"></i>
-                                        &nbsp; $12K - 15k P.A.
-                                      </li>
-                                      <li>
-                                        <i className="fa fa-map-marker"></i>
-                                        &nbsp; Caliphonia, PO 455001
-                                      </li>
-                                    </ul>
-                                  </div>
+                      </div>
+                      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
+                          <div className="jp_job_post_main_wrapper">
+                            <div className="row">
+                              <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <div className="jp_job_post_side_img">
+                                  <img
+                                    src="https://firebasestorage.googleapis.com/v0/b/crowdsourcing-9c7fd.appspot.com/o/Image%2Fimages.png?alt=media&token=3b3116da-2a46-4e9a-b710-b0940198e57e"
+                                    alt="post_img"
+                                  />
                                 </div>
-                                <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                  <div className="jp_job_post_right_btn_wrapper">
-                                    <ul>
-                                      <li>
-                                        <a href="#">
-                                          <i className="fa fa-heart-o"></i>
-                                        </a>
-                                      </li>
-
-                                      <li>
-                                        <a href="#">Apply</a>
-                                      </li>
-                                    </ul>
-                                  </div>
+                                <div className="jp_job_post_right_cont">
+                                  <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
+                                  <p>Webstrot Technology Pvt. Ltd.</p>
+                                  <ul>
+                                    <li>
+                                      <i className="fa fa-cc-paypal"></i>
+                                      &nbsp; $12K - 15k P.A.
+                                    </li>
+                                    <li>
+                                      <i className="fa fa-map-marker"></i>
+                                      &nbsp; Caliphonia, PO 455001
+                                    </li>
+                                  </ul>
                                 </div>
                               </div>
-                            </div>
-                            <div className="jp_job_post_keyword_wrapper">
-                              <ul>
-                                <li>
-                                  <i className="fa fa-tags"></i>Keywords :
-                                </li>
-                                <li>
-                                  <a href="#">ui designer,</a>
-                                </li>
-                                <li>
-                                  <a href="#">developer,</a>
-                                </li>
-                                <li>
-                                  <a href="#">senior</a>
-                                </li>
-                                <li>
-                                  <a href="#">it company,</a>
-                                </li>
-                                <li>
-                                  <a href="#">design,</a>
-                                </li>
-                                <li>
-                                  <a href="#">call center</a>
-                                </li>
-                              </ul>
+                              <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div className="jp_job_post_right_btn_wrapper">
+                                  <ul>
+                                    <li>
+                                      <a href="#">
+                                        <i className="fa fa-heart-o"></i>
+                                      </a>
+                                    </li>
+
+                                    <li>
+                                      <a href="#">Apply</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -427,7 +357,7 @@ const CompanyDetail = () => {
                     <div className="jp_jop_overview_img_wrapper">
                       <div className="jp_jop_overview_img">
                         <img
-                          src="images/content/job_post_img1.jpg"
+                          src="https://firebasestorage.googleapis.com/v0/b/crowdsourcing-9c7fd.appspot.com/o/Image%2Fimages.png?alt=media&token=3b3116da-2a46-4e9a-b710-b0940198e57e"
                           alt="post_img"
                         />
                       </div>

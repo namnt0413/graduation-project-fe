@@ -8,6 +8,7 @@ import JobDetail from "../pages/JobDetail";
 import CompanyDetail from "../pages/CompanyDetail";
 import JobList from "../pages/JobList";
 import CompanyList from "../pages/CompanyList";
+import CompanyHome from "../pages/CompanyHome";
 
 const PublicRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const PublicRoutes = () => {
       <Route path="/job-list" element={<JobList />} />
       <Route path="/company/:id" element={<CompanyDetail />} />
       <Route path="/company-list" element={<CompanyList />} />
+      <Route path="/company-home" element={<CompanyHome />} />
       <Route path="*" element={null} />
     </Routes>
   );
