@@ -2,31 +2,16 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthUser from "../components/AuthUser";
 import { NavLink } from "react-router-dom";
 import "../styles/components/Navbar.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
-  const user = useSelector((state) => state.user.value);
+  // const user = useSelector((state) => state.user.value);
   const navigate = useNavigate();
-  const { getToken } = AuthUser();
+  const { getToken, getUser } = AuthUser();
   const { token, http } = AuthUser();
-
-  const [userInfo, setUserInfo] = useState("");
-  useEffect(() => {
-    fetchUserDetail();
-  }, []);
-
-  const fetchUserDetail = async () => {
-    if (getToken()) {
-      try {
-        await http.post("/me").then((res) => {
-          setUserInfo(res.data);
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
+  const [user,setUser] = useState(getUser());
+  console.log(user)
 
   const logoutUser = () => {
     if (token !== undefined) {
@@ -374,8 +359,8 @@ const Navbar = () => {
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
-                        <img className="user-avatar" src={userInfo?.avatar} />
-                        {userInfo.name}
+                        <img className="user-avatar" src={user?.avatar} />
+                        {user.name}
                       </div>
                       <div
                         class="dropdown-menu"
