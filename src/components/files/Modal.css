@@ -8,6 +8,7 @@
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    z-index: 100 !important;
   }
   
   .backshadow .customModal{
@@ -21,7 +22,7 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background-color: red;
+    background-color: #f36969;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -34,5 +35,9 @@
     right: -15px;
     font-family: 'Raleway', sans-serif;
     z-index: 2;
+    padding: 10px;
   }
   
+  .backshadow .customModal .deleteIcon:hover {
+    background-color: #ee4242;
+  }

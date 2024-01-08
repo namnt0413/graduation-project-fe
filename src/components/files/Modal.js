@@ -15,11 +15,11 @@ export const Modal = ({setModal, resume}) => {
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
-    <div className={styles.backshadow}>
+    <div className="backshadow">
 
-        <div className={styles.customModal}>
+        <div className="customModal">
 
-            <div className={styles.deleteIcon}
+            <div className="deleteIcon"
             onClick={()=>setModal(false)}>
               x
             </div>

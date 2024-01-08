@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
+import "./Button.css";
 
-export const Button = ({setModal}) => {
+export const Button = ({ setModal }) => {
   return (
-    <button className='btn btn-primary btn-md'
-        onClick={()=>setModal(true)}
-        style={{background: "#ddd", padding: "10px"}}
+    <button
+      className="btn btn-primary btn-md view-button"
+      onClick={() => setModal(true)}
     >
-        View CV
+      <i class="fa-regular fa-file-pdf"></i>
     </button>
-  )
-}
+  );
+};
