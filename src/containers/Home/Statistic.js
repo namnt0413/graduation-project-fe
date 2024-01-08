@@ -1,3 +1,5 @@
+import "../../styles/containers/Home/Statistic.css"
+
 const Statistic = () => {
   return (
     <>

@@ -1,3 +1,5 @@
+import "../../../styles/containers/HomeLeftContent/RegisterSection.css"
+
 const RegisterSection = () => {
   return (
     <>

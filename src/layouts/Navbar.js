@@ -45,15 +45,15 @@ const Navbar = () => {
           <div className="row">
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
               <div className="gc_header_wrapper">
-                <div className="gc_logo">
-                  <a href="#">
+                <div className="gc_logo" >
+                  <Link className="nav-link" to="/">
                     <img
-                      src="images/header/logo.png"
+                      src="http://localhost:3000/images/header/logo.png"
                       alt="Logo"
                       title="Job Pro"
                       className="img-responsive"
                     />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -366,21 +366,6 @@ const Navbar = () => {
               <div className="user-bar col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                 <div className="jp_navi_right_btn_wrapper">
                   <div className="user-info">
-                    {/* <img className="user-avatar" src={user?.avatar} />
-                    <div className="username dropdown">
-                      {userInfo.name}
-                    </div> */}
-                    {/* <ul>
-                    <li className="nav-item">
-                      <span
-                        role="button"
-                        className="nav-link"
-                        onClick={logoutUser}
-                      >
-                        Logout
-                      </span>
-                    </li>
-                  </ul> */}
                     <li class="user-info nav-item dropdown">
                       <div
                         class="nav-link dropdown-toggle"
@@ -389,7 +374,7 @@ const Navbar = () => {
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
-                        <img className="user-avatar" src={user?.avatar} />
+                        <img className="user-avatar" src={userInfo?.avatar} />
                         {userInfo.name}
                       </div>
                       <div
@@ -407,32 +392,11 @@ const Navbar = () => {
                         </button>
                       </div>
                     </li>
-
+                    <button className="notification">
+                      <i class="fa-regular fa-bell"></i>
+                    </button>
                   </div>
                 </div>
-                {/* <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-                  <ul className="navbar-nav">
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/user">
-                        User
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/cv">
-                        CV
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <span
-                        role="button"
-                        className="nav-link"
-                        onClick={logoutUser}
-                      >
-                        Logout
-                      </span>
-                    </li>
-                  </ul>
-                </nav> */}
               </div>
             )}
             {/* end user bar */}

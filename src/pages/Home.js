@@ -15,7 +15,7 @@ const Home = () => {
     </>
   );
 
-  return <Layout page={HomeContent} />;
+  return <Layout page={HomeContent} isShowBanner={true} />;
 };
 
 export default Home;

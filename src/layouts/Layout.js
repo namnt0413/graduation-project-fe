@@ -10,7 +10,7 @@ const Layout = (props) => {
       <div className="jp_top_header_img_wrapper">
         <div className="jp_slide_img_overlay"></div>
         <Navbar />
-        <Banner />
+        { props.isShowBanner && <Banner /> }
       </div>
       <div className="content">{props.page}</div>
       <Footer />
