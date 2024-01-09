@@ -17,15 +17,11 @@ const  FileView = (props) => {
   },[])
 
   return (
-    <div className="container">
-      <br></br>
-
+    <div className="view-cv">
       <Button setModal={setModal}/>
-
       {modal===true&&(
         <Modal setModal={setModal} resume={resume}/>
       )}
-
     </div>
   );
 }

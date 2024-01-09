@@ -40,6 +40,7 @@ export default function AuthCompany(){
         companySetToken:saveToken,
         token,
         company,
+        getCompany,
         companyGetToken,
         companyHttp,
     }
