@@ -15,7 +15,6 @@ const RecentJob = () => {
   const { getToken, getUser } = AuthUser();
   const [user,setUser] = useState(getUser());
 
-
   useEffect(() => {
     const getJobs = async () => {
       const res = await axios.get("/api/job/get-all-jobs");
@@ -39,6 +38,10 @@ const RecentJob = () => {
         console.log("Apply OK")
     })
   }
+
+  const openInNewTab = url => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <>
@@ -172,9 +175,10 @@ const RecentJob = () => {
                       <div className="row">
                         <div
                           className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
-                          onClick={() => {
-                            navigate(`/job/${job.id}`);
-                          }}
+                          // onClick={() => {
+                          //   navigate(`/job/${job.id}`);
+                          // }}
+                          onClick={() => openInNewTab(`/job/${job.id}`)}
                         >
                           <div className="jp_job_post_side_img">
                             <img src={job.company.avatar_url} alt="post_img" />
