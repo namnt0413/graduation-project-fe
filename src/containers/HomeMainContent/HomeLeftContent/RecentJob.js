@@ -5,12 +5,16 @@ import axios from "../../../lib/axios";
 import { NumericFormat } from "react-number-format";
 import UploadFile from "../../../components/files/UploadFile";
 import { useSelector } from "react-redux";
+import AuthUser from "../../../components/AuthUser";
+
 
 const RecentJob = () => {
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
   const [filename, setFilename] = useState("");
-  const user = useSelector((state) => state.user.value);
+  const { getToken, getUser } = AuthUser();
+  const [user,setUser] = useState(getUser());
+
 
   useEffect(() => {
     const getJobs = async () => {

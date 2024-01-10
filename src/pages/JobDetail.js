@@ -1,7 +1,29 @@
 import Layout from "../layouts/Layout";
 import "../styles/pages/JobDetail.css";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getJobDetailApi } from "../api/job.api";
+import { NumericFormat } from "react-number-format";
 
 const JobDetail = () => {
+  const [job, setJob] = useState([]);
+  const param = useParams();
+
+  useEffect(() => {
+    const jobId = param.id;
+    getJobDetailApi(jobId)
+      .then((res) => {
+        setJob(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [param]);
+
+  // useEffect(() => {
+  //   document.body.scrollTo(0, 0); 
+  // }, [])
+
   const JobDetailContent = (
     <>
       {/* job title */}
@@ -12,7 +34,7 @@ const JobDetail = () => {
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div className="jp_tittle_heading_wrapper">
                 <div className="jp_tittle_heading">
-                  <h2>HTML Developer (1-2 Yrs Exp.)</h2>
+                  <h2>{job.title}</h2>
                 </div>
                 <div className="jp_tittle_breadcrumb_main_wrapper">
                   <div className="jp_tittle_breadcrumb_wrapper">
@@ -47,15 +69,7 @@ const JobDetail = () => {
                 <div className="jp_job_des">
                   <h2>Job Description</h2>
                   <p>
-                    Google is and always will be an engineering company. We hire
-                    people with a broad set of ical skills who are ready to
-                    tackle some of technology's greatest challenges and make an
-                    impact on millions, if not billions, of users. At Google,
-                    engineers not only revolutionize search, they routinely work
-                    on massive scalability and storage solutions, large-scale
-                    applications and rely new platforms for developers around
-                    the world. From AdWords to Chrome, Android to Ye, Social to
-                    Local, Google engineers are changing the world.
+                    {job.description}
                   </p>
                   <ul>
                     <li>
@@ -68,64 +82,36 @@ const JobDetail = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="jp_job_res">
-                  <h2>Responsibilities</h2>
-                  <p>
-                    Curabitur non nulla sit amet nisl tempus convallis quis ac
-                    lectus. Mauris blandit aliquet elit, eget tincidunt nibh
-                    pulvinar a. Praesent sapien massa, convallis a pellentesque
-                    nec, egestas non nisi. Curabitur aliquet quam id dui posuere
-                    blandit.
-                  </p>
-                  <ul>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; Build
-                      next-generation web applications with a focus on the
-                      client side.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; Redesign
-                      UI's, implement new UI's, and pick up Java as necessary.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; Explore
-                      and design dynamic and compelling consumer experiences.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; Design
-                      and build scalable framework for web applications.
-                    </li>
-                  </ul>
-                </div>
                 <div className="jp_job_res jp_job_qua">
-                  <h2>Minimum qualifications</h2>
+                  <h2>Requirements</h2>
                   <ul>
-                    <li>
+                    {/* <li>
                       <i className="fa fa-caret-right"></i>&nbsp;&nbsp; BA/BS
                       degree in a technical field or equivalent practical
                       experience.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; 2 years
-                      of relevant work experience in software development.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp;
-                      Programming experience in C, C++ or Java.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp;
-                      Experience with AJAX, HTML and CSS.
-                    </li>
+                    </li> */}
+                    {job.requirement}
                   </ul>
                 </div>
                 <div className="jp_job_apply">
-                  <h2>How To Apply</h2>
+                  <h2>Quyen loi</h2>
                   <p>
                     Praesent sapien massa, convallis a pellentesque nec, egestas
                     non nisi. Curabitur aliquet quam id dui posuere blandit.
                     Curabitur aliquet quam id dui posuere blandit. Curabitur non
                     nulla sit amet nisl tempus convallis quis ac lectus.
+                  </p>
+                </div>
+                <div className="jp_job_apply">
+                  <h2>Dia diem</h2>
+                  <p>
+                    {job.city?.name}
+                  </p>
+                </div>
+                <div className="jp_job_apply">
+                  <h2>Thoi gian lam viec</h2>
+                  <p>
+                    Tu 09-18h hang ngay
                   </p>
                 </div>
               </div>
@@ -345,30 +331,13 @@ const JobDetail = () => {
                     </div>
                     <div className="jp_jop_overview_img_wrapper">
                       <div className="jp_jop_overview_img">
-                        <img
-                          src="https://firebasestorage.googleapis.com/v0/b/crowdsourcing-9c7fd.appspot.com/o/Image%2Fimages.png?alt=media&token=3b3116da-2a46-4e9a-b710-b0940198e57e"
-                          alt="post_img"
-                        />
+                        <img src={job.company?.avatar_url} alt="post_img" />
                       </div>
                     </div>
                     <div className="jp_job_listing_single_post_right_cont">
                       <div className="jp_job_listing_single_post_right_cont_wrapper">
-                        <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                        <p>Webstrot Technology Pvt. Ltd.</p>
-                      </div>
-                    </div>
-                    <div className="jp_job_post_right_overview_btn_wrapper">
-                      <div className="jp_job_post_right_overview_btn">
-                        <ul>
-                          <li>
-                            <a href="#">
-                              <i className="fa fa-heart-o"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">Part Time</a>
-                          </li>
-                        </ul>
+                        <h4>{job.title}</h4>
+                        <p>{job.company?.name}</p> 
                       </div>
                     </div>
                     <div className="jp_listing_overview_list_outside_main_wrapper">
@@ -379,7 +348,7 @@ const JobDetail = () => {
                         <div className="jp_listing_list_icon_cont_wrapper">
                           <ul>
                             <li>Date Posted:</li>
-                            <li>Octomber 02, 2017</li>
+                            <li>{job.created_at}</li>
                           </ul>
                         </div>
                       </div>
@@ -390,18 +359,7 @@ const JobDetail = () => {
                         <div className="jp_listing_list_icon_cont_wrapper">
                           <ul>
                             <li>Location:</li>
-                            <li>Los Angeles Califonia PO, 455001</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
-                        <div className="jp_listing_list_icon">
-                          <i className="fa fa-info-circle"></i>
-                        </div>
-                        <div className="jp_listing_list_icon_cont_wrapper">
-                          <ul>
-                            <li>Job Title:</li>
-                            <li>HTML Developer</li>
+                            <li>{job.company?.address}</li>
                           </ul>
                         </div>
                       </div>
@@ -423,7 +381,15 @@ const JobDetail = () => {
                         <div className="jp_listing_list_icon_cont_wrapper">
                           <ul>
                             <li>Salary:</li>
-                            <li>$12K - 15k P.A.</li>
+                            <li>
+                              <NumericFormat
+                                className="currency"
+                                value={job.budget}
+                                displayType="text"
+                                thousandSeparator={true}
+                                suffix=" đ"
+                              />
+                            </li>
                           </ul>
                         </div>
                       </div>
@@ -434,7 +400,7 @@ const JobDetail = () => {
                         <div className="jp_listing_list_icon_cont_wrapper">
                           <ul>
                             <li>Category:</li>
-                            <li>Developer</li>
+                            <li>{job.category?.name}</li>
                           </ul>
                         </div>
                       </div>
@@ -455,13 +421,13 @@ const JobDetail = () => {
                             <li>
                               <a href="#">
                                 <i className="fa fa-plus-circle"></i>{" "}
-                                &nbsp;Apply With Facebook
+                                &nbsp;Apply
                               </a>
                             </li>
                             <li>
                               <a href="#">
                                 <i className="fa fa-plus-circle"></i>{" "}
-                                &nbsp;Apply NOw!
+                                &nbsp;Favourite
                               </a>
                             </li>
                           </ul>
