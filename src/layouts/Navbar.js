@@ -11,7 +11,7 @@ const Navbar = () => {
   const { getToken, getUser } = AuthUser();
   const { token, http } = AuthUser();
   const [user,setUser] = useState(getUser());
-  console.log(user)
+  // console.log(user)
 
   const logoutUser = () => {
     if (token !== undefined) {

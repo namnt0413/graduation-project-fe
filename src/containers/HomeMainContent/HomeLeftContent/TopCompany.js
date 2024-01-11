@@ -29,6 +29,10 @@ const TopCompany = () => {
     responsive: [],
   };
 
+  const openInNewTab = url => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <>
       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -110,9 +114,10 @@ const TopCompany = () => {
                 <div className="company-item">
                   <div
                     className="jp_hiring_content_main_wrapper"
-                    onClick={() => {
-                      navigate(`/company/${company.id}`);
-                    }}
+                    // onClick={() => {
+                    //   navigate(`/company/${company.id}`);
+                    // }}
+                    onClick={() => openInNewTab(`/company/${company.id}`)}
                   >
                     <div className="jp_hiring_content_wrapper">
                       <img

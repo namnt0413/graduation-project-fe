@@ -5,12 +5,15 @@ import axios from "../../../lib/axios";
 import { NumericFormat } from "react-number-format";
 import UploadFile from "../../../components/files/UploadFile";
 import { useSelector } from "react-redux";
+import AuthUser from "../../../components/AuthUser";
+
 
 const RecentJob = () => {
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
   const [filename, setFilename] = useState("");
-  const user = useSelector((state) => state.user.value);
+  const { getToken, getUser } = AuthUser();
+  const [user,setUser] = useState(getUser());
 
   useEffect(() => {
     const getJobs = async () => {
@@ -35,6 +38,10 @@ const RecentJob = () => {
         console.log("Apply OK")
     })
   }
+
+  const openInNewTab = url => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <>
@@ -168,9 +175,10 @@ const RecentJob = () => {
                       <div className="row">
                         <div
                           className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
-                          onClick={() => {
-                            navigate(`/job/${job.id}`);
-                          }}
+                          // onClick={() => {
+                          //   navigate(`/job/${job.id}`);
+                          // }}
+                          onClick={() => openInNewTab(`/job/${job.id}`)}
                         >
                           <div className="jp_job_post_side_img">
                             <img src={job.company.avatar_url} alt="post_img" />

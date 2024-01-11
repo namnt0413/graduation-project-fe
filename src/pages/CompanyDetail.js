@@ -1,7 +1,25 @@
 import Layout from "../layouts/Layout";
 import "../styles/pages/CompanyDetail.css";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getCompanyDetailApi } from "../api/company.api"; 
+import { NumericFormat } from "react-number-format";
 
 const CompanyDetail = () => {
+  const [company, setCompany] = useState([]);
+  const param = useParams();
+
+  useEffect(() => {
+    const companyId = param.id;
+    getCompanyDetailApi(companyId)
+      .then((res) => {
+        setCompany(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [param]);
+
   const CompanyDetailContent = (
     <>
       <div className="jp_tittle_main_wrapper jp_cs_tittle_main_wrapper">
@@ -11,7 +29,7 @@ const CompanyDetail = () => {
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div className="jp_tittle_heading_wrapper">
                 <div className="jp_tittle_heading">
-                  <h2>Webstrot Technology</h2>
+                  <h2>{company.name}</h2>
                 </div>
                 <div className="jp_tittle_breadcrumb_main_wrapper">
                   <div className="jp_tittle_breadcrumb_wrapper">
@@ -37,19 +55,20 @@ const CompanyDetail = () => {
               <div className="jp_cs_com_info_wrapper">
                 <div className="jp_cs_com_info_img">
                   <img
-                    src="https://firebasestorage.googleapis.com/v0/b/crowdsourcing-9c7fd.appspot.com/o/Image%2Fimages.png?alt=media&token=3b3116da-2a46-4e9a-b710-b0940198e57e"
+                    src={company.avatar_url}
                     alt="job_img"
                   />
                 </div>
                 <div className="jp_cs_com_info_img_cont">
                   <h2>
-                    User Interface Project Manager With Comera At Mumbai
-                    Location
+                    {company.name}
                   </h2>
-                  <p>Technology Management Consulting</p>
+                  <h4>
+                    {company.email}
+                  </h4>
                   <h3>
-                    <i className="fa fa-map-marker"></i> &nbsp;&nbsp;Los Angeles
-                    Califonia PO, 455001
+                    <i className="fa fa-map-marker"></i> &nbsp;&nbsp;
+                    {company.address}
                   </h3>
                 </div>
               </div>
@@ -65,15 +84,7 @@ const CompanyDetail = () => {
                 <div className="jp_job_des">
                   <h2>Company Description</h2>
                   <p>
-                    Google is and always will be an engineering company. We hire
-                    people with a broad set of ical skills who are ready to
-                    tackle some of technology's greatest challenges and make an
-                    impact on millions, if not billions, of users. At Google,
-                    engineers not only revolutionize search, they routinely work
-                    on massive scalability and storage solutions, large-scale
-                    applications and rely new platforms for developers around
-                    the world. From AdWords to Chrome, Android to Ye, Social to
-                    Local, Google engineers are changing the world.
+                    {company.description}
                   </p>
                   <ul>
                     <li>
@@ -83,57 +94,6 @@ const CompanyDetail = () => {
                     <li>
                       <i className="fa fa-file-pdf-o"></i>&nbsp;&nbsp;{" "}
                       <a href="#">Download Info</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="jp_job_res">
-                  <h2>Responsibilities</h2>
-                  <p>
-                    Curabitur non nulla sit amet nisl tempus convallis quis ac
-                    lectus. Mauris blandit aliquet elit, eget tincidunt nibh
-                    pulvinar a. Praesent sapien massa, convallis a pellentesque
-                    nec, egestas non nisi. Curabitur aliquet quam id dui posuere
-                    blandit.
-                  </p>
-                  <ul>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; Build
-                      next-generation web applications with a focus on the
-                      client side.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; Redesign
-                      UI's, implement new UI's, and pick up Java as necessary.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; Explore
-                      and design dynamic and compelling consumer experiences.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; Design
-                      and build scalable framework for web applications.
-                    </li>
-                  </ul>
-                </div>
-                <div className="jp_job_res jp_job_qua">
-                  <h2>Minimum qualifications</h2>
-                  <ul>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; BA/BS
-                      degree in a technical field or equivalent practical
-                      experience.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp; 2 years
-                      of relevant work experience in software development.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp;
-                      Programming experience in C, C++ or Java.
-                    </li>
-                    <li>
-                      <i className="fa fa-caret-right"></i>&nbsp;&nbsp;
-                      Experience with AJAX, HTML and CSS.
                     </li>
                   </ul>
                 </div>
@@ -352,12 +312,12 @@ const CompanyDetail = () => {
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div className="jp_rightside_job_categories_wrapper jp_rightside_listing_single_wrapper">
                     <div className="jp_rightside_job_categories_heading">
-                      <h4>Job Overview</h4>
+                      <h4>Thong tin lien he</h4>
                     </div>
                     <div className="jp_jop_overview_img_wrapper">
                       <div className="jp_jop_overview_img">
                         <img
-                          src="https://firebasestorage.googleapis.com/v0/b/crowdsourcing-9c7fd.appspot.com/o/Image%2Fimages.png?alt=media&token=3b3116da-2a46-4e9a-b710-b0940198e57e"
+                          src={company.avatar_url}
                           alt="post_img"
                         />
                       </div>
@@ -389,7 +349,7 @@ const CompanyDetail = () => {
                         </div>
                         <div className="jp_listing_list_icon_cont_wrapper">
                           <ul>
-                            <li>Date Posted:</li>
+                            <li>Map:</li>
                             <li>Octomber 02, 2017</li>
                           </ul>
                         </div>
@@ -401,80 +361,7 @@ const CompanyDetail = () => {
                         <div className="jp_listing_list_icon_cont_wrapper">
                           <ul>
                             <li>Location:</li>
-                            <li>Los Angeles Califonia PO, 455001</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
-                        <div className="jp_listing_list_icon">
-                          <i className="fa fa-info-circle"></i>
-                        </div>
-                        <div className="jp_listing_list_icon_cont_wrapper">
-                          <ul>
-                            <li>Job Title:</li>
-                            <li>HTML Developer</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
-                        <div className="jp_listing_list_icon">
-                          <i className="fa fa-clock-o"></i>
-                        </div>
-                        <div className="jp_listing_list_icon_cont_wrapper">
-                          <ul>
-                            <li>Hours:</li>
-                            <li>40h / Week</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
-                        <div className="jp_listing_list_icon">
-                          <i className="fa fa-money"></i>
-                        </div>
-                        <div className="jp_listing_list_icon_cont_wrapper">
-                          <ul>
-                            <li>Salary:</li>
-                            <li>$12K - 15k P.A.</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
-                        <div className="jp_listing_list_icon">
-                          <i className="fa fa-th-large"></i>
-                        </div>
-                        <div className="jp_listing_list_icon_cont_wrapper">
-                          <ul>
-                            <li>Category:</li>
-                            <li>Developer</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="jp_listing_overview_list_main_wrapper jp_listing_overview_list_main_wrapper2">
-                        <div className="jp_listing_list_icon">
-                          <i className="fa fa-star"></i>
-                        </div>
-                        <div className="jp_listing_list_icon_cont_wrapper">
-                          <ul>
-                            <li>Experience:</li>
-                            <li>1+ Years Experience</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="jp_listing_right_bar_btn_wrapper">
-                        <div className="jp_listing_right_bar_btn">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <i className="fa fa-plus-circle"></i>{" "}
-                                &nbsp;Apply With Facebook
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i className="fa fa-plus-circle"></i>{" "}
-                                &nbsp;Apply NOw!
-                              </a>
-                            </li>
+                            <li>{company.address}</li>
                           </ul>
                         </div>
                       </div>
