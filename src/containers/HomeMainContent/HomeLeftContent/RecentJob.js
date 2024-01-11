@@ -6,7 +6,8 @@ import { NumericFormat } from "react-number-format";
 import UploadFile from "../../../components/files/UploadFile";
 import { useSelector } from "react-redux";
 import AuthUser from "../../../components/AuthUser";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RecentJob = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const RecentJob = () => {
   const [filename, setFilename] = useState("");
   const { getToken, getUser } = AuthUser();
   const [user,setUser] = useState(getUser());
+  const notify = () => toast("Apply successfully!!!");
 
   useEffect(() => {
     const getJobs = async () => {
@@ -30,12 +32,13 @@ const RecentJob = () => {
 
   const apply = async (job_id) => {
     axios.defaults.withCredentials = true;
-    const res = await axios.post('/api/apply/create', { user_id: user.id, job_id: job_id, file_url: filename ,date: '2024-01-09 22:57:03' }, {
+    const res = await axios.post('/api/apply/create', { user_id: user.id, job_id: job_id, file_url: filename ,date: '2024-01-11 22:57:03' }, {
         xsrfHeaderName: "X-XSRF-TOKEN",
         withCredentials: true
     }).then(async => {
         // setApplyBtn('Applied')
         console.log("Apply OK")
+        notify()
     })
   }
 
@@ -45,6 +48,7 @@ const RecentJob = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div className="cc_featured_product_main_wrapper">
           <div className="jp_hiring_heading_wrapper jp_job_post_heading_wrapper">
