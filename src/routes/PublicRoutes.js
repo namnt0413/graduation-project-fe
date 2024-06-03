@@ -22,6 +22,7 @@ const PublicRoutes = () => {
       <Route path="/job-list" element={<JobList />} />
       <Route path="/company/:id" element={<CompanyDetail />} />
       <Route path="/company-list" element={<CompanyList />} />
+      
       <Route path="/company-home" element={<CompanyHome />} />
       <Route path="*" element={null} />
     </Routes>

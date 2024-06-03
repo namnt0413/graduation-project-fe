@@ -442,3 +442,12 @@
 	max-width: 70px;
 	height: 60px;
 }
+
+li.upload_btn {
+	margin-bottom: 8px;
+}
+
+.text-right.mt-3 {
+	display: inline-flex;
+    width: 145px;
+}

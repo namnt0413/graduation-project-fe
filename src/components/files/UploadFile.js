@@ -63,8 +63,8 @@ const UploadFile = (props) => {
 
   return (
     <div className="upload-container">
-      <div className="col-lg-8 offset-lg-2">
-        <div className="mt-5" style={{display: "flex"}}>
+      <div className="offset-lg-2" style={{display: "flex"}}>
+        <div className="mt-5">
             <Input
               id={"CV" + props.jobId}
               type="file"
@@ -72,13 +72,13 @@ const UploadFile = (props) => {
               onChange={(files) => handleSelectedFile(files.target.files)}
               style={{display: "none"}}
             />
-            <label htmlFor={"CV"+props.jobId} className="btn" style={{ padding: '10px', background: "#333", color: "#ddd", borderRadius:"10px", cursor:"pointer"}}>
+            <label htmlFor={"CV"+props.jobId} className="btn" style={{ padding: '5px', background: "#333", color: "#ddd", borderRadius:"10px", cursor:"pointer"}}>
                 <UploadOutlined />
             </label>
         </div>
 
         <div className="mt-5">
-          <Card>
+          <Card  bodyStyle={{ padding: "0 10px" }}>
             {file && (
               <>
                 <List.Item
@@ -102,7 +102,7 @@ const UploadFile = (props) => {
                     loading={isUploading}
                     type="primary"
                     onClick={handleUploadFile}
-                    style={{backgroundColor:"#1677ff"}}
+                    style={{backgroundColor:"#1677ff", padding: "0px 2px", borderRadius: "20px"}}
                   >
                     <CheckOutlined/>
                   </Button>

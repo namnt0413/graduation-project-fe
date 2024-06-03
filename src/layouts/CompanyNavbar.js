@@ -31,7 +31,7 @@ const CompanyNavbar = () => {
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
               <div className="gc_header_wrapper">
                 <div className="gc_logo" >
-                  <Link className="nav-link" to="/">
+                  <Link className="nav-link" to="/company-home">
                     <img
                       src="http://localhost:3000/images/header/logo.png"
                       alt="Logo"
@@ -49,66 +49,41 @@ const CompanyNavbar = () => {
                     <li className="has-mega gc_main_navigation">
                       <a href="#" className="gc_main_navigation">
                         {" "}
-                        Job&nbsp;<i className="fa fa-angle-down"></i>
+                        Job Manage&nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
                         <li className="parent">
-                          <a href="listing_left.html">Listing-Left</a>
+                          <a href="">Create a new job</a>
                         </li>
                         <li className="parent">
-                          <a href="listing_right.html">Listing-Right</a>
-                        </li>
-                        <li className="parent">
-                          <a href="listing_single.html">Listing-Single</a>
+                          <a href="">Posted jobs</a>
                         </li>
                       </ul>
                     </li>
                     <li className="parent gc_main_navigation">
                       <a href="#" className="gc_main_navigation">
-                        candidates &nbsp;<i className="fa fa-angle-down"></i>
+                        Candidates &nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
                         <li className="parent">
-                          <a href="company_listing.html">Company-Listing</a>
+                          <a href="">Candidates list</a>
                         </li>
                         <li className="parent">
-                          <a href="company_listing_single.html">
-                            Company-Single
+                          {/* <Link className="nav-link" to="/company-applied-list"></Link> */}
+                          <a href="">Applied Candidates</a>
+                        </li>
+                        <li className="parent">
+                          <a href="">
+                            Bookmarked candidates
                           </a>
-                        </li>
-                        <li className="parent">
-                          <a href="candidate_listing.html">candidate-Listing</a>
-                        </li>
-                        <li className="parent">
-                          <a href="candidate_profile.html">candidate-Profile</a>
                         </li>
                       </ul>
                     </li>
                     <li className="has-mega gc_main_navigation">
                       <a href="#" className="gc_main_navigation">
                         {" "}
-                        Pages&nbsp;<i className="fa fa-angle-down"></i>
+                        Company infomation&nbsp;
                       </a>
-                      <ul>
-                        <li className="parent">
-                          <a href="about.html">About-Us</a>
-                        </li>
-                        <li className="parent">
-                          <a href="404_error.html">404</a>
-                        </li>
-                        <li className="parent">
-                          <a href="add_postin.html">Add-Posting</a>
-                        </li>
-                        <li className="parent">
-                          <a href="login.html">Login</a>
-                        </li>
-                        <li className="parent">
-                          <a href="register.html">Register</a>
-                        </li>
-                        <li className="parent">
-                          <a href="pricing.html">Pricing</a>
-                        </li>
-                      </ul>
                     </li>
                   </ul>
                 </div>
@@ -333,6 +308,7 @@ const CompanyNavbar = () => {
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false"
+                        style={{color: "white"}}
                       >
                         <img className="user-avatar" src={company?.avatar_url} />
                         {company.name}

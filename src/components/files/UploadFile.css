@@ -1,0 +1,20 @@
+.ant-list-item-meta-description {
+    display: none;
+}
+
+.ant-list-item {
+    width: 145px;
+    margin-bottom: 5px;
+}
+
+li.ant-list-item {
+    display: flex;
+}
+
+button.ant-btn-icon-only {
+    margin-left: 5px;
+}
+
+.ant-progress {
+    padding: 5px;
+}
