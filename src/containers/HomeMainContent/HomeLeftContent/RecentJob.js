@@ -32,7 +32,7 @@ const RecentJob = () => {
 
   const apply = async (job_id) => {
     axios.defaults.withCredentials = true;
-    const res = await axios.post('/api/apply/create', { user_id: user.id, job_id: job_id, file_url: filename ,date: '2024-01-11 22:57:03' }, {
+    const res = await axios.post('/api/apply/create', { user_id: user.id, job_id: job_id, file_url: filename ,date: '2024-06-03 22:57:03' }, {
         xsrfHeaderName: "X-XSRF-TOKEN",
         withCredentials: true
     }).then(async => {
@@ -43,7 +43,7 @@ const RecentJob = () => {
   }
 
   const openInNewTab = url => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, '_self', 'noopener,noreferrer');
   };
 
   return (
@@ -192,7 +192,7 @@ const RecentJob = () => {
                             <p>{job.company.name}</p>
                             <ul>
                               <li>
-                                <i className="fa fa-cc-paypal"></i>&nbsp;
+                                <i className="fa fa-money"></i>&nbsp;
                                 <NumericFormat
                                   className="currency"
                                   value={job.budget}
@@ -216,7 +216,7 @@ const RecentJob = () => {
                                   <i className="fa fa-heart-o"></i>
                                 </a>
                               </li>
-                              <li>
+                              <li className="upload_btn">
                               <UploadFile
                                 onUpload={getFilename}
                                 jobId={job.id}

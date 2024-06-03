@@ -11,7 +11,6 @@ const Navbar = () => {
   const { getToken, getUser } = AuthUser();
   const { token, http } = AuthUser();
   const [user,setUser] = useState(getUser());
-  // console.log(user)
 
   const logoutUser = () => {
     if (token !== undefined) {
@@ -47,91 +46,31 @@ const Navbar = () => {
                 <div className="mainmenu">
                   <ul className="float_left">
                     <li className="has-mega gc_main_navigation">
-                      <a href="#" className="gc_main_navigation">
-                        Home&nbsp;<i className="fa fa-angle-down"></i>
-                      </a>
-                      <ul>
-                        <li className="parent">
-                          <a href="index.html">Home1</a>
-                        </li>
-                        <li className="parent">
-                          <a href="index_II.html">Home2</a>
-                        </li>
-                        <li className="parent">
-                          <a href="index_map.html">Home3</a>
-                        </li>
-                        <li className="parent">
-                          <a href="index_iv.html">Home4</a>
-                        </li>
-                        <li className="parent">
-                          <a href="index_v.html">Home5</a>
-                        </li>
-                        <li className="parent">
-                          <a href="index_vi.html">Home6</a>
-                        </li>
-                      </ul>
+                    <Link className="nav-link" to="/">
+                        Home&nbsp;
+                    </Link>
                     </li>
                     <li className="has-mega gc_main_navigation">
-                      <a href="#" className="gc_main_navigation">
-                        {" "}
-                        Job&nbsp;<i className="fa fa-angle-down"></i>
-                      </a>
-                      <ul>
-                        <li className="parent">
-                          <a href="listing_left.html">Listing-Left</a>
-                        </li>
-                        <li className="parent">
-                          <a href="listing_right.html">Listing-Right</a>
-                        </li>
-                        <li className="parent">
-                          <a href="listing_single.html">Listing-Single</a>
-                        </li>
-                      </ul>
+                      <Link className="nav-link" to="/job-list">
+                        Job&nbsp;
+                      </Link>
                     </li>
                     <li className="parent gc_main_navigation">
-                      <a href="#" className="gc_main_navigation">
-                        candidates &nbsp;<i className="fa fa-angle-down"></i>
-                      </a>
-                      <ul>
-                        <li className="parent">
-                          <a href="company_listing.html">Company-Listing</a>
-                        </li>
-                        <li className="parent">
-                          <a href="company_listing_single.html">
-                            Company-Single
-                          </a>
-                        </li>
-                        <li className="parent">
-                          <a href="candidate_listing.html">candidate-Listing</a>
-                        </li>
-                        <li className="parent">
-                          <a href="candidate_profile.html">candidate-Profile</a>
-                        </li>
-                      </ul>
+                      <Link className="nav-link" to="/company-list">
+                        Company&nbsp;
+                      </Link>
                     </li>
                     <li className="has-mega gc_main_navigation">
                       <a href="#" className="gc_main_navigation">
                         {" "}
-                        Pages&nbsp;<i className="fa fa-angle-down"></i>
+                        My CV&nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
                         <li className="parent">
-                          <a href="about.html">About-Us</a>
+                          <a href="">My CV lists</a>
                         </li>
                         <li className="parent">
-                          <a href="404_error.html">404</a>
-                        </li>
-                        <li className="parent">
-                          <a href="add_postin.html">Add-Posting</a>
-                        </li>
-                        <li className="parent">
-                          <a href="login.html">Login</a>
-                        </li>
-                        <li className="parent">
-                          <a href="register.html">Register</a>
-                        </li>
-                        <li className="parent">
-                          <a href="pricing.html">Pricing</a>
+                          <a href="">Create new CV</a>
                         </li>
                       </ul>
                     </li>
