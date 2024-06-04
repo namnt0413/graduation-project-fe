@@ -53,7 +53,9 @@ const CompanyNavbar = () => {
                       </a>
                       <ul>
                         <li className="parent">
-                          <a href="">Create a new job</a>
+                        <Link className="nav-link" to="/company-post-job">
+                          Create a new job
+                        </Link>
                         </li>
                         <li className="parent">
                           <a href="">Posted jobs</a>
