@@ -58,7 +58,9 @@ const CompanyNavbar = () => {
                         </Link>
                         </li>
                         <li className="parent">
-                          <a href="">Posted jobs</a>
+                          <Link className="nav-link" to="/company-list-job">
+                            Posted jobs
+                          </Link>
                         </li>
                       </ul>
                     </li>

@@ -90,7 +90,7 @@ const CompanyPostJob = () => {
 
   const CompanyPostJobContent = (
     <>
-      <div class="jp_tittle_main_wrapper">
+      <div class="jp_tittle_main_wrapper post-job">
         <div class="jp_tittle_img_overlay"></div>
         <div class="container">
           <div class="row">

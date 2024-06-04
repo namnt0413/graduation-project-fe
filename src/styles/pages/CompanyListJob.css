@@ -1,0 +1,27 @@
+.deleteBtn {
+    color: white;
+    background-color: red;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.deleteBtn:hover {
+    opacity: 0.6;
+} 
+
+.newJobBtn {
+    color: white;
+    background-color: green;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.newJobBtn:hover {
+    opacity: 0.6;
+    color: white;
+}

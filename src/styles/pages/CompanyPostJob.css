@@ -2,13 +2,17 @@
 .jp_adp_main_section_wrapper{
 	float:left;
 	width:100%;
-	padding-top:100px;
-	padding-bottom:100px;
+	padding-top:50px;
+	padding-bottom:50px;
 }
 .jp_adp_form_wrapper{
 	float:left;
 	width:100%;
 	margin-top:20px;
+}
+.jp_tittle_main_wrapper.post-job {
+    padding-top:50px;
+	padding-bottom:50px;
 }
 .jp_adp_form_wrapper input,.jp_adp_form_wrapper select{
 	width:100%;
