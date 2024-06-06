@@ -195,11 +195,23 @@ const RecentJob = () => {
                                 <i className="fa fa-money"></i>&nbsp;
                                 <NumericFormat
                                   className="currency"
-                                  value={job.budget}
+                                  value={job.salary}
                                   displayType="text"
                                   thousandSeparator={true}
-                                  suffix=" đ"
+                                  suffix="đ"
                                 />
+                                {job.max_salary!=null &&
+                                  <>
+                                  &nbsp; - &nbsp;
+                                  <NumericFormat
+                                    className="currency"
+                                    value={job.max_salary}
+                                    displayType="text"
+                                    thousandSeparator={true}
+                                    suffix="đ"
+                                  />
+                                  </>
+                                }
                               </li>
                               <li>
                                 <i className="fa fa-map-marker"></i>&nbsp;
@@ -217,15 +229,15 @@ const RecentJob = () => {
                                 </a>
                               </li>
                               <li className="upload_btn">
-                              <UploadFile
-                                onUpload={getFilename}
-                                jobId={job.id}
-                              />
+                                <UploadFile
+                                  onUpload={getFilename}
+                                  jobId={job.id}
+                                />
                               </li>
                               <li>
-                                <button 
-                                  onClick={() => apply(job.id)}
-                                >Apply</button>
+                                <button onClick={() => apply(job.id)}>
+                                  Apply
+                                </button>
                               </li>
                             </ul>
                           </div>

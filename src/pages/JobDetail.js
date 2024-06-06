@@ -384,7 +384,7 @@ const JobDetail = () => {
                             <li>
                               <NumericFormat
                                 className="currency"
-                                value={job.budget}
+                                value={job.salary}
                                 displayType="text"
                                 thousandSeparator={true}
                                 suffix=" đ"
