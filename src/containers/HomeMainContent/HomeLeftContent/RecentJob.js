@@ -32,7 +32,7 @@ const RecentJob = () => {
 
   const apply = async (job_id) => {
     axios.defaults.withCredentials = true;
-    const res = await axios.post('/api/apply/create', { user_id: user.id, job_id: job_id, file_url: filename ,date: '2024-06-03 22:57:03' }, {
+    const res = await axios.post('/api/apply/create', { user_id: user.id, job_id: job_id, file_url: filename ,date: '2024-06-08 22:57:03' }, {
         xsrfHeaderName: "X-XSRF-TOKEN",
         withCredentials: true
     }).then(async => {

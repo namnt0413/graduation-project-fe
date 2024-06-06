@@ -29,7 +29,7 @@ const Navbar = () => {
           <div className="row">
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
               <div className="gc_header_wrapper">
-                <div className="gc_logo" >
+                <div className="gc_logo">
                   <Link className="nav-link" to="/">
                     <img
                       src="http://localhost:3000/images/header/logo.png"
@@ -46,9 +46,9 @@ const Navbar = () => {
                 <div className="mainmenu">
                   <ul className="float_left">
                     <li className="has-mega gc_main_navigation">
-                    <Link className="nav-link" to="/">
+                      <Link className="nav-link" to="/">
                         Home&nbsp;
-                    </Link>
+                      </Link>
                     </li>
                     <li className="has-mega gc_main_navigation">
                       <Link className="nav-link" to="/job-list">
@@ -60,20 +60,24 @@ const Navbar = () => {
                         Company&nbsp;
                       </Link>
                     </li>
-                    <li className="has-mega gc_main_navigation">
-                      <a href="#" className="gc_main_navigation">
-                        {" "}
-                        My CV&nbsp;<i className="fa fa-angle-down"></i>
-                      </a>
-                      <ul>
-                        <li className="parent">
-                          <a href="">My CV lists</a>
-                        </li>
-                        <li className="parent">
-                          <a href="">Create new CV</a>
-                        </li>
-                      </ul>
-                    </li>
+                    {getToken() ? (
+                      <li className="has-mega gc_main_navigation">
+                        <a href="#" className="gc_main_navigation">
+                          {" "}
+                          My CV&nbsp;<i className="fa fa-angle-down"></i>
+                        </a>
+                        <ul>
+                          <li className="parent">
+                            <a href="">My CV lists</a>
+                          </li>
+                          <li className="parent">
+                            <a href="">Create new CV</a>
+                          </li>
+                        </ul>
+                      </li>
+                    ) : (
+                      <></>
+                    )}
                   </ul>
                 </div>
                 <header className="mobail_menu">

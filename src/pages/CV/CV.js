@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import "../styles/CV.scss";
-import AuthUser from "../components/AuthUser";
+import "../../styles/CV.scss";
+import AuthUser from "../../components/AuthUser";
 import { Link } from "react-router-dom";
-import Layout from "../layouts/Layout";
-import TextEditor from "../components/TextEditor";
+import Layout from "../../layouts/Layout";
+import TextEditor from "../../components/TextEditor";
 
 export default function CV() {
   const { http, setToken } = AuthUser();
