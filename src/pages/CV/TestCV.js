@@ -5,10 +5,11 @@ import AuthUser from "../../components/AuthUser";
 import { Link } from "react-router-dom";
 import Layout from "../../layouts/Layout";
 import TextEditor from "../../components/TextEditor";
-import html2pdf from "html2pdf.js";
+// import html2pdf from "html2pdf.js";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import 'jspdf-autotable';
+import ToolbarDropDown from "../../components/dropdown/ToolbarDropdown"
 
 export default function TestCV() {
   const { http, setToken } = AuthUser();
@@ -16,20 +17,27 @@ export default function TestCV() {
   const [password, setPassword] = useState();
   const [address, setAddress] = useState("<p>Ha Noi, Viet Nam</p>");
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownType, setDropdownType] = useState();
+  const handleOpenFontDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+    setDropdownType(1);
+  };
+  const handleOpenColorDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+    setDropdownType(2);
+  };
+  const handleOpenTemplateDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+    setDropdownType(3);
+  };
+
+  const handleDropdownClose = () => {
+    setDropdownOpen(false);
+  };
+
   const cvRef = useRef();
-
-  const generatePDF = () => {
-    const doc = new jsPDF();
-    const content = document.getElementById('content');
-
-    doc.html(content, {
-        callback: function (doc) {
-            doc.save('my_cv.pdf');
-        }
-    });
-};
-
-  const handleSave = () => {
+  const handleDownload = () => {
     // const input = cvRef.current;
     // html2canvas(input).then((canvas) => {
     //     const imgData = canvas.toDataURL("image/png");
@@ -78,7 +86,7 @@ export default function TestCV() {
         useCORS: true,
         allowTaint: true
     }).then((canvas) => {
-        const imgData = canvas.toDataURL('image/jpeg', 0.8); // Giảm chất lượng ảnh về 80%
+        const imgData = canvas.toDataURL('image/jpeg', 0.8);
         const pdf = new jsPDF('p', 'mm', 'a4');
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = pdf.internal.pageSize.getHeight();
@@ -103,21 +111,45 @@ export default function TestCV() {
 
   const TestCvContent = (
     <>
-      <div className="jp_tittle_main_wrapper">
+      <div className="jp_tittle_main_wrapper cv-section">
         <div className="cv-background">
           <div className="cv-container">
             <div className="top-toolbar">
-                <div className="cv-title">
-                  Nguyen Van A - Fullstack Developer
-                </div>
-              <button onClick={handleSave} className="btn btn-primary">
-                Lưu dưới dạng PDF
-              </button>
-              <button onClick={generatePDF}>Tải xuống CV PDF</button>
+              <div className="toolbar-item text-font" onClick={handleOpenFontDropdown}>
+                <i class="fa-solid fa-a toolbar-icon"></i>
+                Phông chữ
+              </div>
+              <div className="toolbar-item theme-color" onClick={handleOpenColorDropdown}>
+                <i class="fa-solid fa-palette toolbar-icon"></i>
+                Màu sắc
+              </div>
+              <div className="toolbar-item template" onClick={handleOpenTemplateDropdown}>
+              <i class="fa-solid fa-file toolbar-icon"></i>
+                Mẫu CV
+              </div>
+              <div className="download">
+                <button onClick={handleDownload} className="download-btn">
+                  <i class="toolbar-icon fa-solid fa-download"></i>
+                  Tải xuống
+                </button>
+              </div>
+              <div className="toolbar-item manage-cv">
+                <i class="fa-solid fa-id-badge toolbar-icon"></i>
+                Quản lý CV
+              </div>
+              <ToolbarDropDown isOpen={dropdownOpen} onClose={handleDropdownClose} dropdownType={dropdownType} />
+            </div>
+            <div className="cv-title">
+                <input
+                  type="text"
+                  id="cv-title-input"
+                  className="cv-title-input"
+                  value={"Nguyen Van A - Fullstack Developer"}
+                  // onChange={(e) => setTitle(e.target.value)}
+                />
             </div>
 
             <div className="cv-ref" ref={cvRef} id="content">
-              <div className="content">
                 <div className="cv-content">
                   <div className="basic-info row">
                     <div className="info col-8">
@@ -535,7 +567,6 @@ export default function TestCV() {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 
