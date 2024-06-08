@@ -19,7 +19,7 @@ export default function CV() {
   // handle create default data
 
   // handle cv basic info
-  const [candidateName, setCandidateName] = useState();
+  const [candidateName, setCandidateName] = useState("");
   const [title, setTitle] = useState();
   const [position, setPosition] = useState();
   const [email, setEmail] = useState();
@@ -36,9 +36,6 @@ export default function CV() {
         break;
       case "position":
         setPosition(value);
-        break;
-      case "candidateName":
-        setCandidateName(value);
         break;
       case "email":
         setEmail(value);
@@ -58,16 +55,21 @@ export default function CV() {
   };
   const handleBlur = async (field, value) => {
     // API update basic info
-    if (field === "candidateName") {
-      await axios.put(`/api/cv/update-name/1`, {
-        field: value,
-      })
-    } else {
-      await axios.put(`/api/cv/update-${field}/1`, {
-        field: value,
-      })
-    }
+    await axios.put(`/api/cv/update-${field}/1`, {
+      field: value,
+    })
   };
+
+  //handle with text editor component
+  const handleOnChangeName = (data) => {
+    setCandidateName(data);
+  };
+  const handleBlurName = async (data) => {
+    await axios.put(`/api/cv/update-name/1`, {
+      "name": data,
+    })
+  }
+    
   useEffect(() => {
     const getCV = async () => {
       const res = await axios.get("/api/cv/detail/1");
@@ -217,15 +219,11 @@ export default function CV() {
                 <div className="basic-info row">
                   <div className="info col-8">
                     <div className="name-position">
-                      <input
-                        type="text"
-                        id="candidateName"
-                        value={candidateName}
-                        onChange={handleChange}
-                        onBlur={() =>
-                          handleBlur("candidateName", candidateName)
-                        }
-                      />
+                    {candidateName && 
+                      <TextEditor data={candidateName} id="name" 
+                        handleOnChangeName={handleOnChangeName}
+                        handleBlurData={handleBlurName}
+                      /> }
                       <input
                         type="text"
                         id="position"
@@ -284,13 +282,25 @@ export default function CV() {
                   </div>
                 </div>
 
-                <div className="education">
-                  <div className="education-title">Education</div>
-                  <div className="education-content row">
+                <div className="subject">
+                  <div className="subject-title">
+                      <input
+                        type="text"
+                        id="subject"
+                        className="subject-title-input"
+                        style={{ color: "rgb(63, 89, 168)" }}
+                        value="Education"
+                        // onChange={handleChange}
+                        // onBlur={() =>
+                        //   handleBlur("Education", Education)
+                        // }
+                      />
+                  </div>
+                  <div className="subject-content row">
                     <div className="time col-3">
                       <TextEditor
                         data="<p><b>2011/10 – 2014/09</b></p>"
-                        id="education-time"
+                        id="subject-time"
                       />
                     </div>
                     <div className="school col-9">
@@ -301,17 +311,17 @@ export default function CV() {
                       <div className="description">
                         <TextEditor
                           data="
-                                            <ul>
-                                                <li>Bằng tốt nghiệp: Loại giỏi</li>
-                                                <li>Điểm tích luỹ: 8.5</li>
-                                                <li>Hệ chính quy</li>
-                                            </ul>"
+                            <ul>
+                                <li>Bằng tốt nghiệp: Loại giỏi</li>
+                                <li>Điểm tích luỹ: 8.5</li>
+                                <li>Hệ chính quy</li>
+                            </ul>"
                           id="school-description"
                         />
                       </div>
                     </div>
                   </div>
-                  <div className="education-content row">
+                  <div className="subject-content row">
                     <div className="time col-3">
                       <TextEditor
                         data="<p><b>2013/10 – 2015/09</b></p>"
@@ -326,12 +336,12 @@ export default function CV() {
                       <div className="description">
                         <TextEditor
                           data="
-                                            <p>Cử nhân công nghệ thông tin</p>
-                                            <ul >
-                                                <li>Bằng tốt nghiệp: Loại giỏi</li>
-                                                <li>Điểm tích luỹ: 1</li>
-                                                <li>Hệ chính quy</li>
-                                            </ul>"
+                          <p>Cử nhân công nghệ thông tin</p>
+                          <ul >
+                              <li>Bằng tốt nghiệp: Loại giỏi</li>
+                              <li>Điểm tích luỹ: 1</li>
+                              <li>Hệ chính quy</li>
+                          </ul>"
                           id="school-description"
                         />
                       </div>
