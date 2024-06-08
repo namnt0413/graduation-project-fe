@@ -40,7 +40,7 @@ const CompanyHome = () => {
             Applied List
           </h3>
         </div>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Candidate</th>

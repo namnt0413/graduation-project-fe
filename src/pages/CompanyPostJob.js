@@ -90,13 +90,13 @@ const CompanyPostJob = () => {
 
   const CompanyPostJobContent = (
     <>
-      <div class="jp_tittle_main_wrapper post-job">
-        <div class="jp_tittle_img_overlay"></div>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="jp_tittle_heading_wrapper">
-                <div class="jp_tittle_heading">
+      <div className="jp_tittle_main_wrapper post-job">
+        <div className="jp_tittle_img_overlay"></div>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div className="jp_tittle_heading_wrapper">
+                <div className="jp_tittle_heading">
                   <h2>Add a new Job</h2>
                 </div>
               </div>
@@ -104,15 +104,15 @@ const CompanyPostJob = () => {
           </div>
         </div>
       </div>
-      <div class="jp_adp_main_section_wrapper">
-        <div class="container">
+      <div className="jp_adp_main_section_wrapper">
+        <div className="container">
           <form onSubmit={handleJob} className="p-5 bg-white">
-            <div class="row">
-              <div class="jp_adp_form_heading_wrapper">
+            <div className="row">
+              <div className="jp_adp_form_heading_wrapper">
                 <h2>Job Infomation</h2>
               </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="jp_adp_form_wrapper">
+              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div className="jp_adp_form_wrapper">
                   <input
                     placeholder="Job Title"
                     type="text"
@@ -122,7 +122,7 @@ const CompanyPostJob = () => {
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
-                <div class="jp_adp_form_wrapper">
+                <div className="jp_adp_form_wrapper">
                   <select
                     required
                     onChange={(e) => {
@@ -137,9 +137,9 @@ const CompanyPostJob = () => {
                     ))}
                   </select>
                 </div>
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-md-6 col-xs-12">
-                    <div class="jp_adp_form_wrapper">
+                <div className="row">
+                  <div className="col-lg-6 col-md-6 col-md-6 col-xs-12">
+                    <div className="jp_adp_form_wrapper">
                       <input
                         placeholder="Salary From"
                         type="number"
@@ -150,8 +150,8 @@ const CompanyPostJob = () => {
                       />
                     </div>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-md-6 col-xs-12">
-                    <div class="jp_adp_form_wrapper">
+                  <div className="col-lg-6 col-md-6 col-md-6 col-xs-12">
+                    <div className="jp_adp_form_wrapper">
                       <input
                         placeholder="To"
                         type="number"
@@ -163,7 +163,7 @@ const CompanyPostJob = () => {
                     </div>
                   </div>
                 </div>
-                <div class="jp_adp_form_wrapper category_multiple">
+                <div className="jp_adp_form_wrapper category_multiple">
                   <Select 
                     isMulti
                     options={convertedCategories} 
@@ -172,11 +172,11 @@ const CompanyPostJob = () => {
                   />
                 </div>
               </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 bottom_line_Wrapper">
-                <div class="jp_adp_form_heading_wrapper">
+              <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 bottom_line_Wrapper">
+                <div className="jp_adp_form_heading_wrapper">
                   <p></p>
                 </div>
-                <div class="jp_adp_form_wrapper">
+                <div className="jp_adp_form_wrapper">
                   <select
                     required
                     onChange={(e) => {
@@ -191,7 +191,7 @@ const CompanyPostJob = () => {
                     ))}
                   </select>
                 </div>
-                <div class="jp_adp_form_wrapper">
+                <div className="jp_adp_form_wrapper">
                   <input
                     placeholder="Address"
                     type="text"
@@ -202,10 +202,10 @@ const CompanyPostJob = () => {
                   />
                 </div>
 
-                <div class="jp_adp_form_wrapper">
+                <div className="jp_adp_form_wrapper">
                   <DatetimePicker onChange={handleDateChange} />
                 </div>
-                <div class="jp_adp_form_wrapper">
+                <div className="jp_adp_form_wrapper">
                   <select
                     required
                     onChange={(e) => {
@@ -221,8 +221,8 @@ const CompanyPostJob = () => {
                   </select>
                 </div>
               </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="jp_adp_textarea_main_wrapper">
+              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="jp_adp_textarea_main_wrapper">
                   <textarea
                     rows="5"
                     placeholder="Job Description"
@@ -233,8 +233,8 @@ const CompanyPostJob = () => {
                   ></textarea>
                 </div>
               </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="jp_adp_textarea_main_wrapper">
+              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="jp_adp_textarea_main_wrapper">
                   <textarea
                     rows="5"
                     placeholder="Job Requirement"
@@ -245,8 +245,8 @@ const CompanyPostJob = () => {
                   ></textarea>
                 </div>
               </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="jp_adp_textarea_main_wrapper">
+              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="jp_adp_textarea_main_wrapper">
                   <textarea
                     rows="5"
                     placeholder="Job Right"
@@ -258,8 +258,8 @@ const CompanyPostJob = () => {
                 </div>
               </div>
 
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="jp_adp_choose_resume_bottom_btn_post">
+              <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div className="jp_adp_choose_resume_bottom_btn_post">
                   <ul>
                     <li>
                       <input

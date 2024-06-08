@@ -1,0 +1,367 @@
+.cv-ref .row {
+    display: flex;
+}
+
+.cv-ref .col-12 {
+    width: 100%;
+}
+
+.cv-ref .col-10 {
+    width: 83.33%;
+}
+
+.cv-ref .col-9 {
+    width: 75%;
+}
+
+.cv-ref .col-8 {
+    width: 66.66%;
+}
+
+.cv-ref .col-7 {
+    width: 58.33%;
+}
+
+.cv-ref .col-6 {
+    width: 50%;
+}
+
+.cv-ref .col-5 {
+    width: 41.66%;
+}
+
+.cv-ref .col-4 {
+    width: 33.33%;
+}
+
+.cv-ref .col-3 {
+    width: 25%;
+}
+
+.cv-ref .col-2 {
+    width: 16.66%;
+}
+
+.jp_tittle_main_wrapper.cv-section {
+    padding-top: 0 !important;
+    background-color: #313131;
+}
+
+.cv-container {
+    background-color: #313131;
+}
+
+.cv-title {
+    background: transparent;
+    border: none;
+    color: #fff;
+    display: inline-block;
+    font-size: 26px;
+    line-height: 30px;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+.cv-title input.cv-title-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 5px;
+    width: 25%;
+}
+
+.cv-background .cv-container .top-toolbar {
+    width: 680px;
+    height: 48px;
+    border: 1px solid #333;
+    background-color: #425061;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    padding: 0 8px;
+    position: relative;
+    white-space: nowrap;
+    margin-top: 10px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 1000;
+}
+
+.top-toolbar .download-btn {
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #23c0e9;
+    border: none;
+    border-radius: 999px;
+    color: #fff;
+    display: block;
+    font-weight: 600;
+    outline: none;
+    padding: 8px 12px;
+    position: relative;
+    transition: background-color .25s linear;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.top-toolbar .download-btn:hover {
+    opacity: 0.7;
+}
+
+.top-toolbar .toolbar-icon {
+    margin-right: 7px;
+    font-size: 15px;
+}
+
+.top-toolbar .toolbar-item {
+    font-size: 16px;
+    color: #fff;
+    outline: none;
+    padding: 8px 12px;
+    transition: background-color .25s linear;
+    cursor: pointer;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top-toolbar .toolbar-item:hover {
+    color: #23c0e9;
+}
+
+/* CSS CV part */
+.cv-ref {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0px 240px 0px 240px;
+    background: #fff;
+}
+
+/* CSS đặc biệt cho PDF */
+.pdf-mode .cv-container {
+    margin: 0;
+    /* Loại bỏ margin khi tạo PDF */
+    box-shadow: none;
+    /* Loại bỏ box-shadow khi tạo PDF */
+}
+
+.content .cv-avatar img {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+    /* Đảm bảo ảnh không vượt quá chiều rộng của container */
+    width: 250px;
+    height: 250px;
+}
+
+.cv-background .cv-container .cv-content .basic-info {
+    --bs-gutter-x: 0rem !important;
+    background: rgb(63, 89, 168);
+    margin: 0;
+}
+.cv-background .cv-container .cv-content .basic-info input {
+    background-color: transparent;
+}
+
+.cv-background .cv-container .cv-content .basic-info .info .name-position {
+    padding: 30px;
+    display: grid;
+}
+
+.cv-background .cv-container .cv-content .basic-info .info .name-position #candidateName {
+    font-size: 45px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.cv-background .cv-container .cv-content .basic-info .info .name-position #position {
+    font-size: 18px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.cv-background .cv-container .cv-content .basic-info .info .list-info {
+    padding: 10px 30px;
+}
+
+.cv-background .cv-container .cv-content .basic-info .info .list-info .info-field {
+    display: flex;
+}
+
+.cv-background .cv-container .cv-content .basic-info .info .list-info .info-field span {
+    font-size: 17px;
+    font-weight: 700;
+    margin-right: 20px;
+    color: #fff;
+    padding: 5px;
+}
+
+.cv-background .cv-container .cv-content .basic-info .info .list-info .info-field input {
+    font-size: 17px;
+    color: #fff;
+    margin-bottom: 0px;
+}
+
+.cv-background .cv-container .cv-content .basic-info .cv-avatar {
+    text-align: center;
+}
+
+.cv-background .cv-container .cv-content .basic-info .cv-avatar img {
+    height: auto;
+    padding: 20px;
+    width: 250px;
+    object-fit: cover;
+    margin-top: 30px;
+}
+
+.cv-background .cv-container .cv-content .education {
+    padding: 10px 30px;
+}
+
+.cv-background .cv-container .cv-content .education .education-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #374458;
+    border-bottom: 0.5px solid #adadad;
+    margin-bottom: 15px;
+}
+
+.cv-background .cv-container .cv-content .education .education-content .time {
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.cv-background .cv-container .cv-content .education .education-content .school #school-name p {
+    font-size: 16px;
+}
+
+.cv-background .cv-container .cv-content .education .education-content .school .description #school-description {
+    font-size: 16px;
+}
+
+.cv-background .cv-container .cv-content .education .education-content .school .description ul,
+.cv-background .cv-container .cv-content .education .education-content .school .description li {
+    list-style-type: disc;
+}
+
+.cv-background .cv-container .cv-content .work-exp {
+    padding: 10px 30px;
+}
+
+.cv-background .cv-container .cv-content .work-exp .work-exp-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #374458;
+    border-bottom: 0.5px solid #adadad;
+    margin-bottom: 15px;
+}
+
+.cv-background .cv-container .cv-content .work-exp .work-exp-content .time #work-exp-time p {
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.cv-background .cv-container .cv-content .work-exp .work-exp-content .work .name #work-exp-name p {
+    font-size: 16px;
+}
+
+.cv-background .cv-container .cv-content .work-exp .work-exp-content .work .description #work-exp-description p {
+    font-size: 16px;
+}
+
+.cv-background .cv-container .cv-content .work-exp .work-exp-content .work .description ul,
+.cv-background .cv-container .cv-content .work-exp .work-exp-content .work .description li {
+    list-style-type: disc;
+}
+
+.cv-background .cv-container .cv-content .skills {
+    padding: 10px 30px;
+}
+
+.cv-background .cv-container .cv-content .skills .skills-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #374458;
+    border-bottom: 0.5px solid #adadad;
+    margin-bottom: 15px;
+}
+
+.cv-background .cv-container .cv-content .skills .skills-content {
+    padding: 10px;
+}
+
+.cv-background .cv-container .cv-content .skills .skills-content .skills-field {
+    float: right;
+}
+
+.cv-background .cv-container .cv-content .skills .skills-content .skills-field p {
+    float: right;
+    font-size: 15px;
+    color: black;
+}
+
+.cv-background .cv-container .cv-content .skills .skills-content .skills-list ul li.skill {
+    list-style-type: disc;
+}
+
+.cv-background .cv-container .cv-content .awards {
+    padding: 10px 30px;
+}
+
+.cv-background .cv-container .cv-content .awards .award-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #374458;
+    border-bottom: 0.5px solid #adadad;
+    margin-bottom: 15px;
+}
+
+.cv-background .cv-container .cv-content .projects {
+    padding: 10px 30px;
+}
+
+.cv-background .cv-container .cv-content .projects .projects-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #374458;
+    border-bottom: 0.5px solid #adadad;
+    margin-bottom: 15px;
+}
+
+.cv-background .cv-container .cv-content .projects .projects-content .project {
+    margin-bottom: 25px;
+}
+
+.cv-background .cv-container .cv-content .projects .projects-content .project .project-time {
+    margin-bottom: 10px;
+}
+
+.cv-background .cv-container .cv-content .projects .projects-content .project .project-detail .project-field {
+    border: 1px solid #b9b9b9;
+}
+
+.cv-background .cv-container .cv-content .projects .projects-content .project .project-detail .project-content {
+    border: 1px solid #b9b9b9;
+}
+
+.cv-background .cv-container .cv-content .projects .projects-content .project .project-detail .project-content ul,
+.cv-background .cv-container .cv-content .projects .projects-content .project .project-detail .project-content li {
+    list-style-type: disc;
+}
+
+.cv-background .cv-container .cv-content .certificate {
+    height: 260px;
+    border: 1px solid blue;
+}

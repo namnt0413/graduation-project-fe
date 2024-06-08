@@ -116,25 +116,25 @@ export default function TestCV() {
           <div className="cv-container">
             <div className="top-toolbar">
               <div className="toolbar-item text-font" onClick={handleOpenFontDropdown}>
-                <i class="fa-solid fa-a toolbar-icon"></i>
+                <i className="fa-solid fa-a toolbar-icon"></i>
                 Phông chữ
               </div>
               <div className="toolbar-item theme-color" onClick={handleOpenColorDropdown}>
-                <i class="fa-solid fa-palette toolbar-icon"></i>
+                <i className="fa-solid fa-palette toolbar-icon"></i>
                 Màu sắc
               </div>
               <div className="toolbar-item template" onClick={handleOpenTemplateDropdown}>
-              <i class="fa-solid fa-file toolbar-icon"></i>
+              <i className="fa-solid fa-file toolbar-icon"></i>
                 Mẫu CV
               </div>
               <div className="download">
                 <button onClick={handleDownload} className="download-btn">
-                  <i class="toolbar-icon fa-solid fa-download"></i>
+                  <i className="toolbar-icon fa-solid fa-download"></i>
                   Tải xuống
                 </button>
               </div>
               <div className="toolbar-item manage-cv">
-                <i class="fa-solid fa-id-badge toolbar-icon"></i>
+                <i className="fa-solid fa-id-badge toolbar-icon"></i>
                 Quản lý CV
               </div>
               <ToolbarDropDown isOpen={dropdownOpen} onClose={handleDropdownClose} dropdownType={dropdownType} />
