@@ -148,12 +148,6 @@
     background: #fff;
 }
 
-/* CSS đặc biệt cho PDF */
-/* .pdf-mode .cv-container {
-    margin: 0;
-    box-shadow: none;
-} */
-
 .content .cv-avatar img {
     display: block;
     margin: 0 auto 20px;
@@ -167,6 +161,7 @@
     --bs-gutter-x: 0rem !important;
     background: rgb(63, 89, 168);
     margin: 0;
+    display: flex;
 }
 .cv-background .cv-container .cv-content .basic-info input {
     background-color: transparent;
@@ -197,6 +192,11 @@
 
 .cv-background .cv-container .cv-content .basic-info .info .list-info {
     padding: 10px 30px;
+    display: flex;
+}
+
+.cv-background .cv-container .cv-content .basic-info .info {
+    width: 66.66%;
 }
 
 .cv-background .cv-container .cv-content .basic-info .info .list-info .info-field {
@@ -223,6 +223,7 @@
 
 .cv-background .cv-container .cv-content .basic-info .cv-avatar {
     text-align: center;
+    width: 33.33%;
 }
 
 .cv-background .cv-container .cv-content .basic-info .cv-avatar img {
@@ -233,36 +234,47 @@
     margin-top: 30px;
 }
 
+
+/* subject section */
 .cv-background .cv-container .cv-content .subject {
     padding: 10px 30px;
 }
 
-.cv-background .cv-container .cv-content .subject .subject-title {
+.cv-background .cv-container .cv-content .subject .subject-title-container {
     border-bottom: 0.5px solid #adadad;
     margin-bottom: 15px;
 }
-.cv-background .cv-container .cv-content .subject .subject-title .subject-title-input {
-    font-size: 22px;
+.cv-background .cv-container .cv-content .subject .subject-title-container #subject-title {
+    font-size: 26px;
     font-weight: 700;
     margin-bottom: 5px;
 }
 
-.cv-background .cv-container .cv-content .subject .subject-content .time {
+.subject .item {
     padding: 0 20px;
     font-size: 20px;
+    display: flex;
 }
-
-.cv-background .cv-container .cv-content .subject .subject-content .school #school-name p {
+.cv-background .cv-container .cv-content .item #item-content {
     font-size: 20px;
 }
-
-.cv-background .cv-container .cv-content .subject .subject-content .school .description #school-description {
+.subject .item #item-title .edit-buttons,
+.subject .item #item-content .edit-buttons {
+    font-size: 16px;
+}
+.cv-background .cv-container .cv-content .item .item-title-container {
+    width: 25%;
+}
+.cv-background .cv-container .cv-content .item .item-content-container {
+    width: 75%;
+}
+.cv-background .cv-container .cv-content .item #item-content p {
     font-size: 20px;
 }
-
-.cv-background .cv-container .cv-content .subject .subject-content .school .description ul,
-.cv-background .cv-container .cv-content .subject .subject-content .school .description li {
+.cv-content .subject .item .item-content-container #item-content ul,
+.cv-content .subject .item .item-content-container #item-content li {
     list-style-type: disc;
+    font-size: 20px;
 }
 
 

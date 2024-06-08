@@ -216,8 +216,8 @@ export default function CV() {
 
             <div className="cv-ref" ref={cvRef} id="content">
               <div className="cv-content">
-                <div className="basic-info row">
-                  <div className="info col-8">
+                <div className="basic-info">
+                  <div className="info">
                     <div className="name-position">
                     {candidateName && 
                       <TextEditor data={candidateName} id="name" 
@@ -232,7 +232,7 @@ export default function CV() {
                         onBlur={() => handleBlur("position", position)}
                       />
                     </div>
-                    <div className="list-info row">
+                    <div className="list-info">
                       <div className="info-field col-6">
                         <span>Email</span>
                         <input
@@ -254,7 +254,7 @@ export default function CV() {
                         />
                       </div>
                     </div>
-                    <div className="list-info row">
+                    <div className="list-info">
                       <div className="info-field col-6">
                         <span>Birthday</span>
                         <input
@@ -277,17 +277,17 @@ export default function CV() {
                       </div>
                     </div>
                   </div>
-                  <div className="cv-avatar col-4">
+                  <div className="cv-avatar">
                     <img src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM=" />
                   </div>
                 </div>
 
                 <div className="subject">
-                  <div className="subject-title">
+                  <div className="subject-title-container">
                       <input
                         type="text"
-                        id="subject"
-                        className="subject-title-input"
+                        id="subject-title"
+                        className="subject-title"
                         style={{ color: "rgb(63, 89, 168)" }}
                         value="Education"
                         // onChange={handleChange}
@@ -296,60 +296,125 @@ export default function CV() {
                         // }
                       />
                   </div>
-                  <div className="subject-content row">
-                    <div className="time col-3">
+                  <div className="item">
+                    <div className="item-title-container">
                       <TextEditor
                         data="<p><b>2011/10 – 2014/09</b></p>"
-                        id="subject-time"
+                        id="item-title"
+                        className="item-title"
                       />
                     </div>
-                    <div className="school col-9">
+                    <div className="item-content-container">
                       <TextEditor
-                        data="<p><b>FPT Polytechnic - Ha Noi</b></p>"
-                        id="school-name"
+                        data="
+                          <p><b>Dai hoc FPT</b></p>
+                          <ul>
+                              <li>Bằng tốt nghiệp: Loại giỏi</li>
+                              <li>Điểm tích luỹ: 8.5</li>
+                              <li>Hệ chính quy</li>
+                          </ul>
+                          Từng đạt nhiều học bổng khuyến khích học tập, được nhận danh hiệu 'Sinh viên 5 tốt'
+                          <div>Từng tham gia lab nghiên cứu,...</div>
+                          "
+                        id="item-content"
+                        className="item-content"
                       />
-                      <div className="description">
-                        <TextEditor
-                          data="
-                            <ul>
-                                <li>Bằng tốt nghiệp: Loại giỏi</li>
-                                <li>Điểm tích luỹ: 8.5</li>
-                                <li>Hệ chính quy</li>
-                            </ul>"
-                          id="school-description"
-                        />
-                      </div>
                     </div>
                   </div>
-                  <div className="subject-content row">
-                    <div className="time col-3">
+                  <div className="item">
+                    <div className="item-title-container col-3">
                       <TextEditor
-                        data="<p><b>2013/10 – 2015/09</b></p>"
-                        id="education-time"
+                        data="<p><b>2011/10 – 2014/09</b></p>"
+                        id="item-title"
+                        className="item-title"
                       />
                     </div>
-                    <div className="school col-9">
+                    <div className="item-content-container col-9">
                       <TextEditor
-                        data="<p><b>Trường ĐH MyCV</b></p>"
-                        id="school-name"
-                      />
-                      <div className="description">
-                        <TextEditor
-                          data="
-                          <p>Cử nhân công nghệ thông tin</p>
-                          <ul >
+                        data="
+                          <p><b>Đại học Test CV</b></p>
+                          <ul>
                               <li>Bằng tốt nghiệp: Loại giỏi</li>
-                              <li>Điểm tích luỹ: 1</li>
+                              <li>Điểm tích luỹ: 8.5</li>
                               <li>Hệ chính quy</li>
-                          </ul>"
-                          id="school-description"
-                        />
-                      </div>
+                          </ul>
+                          Từng đạt nhiều học bổng khuyến khích học tập, được nhận danh hiệu 'Sinh viên 5 tốt'
+                          <div>Từng tham gia lab nghiên cứu,...</div>
+                          "
+                        id="item-content"
+                        className="item-content"
+                      />
                     </div>
                   </div>
                 </div>
 
-                <div className="work-exp">
+                <div className="subject">
+                  <div className="subject-title-container">
+                      <input
+                        type="text"
+                        id="subject-title"
+                        className="subject-title"
+                        style={{ color: "rgb(63, 89, 168)" }}
+                        value="Education"
+                        // onChange={handleChange}
+                        // onBlur={() =>
+                        //   handleBlur("Education", Education)
+                        // }
+                      />
+                  </div>
+                  <div className="item">
+                    <div className="item-title-container col-3">
+                      <TextEditor
+                        data="<p><b>2011/10 – 2014/09</b></p>"
+                        id="item-title"
+                        className="item-title"
+                      />
+                    </div>
+                    <div className="item-content-container col-9">
+                      <TextEditor
+                        data="
+                          <p><b>Đại học Test CV 2</b></p>
+                          <ul>
+                              <li>Bằng tốt nghiệp: Loại giỏi</li>
+                              <li>Điểm tích luỹ: 8.5</li>
+                              <li>Hệ chính quy</li>
+                          </ul>
+                          Từng đạt nhiều học bổng khuyến khích học tập, được nhận danh hiệu 'Sinh viên 5 tốt'
+                          <div>Từng tham gia lab nghiên cứu,...</div>
+                          "
+                        id="item-content"
+                        className="item-content"
+                      />
+                    </div>
+                  </div>
+                  <div className="item">
+                    <div className="item-title-container col-3">
+                      <TextEditor
+                        data="<p><b>2011/10 – 2014/09</b></p>"
+                        id="item-title"
+                        className="item-title"
+                      />
+                    </div>
+                    <div className="item-content-container col-9">
+                      <TextEditor
+                        data="
+                          <p><b>Dai hoc FPT</b></p>
+                          <ul>
+                              <li>Bằng tốt nghiệp: Loại giỏi</li>
+                              <li>Điểm tích luỹ: 8.5</li>
+                              <li>Hệ chính quy</li>
+                          </ul>
+                          Từng đạt nhiều học bổng khuyến khích học tập, được nhận danh hiệu 'Sinh viên 5 tốt'
+                          <div>Từng tham gia lab nghiên cứu,...</div>
+                          "
+                        id="item-content"
+                        className="item-content"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* <div className="work-exp">
                   <div className="work-exp-title">Work experience</div>
                   <div className="work-exp-content row">
                     <div className="time col-3">
@@ -660,7 +725,7 @@ export default function CV() {
                     </div>
                   </div>
                 </div>
-                <div className="certificate"></div>
+                <div className="certificate"></div> */}
               </div>
             </div>
           </div>

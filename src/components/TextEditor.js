@@ -26,7 +26,7 @@ class TextEditor extends Component {
   };
 
   sanitizeConf = {
-    allowedTags: ["b", "i", "em", "strong", "a", "p", "h1", "u", "ul", "li"],
+    allowedTags: ["b", "i", "em", "strong", "a", "p", "h1", "u", "ul", "li","div"],
     allowedAttributes: { a: ["href"] }
   };
 
