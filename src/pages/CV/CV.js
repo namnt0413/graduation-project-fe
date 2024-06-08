@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import axios from "../../lib/axios";
 import "../../styles/pages/CV/TestCV.css";
 import "../../styles/pages/CV/CV.css";
 import AuthUser from "../../components/AuthUser";
 import { Link } from "react-router-dom";
 import Layout from "../../layouts/Layout";
-import TextEditor from "../../components/TextEditor";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import TextEditor from "../../components/TextEditor";
 import ToolbarDropDown from "../../components/dropdown/ToolbarDropdown";
-import axios from "../../lib/axios";
+import Subject from "../../components/cv/Subject";
 
 export default function CV() {
   const { http, setToken } = AuthUser();
@@ -18,6 +18,8 @@ export default function CV() {
 
   // handle create default data
 
+  // handle offset subject
+  const [offsets, setOffsets] = useState([]);
   // handle cv basic info
   const [candidateName, setCandidateName] = useState("");
   const [title, setTitle] = useState();
@@ -57,7 +59,7 @@ export default function CV() {
     // API update basic info
     await axios.put(`/api/cv/update-${field}/1`, {
       field: value,
-    })
+    });
   };
 
   //handle with text editor component
@@ -66,10 +68,10 @@ export default function CV() {
   };
   const handleBlurName = async (data) => {
     await axios.put(`/api/cv/update-name/1`, {
-      "name": data,
-    })
-  }
-    
+      name: data,
+    });
+  };
+
   useEffect(() => {
     const getCV = async () => {
       const res = await axios.get("/api/cv/detail/1");
@@ -81,6 +83,10 @@ export default function CV() {
       setAddress(cv.address);
       setPhone(cv.phone);
       setBirthday(cv.birthday);
+
+      // Convert the offfset string to an array
+      const fetchedOffsets = cv.offset.split(",");
+      setOffsets(fetchedOffsets);
     };
     getCV();
   }, []);
@@ -219,11 +225,14 @@ export default function CV() {
                 <div className="basic-info">
                   <div className="info">
                     <div className="name-position">
-                    {candidateName && 
-                      <TextEditor data={candidateName} id="name" 
-                        handleOnChangeName={handleOnChangeName}
-                        handleBlurData={handleBlurName}
-                      /> }
+                      {candidateName && (
+                        <TextEditor
+                          data={candidateName}
+                          id="name"
+                          handleOnChangeName={handleOnChangeName}
+                          handleBlurData={handleBlurName}
+                        />
+                      )}
                       <input
                         type="text"
                         id="position"
@@ -282,137 +291,15 @@ export default function CV() {
                   </div>
                 </div>
 
-                <div className="subject">
-                  <div className="subject-title-container">
-                      <input
-                        type="text"
-                        id="subject-title"
-                        className="subject-title"
-                        style={{ color: "rgb(63, 89, 168)" }}
-                        value="Education"
-                        // onChange={handleChange}
-                        // onBlur={() =>
-                        //   handleBlur("Education", Education)
-                        // }
-                      />
-                  </div>
-                  <div className="item">
-                    <div className="item-title-container">
-                      <TextEditor
-                        data="<p><b>2011/10 – 2014/09</b></p>"
-                        id="item-title"
-                        className="item-title"
-                      />
-                    </div>
-                    <div className="item-content-container">
-                      <TextEditor
-                        data="
-                          <p><b>Dai hoc FPT</b></p>
-                          <ul>
-                              <li>Bằng tốt nghiệp: Loại giỏi</li>
-                              <li>Điểm tích luỹ: 8.5</li>
-                              <li>Hệ chính quy</li>
-                          </ul>
-                          Từng đạt nhiều học bổng khuyến khích học tập, được nhận danh hiệu 'Sinh viên 5 tốt'
-                          <div>Từng tham gia lab nghiên cứu,...</div>
-                          "
-                        id="item-content"
-                        className="item-content"
-                      />
-                    </div>
-                  </div>
-                  <div className="item">
-                    <div className="item-title-container col-3">
-                      <TextEditor
-                        data="<p><b>2011/10 – 2014/09</b></p>"
-                        id="item-title"
-                        className="item-title"
-                      />
-                    </div>
-                    <div className="item-content-container col-9">
-                      <TextEditor
-                        data="
-                          <p><b>Đại học Test CV</b></p>
-                          <ul>
-                              <li>Bằng tốt nghiệp: Loại giỏi</li>
-                              <li>Điểm tích luỹ: 8.5</li>
-                              <li>Hệ chính quy</li>
-                          </ul>
-                          Từng đạt nhiều học bổng khuyến khích học tập, được nhận danh hiệu 'Sinh viên 5 tốt'
-                          <div>Từng tham gia lab nghiên cứu,...</div>
-                          "
-                        id="item-content"
-                        className="item-content"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="subject">
-                  <div className="subject-title-container">
-                      <input
-                        type="text"
-                        id="subject-title"
-                        className="subject-title"
-                        style={{ color: "rgb(63, 89, 168)" }}
-                        value="Education"
-                        // onChange={handleChange}
-                        // onBlur={() =>
-                        //   handleBlur("Education", Education)
-                        // }
-                      />
-                  </div>
-                  <div className="item">
-                    <div className="item-title-container col-3">
-                      <TextEditor
-                        data="<p><b>2011/10 – 2014/09</b></p>"
-                        id="item-title"
-                        className="item-title"
-                      />
-                    </div>
-                    <div className="item-content-container col-9">
-                      <TextEditor
-                        data="
-                          <p><b>Đại học Test CV 2</b></p>
-                          <ul>
-                              <li>Bằng tốt nghiệp: Loại giỏi</li>
-                              <li>Điểm tích luỹ: 8.5</li>
-                              <li>Hệ chính quy</li>
-                          </ul>
-                          Từng đạt nhiều học bổng khuyến khích học tập, được nhận danh hiệu 'Sinh viên 5 tốt'
-                          <div>Từng tham gia lab nghiên cứu,...</div>
-                          "
-                        id="item-content"
-                        className="item-content"
-                      />
-                    </div>
-                  </div>
-                  <div className="item">
-                    <div className="item-title-container col-3">
-                      <TextEditor
-                        data="<p><b>2011/10 – 2014/09</b></p>"
-                        id="item-title"
-                        className="item-title"
-                      />
-                    </div>
-                    <div className="item-content-container col-9">
-                      <TextEditor
-                        data="
-                          <p><b>Dai hoc FPT</b></p>
-                          <ul>
-                              <li>Bằng tốt nghiệp: Loại giỏi</li>
-                              <li>Điểm tích luỹ: 8.5</li>
-                              <li>Hệ chính quy</li>
-                          </ul>
-                          Từng đạt nhiều học bổng khuyến khích học tập, được nhận danh hiệu 'Sinh viên 5 tốt'
-                          <div>Từng tham gia lab nghiên cứu,...</div>
-                          "
-                        id="item-content"
-                        className="item-content"
-                      />
-                    </div>
-                  </div>
-                </div>
+                {offsets.map((offset) => {
+                  return (
+                    <Subject
+                      key={offset}
+                      id={offset}
+                      // moveOffset={moveOffset}
+                    />
+                  );
+                })}
 
                 {/* <div className="work-exp">
                   <div className="work-exp-title">Work experience</div>
