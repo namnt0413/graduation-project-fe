@@ -57,11 +57,16 @@ export default function CV() {
     }
   };
   const handleBlur = async (field, value) => {
-    // console.log(`Updating ${field} to ${value}`);
     // API update basic info
-    await axios.put(`/api/cv/update-name/1`, {
-      name: candidateName,
-    })
+    if (field === "candidateName") {
+      await axios.put(`/api/cv/update-name/1`, {
+        field: value,
+      })
+    } else {
+      await axios.put(`/api/cv/update-${field}/1`, {
+        field: value,
+      })
+    }
   };
   useEffect(() => {
     const getCV = async () => {
