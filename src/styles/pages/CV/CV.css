@@ -277,115 +277,41 @@
     font-size: 20px;
 }
 
-
-
-
-.cv-background .cv-container .cv-content .work-exp {
-    padding: 10px 30px;
+.move-add-bar {
+    position: absolute;
+    left: 185px;
+    display: grid;
 }
 
-.cv-background .cv-container .cv-content .work-exp .work-exp-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #374458;
-    border-bottom: 0.5px solid #adadad;
-    margin-bottom: 15px;
+.offset-button {
+    padding: 4px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: rgb(121, 121, 121);
+    color: white;
+    margin-bottom: 6px;
+}
+.offset-button:hover {
+    background-color: #23c0e9;
 }
 
-.cv-background .cv-container .cv-content .work-exp .work-exp-content .time #work-exp-time p {
-    padding: 0 20px;
-    font-size: 16px;
+.offset-button i{
+    font-size: 17px;
 }
 
-.cv-background .cv-container .cv-content .work-exp .work-exp-content .work .name #work-exp-name p {
-    font-size: 16px;
+.delete-bar {
+    position: absolute;
+    right: 185px;
+}
+.delete-bar .delete-button {
+    padding: 4px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: white;
+    margin-bottom: 6px;
+}
+.delete-bar .delete-button:hover {
+    color: #23c0e9;
 }
 
-.cv-background .cv-container .cv-content .work-exp .work-exp-content .work .description #work-exp-description p {
-    font-size: 16px;
-}
-
-.cv-background .cv-container .cv-content .work-exp .work-exp-content .work .description ul,
-.cv-background .cv-container .cv-content .work-exp .work-exp-content .work .description li {
-    list-style-type: disc;
-}
-
-.cv-background .cv-container .cv-content .skills {
-    padding: 10px 30px;
-}
-
-.cv-background .cv-container .cv-content .skills .skills-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #374458;
-    border-bottom: 0.5px solid #adadad;
-    margin-bottom: 15px;
-}
-
-.cv-background .cv-container .cv-content .skills .skills-content {
-    padding: 10px;
-}
-
-.cv-background .cv-container .cv-content .skills .skills-content .skills-field {
-    float: right;
-}
-
-.cv-background .cv-container .cv-content .skills .skills-content .skills-field p {
-    float: right;
-    font-size: 15px;
-    color: black;
-}
-
-.cv-background .cv-container .cv-content .skills .skills-content .skills-list ul li.skill {
-    list-style-type: disc;
-}
-
-.cv-background .cv-container .cv-content .awards {
-    padding: 10px 30px;
-}
-
-.cv-background .cv-container .cv-content .awards .award-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #374458;
-    border-bottom: 0.5px solid #adadad;
-    margin-bottom: 15px;
-}
-
-.cv-background .cv-container .cv-content .projects {
-    padding: 10px 30px;
-}
-
-.cv-background .cv-container .cv-content .projects .projects-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #374458;
-    border-bottom: 0.5px solid #adadad;
-    margin-bottom: 15px;
-}
-
-.cv-background .cv-container .cv-content .projects .projects-content .project {
-    margin-bottom: 25px;
-}
-
-.cv-background .cv-container .cv-content .projects .projects-content .project .project-time {
-    margin-bottom: 10px;
-}
-
-.cv-background .cv-container .cv-content .projects .projects-content .project .project-detail .project-field {
-    border: 1px solid #b9b9b9;
-}
-
-.cv-background .cv-container .cv-content .projects .projects-content .project .project-detail .project-content {
-    border: 1px solid #b9b9b9;
-}
-
-.cv-background .cv-container .cv-content .projects .projects-content .project .project-detail .project-content ul,
-.cv-background .cv-container .cv-content .projects .projects-content .project .project-detail .project-content li {
-    list-style-type: disc;
-}
-
-.cv-background .cv-container .cv-content .certificate {
-    height: 260px;
-    border: 1px solid blue;
-}

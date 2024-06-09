@@ -2,12 +2,26 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "../../lib/axios";
 import TextEditor from "../TextEditor";
 
-const Item = ({ id }) => {
+const Item = ({ id, moveOffset, addItem, deleteItem }) => {
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
   const [type, setType] = useState();
   const [cvId, setCvId] = useState();
   const [subjectId, setSubjectId] = useState();
+  const [showButtons, setShowButtons] = useState(false);
+  const divRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+      if (divRef.current && !divRef.current.contains(event.target)) {
+          setShowButtons(false);
+      }
+  };
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+}, []);
 
   const handleOnChangeTitle = (data) => {
     setTitle(data)
@@ -42,7 +56,10 @@ const Item = ({ id }) => {
 
     if (type === 1) {
     return (
-      <div className="item">
+      <div className="item" 
+        ref={divRef}
+        onClick={() => setShowButtons(true)}
+      >
         <div className="item-title-container">
           {title && (
             <TextEditor data={title} id="item-title" className="item-title" 
@@ -63,11 +80,26 @@ const Item = ({ id }) => {
             />
           )}
         </div>
+        {showButtons && (
+          <>
+            <div className="move-add-bar">
+              <button className="offset-button" onClick={() => moveOffset(id, 'up')}><i class="fa-solid fa-arrow-up"></i></button>
+              <button className="offset-button" onClick={() => addItem(id)}><i class="fa-solid fa-plus"></i></button>
+              <button className="offset-button" onClick={() => moveOffset(id, 'down')}><i class="fa-solid fa-arrow-down"></i></button>
+            </div>
+            <div className="delete-bar">
+              <button className="delete-button" onClick={() => deleteItem(id)}><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </>
+        )}
       </div>
     );
 } else {
     return (
-      <div className="item">
+      <div className="item"
+        ref={divRef}
+        onClick={() => setShowButtons(true)}
+      >
         <div className="item-content-container">
           {content && (
             <TextEditor
@@ -79,6 +111,18 @@ const Item = ({ id }) => {
             />
           )}
         </div>
+        {showButtons && (
+          <>
+            <div className="move-add-bar">
+              <button className="offset-button" onClick={() => moveOffset(id, 'up')}><i class="fa-solid fa-arrow-up"></i></button>
+              <button className="offset-button"><i class="fa-solid fa-plus"></i></button>
+              <button className="offset-button" onClick={() => moveOffset(id, 'down')}><i class="fa-solid fa-arrow-down"></i></button>
+            </div>
+            <div className="delete-bar">
+              <button className="delete-button"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </>
+        )}
       </div>
     );
   }
