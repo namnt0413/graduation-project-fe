@@ -47,17 +47,17 @@ const Navbar = () => {
                   <ul className="float_left">
                     <li className="has-mega gc_main_navigation">
                       <Link className="nav-link" to="/">
-                        Home&nbsp;
+                        Trang chủ&nbsp;
                       </Link>
                     </li>
                     <li className="has-mega gc_main_navigation">
                       <Link className="nav-link" to="/job-list">
-                        Job&nbsp;
+                        Công việc&nbsp;
                       </Link>
                     </li>
                     <li className="parent gc_main_navigation">
                       <Link className="nav-link" to="/company-list">
-                        Company&nbsp;
+                        Công ty&nbsp;
                       </Link>
                     </li>
                     {getToken() ? (
@@ -279,12 +279,12 @@ const Navbar = () => {
                   <ul>
                     <li>
                       <Link className="nav-link" to="/register">
-                        <i className="fa fa-user"></i>&nbsp; SIGN UP
+                        <i className="fa fa-user"></i>&nbsp; Đăng ký
                       </Link>
                     </li>
                     <li>
                       <Link className="nav-link" to="/login">
-                        <i className="fa fa-sign-in"></i>&nbsp; LOGIN
+                        <i className="fa fa-sign-in"></i>&nbsp; Đăng nhập
                       </Link>
                     </li>
                   </ul>

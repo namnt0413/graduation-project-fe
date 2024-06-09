@@ -23,6 +23,8 @@ class TextEditor extends Component {
     this.setState({ html: evt.target.value });
 
     this.props.handleOnChangeName && this.props.handleOnChangeName(evt.target.value);
+    this.props.handleOnChangeTitle && this.props.handleOnChangeTitle(evt.target.value);
+    this.props.handleOnChangeContent && this.props.handleOnChangeContent(evt.target.value);
   };
 
   sanitizeConf = {
@@ -37,6 +39,8 @@ class TextEditor extends Component {
     });
 
     this.props.handleBlurData && this.props.handleBlurData(this.state.html);
+    this.props.handleBlurTitle && this.props.handleBlurTitle(this.state.html);
+    this.props.handleBlurContent && this.props.handleBlurContent(this.state.html);
   };
 
   toggleEditable = () => {

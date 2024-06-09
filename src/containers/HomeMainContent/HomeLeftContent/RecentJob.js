@@ -122,7 +122,7 @@ const RecentJob = () => {
                             </li>
 
                             <li>
-                              <a href="#">Apply</a>
+                              <a href="#">Ứng tuyển</a>
                             </li>
                           </ul>
                         </div>
@@ -165,7 +165,7 @@ const RecentJob = () => {
                             </li>
 
                             <li>
-                              <a href="#">Apply</a>
+                              <a href="#">Ứng tuyển</a>
                             </li>
                           </ul>
                         </div>
@@ -236,7 +236,7 @@ const RecentJob = () => {
                               </li>
                               <li>
                                 <button onClick={() => apply(job.id)}>
-                                  Apply
+                                  Ứng tuyển
                                 </button>
                               </li>
                             </ul>

@@ -9,6 +9,24 @@ const Item = ({ id }) => {
   const [cvId, setCvId] = useState();
   const [subjectId, setSubjectId] = useState();
 
+  const handleOnChangeTitle = (data) => {
+    setTitle(data)
+  }
+  const handleBlurTitle = async (data) => {
+    await axios.put(`/api/item/update-title/${id}`, {
+      title: data,
+    });
+  }
+  const handleOnChangeContent = (data) => {
+    setContent(data)
+  }
+  const handleBlurContent = async (data) => {
+    await axios.put(`/api/item/update-content/${id}`, {
+      content: data,
+    });
+  }
+
+
   useEffect(() => {
     const getItem = async () => {
       const res = await axios.get(`/api/item/detail/${id}`);
@@ -22,13 +40,15 @@ const Item = ({ id }) => {
     getItem();
   }, []);
 
-  console.log(type)
     if (type === 1) {
     return (
       <div className="item">
         <div className="item-title-container">
           {title && (
-            <TextEditor data={title} id="item-title" className="item-title" />
+            <TextEditor data={title} id="item-title" className="item-title" 
+              handleOnChangeTitle={handleOnChangeTitle}
+              handleBlurTitle={handleBlurTitle}
+            />
           )}
         </div>
 
@@ -38,6 +58,8 @@ const Item = ({ id }) => {
               data={content}
               id="item-content"
               className="item-content"
+              handleOnChangeContent={handleOnChangeContent}
+              handleBlurContent={handleBlurContent}
             />
           )}
         </div>
@@ -52,6 +74,8 @@ const Item = ({ id }) => {
               data={content}
               id="item-content"
               className="item-content"
+              handleOnChangeContent={handleOnChangeContent}
+              handleBlurContent={handleBlurContent}
             />
           )}
         </div>

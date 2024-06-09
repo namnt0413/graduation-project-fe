@@ -8,6 +8,16 @@ const Subject = ({ id }) => {
   const [cvId, setCvId] = useState();
   const [offsets, setOffsets] = useState([]);
   console.log(offsets)
+
+  const handleChange = (event) => {
+    setTitle(event.target.value)
+  }
+  const handleBlur = async (field, value) => {
+    await axios.put(`/api/subject/update-${field}/${id}`, {
+      title: value,
+    });
+  };
+
   useEffect(() => {
     const getSubject = async () => {
       const res = await axios.get(`/api/subject/detail/${id}`);
@@ -33,10 +43,10 @@ const Subject = ({ id }) => {
           className="subject-title"
           style={{ color: "rgb(63, 89, 168)" }}
           value={title}
-          // onChange={handleChange}
-          // onBlur={() =>
-          //   handleBlur("Education", Education)
-          // }
+          onChange={handleChange}
+          onBlur={() =>
+            handleBlur("title", title)
+          }
         />
       </div>
 
