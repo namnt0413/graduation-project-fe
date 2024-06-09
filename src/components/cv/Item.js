@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "../../lib/axios";
 import TextEditor from "../TextEditor";
 
-const Item = ({ id, moveOffset, addItem, deleteItem }) => {
+const Item = ({ id, moveOffset, addItem, deleteItem, closeButton }) => {
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
   const [type, setType] = useState();
@@ -10,6 +10,7 @@ const Item = ({ id, moveOffset, addItem, deleteItem }) => {
   const [subjectId, setSubjectId] = useState();
   const [showButtons, setShowButtons] = useState(false);
   const divRef = useRef(null);
+  // console.log(showButtons)
 
   const handleClickOutside = (event) => {
       if (divRef.current && !divRef.current.contains(event.target)) {
@@ -80,6 +81,7 @@ const Item = ({ id, moveOffset, addItem, deleteItem }) => {
             />
           )}
         </div>
+
         {showButtons && (
           <>
             <div className="move-add-bar">
@@ -115,11 +117,11 @@ const Item = ({ id, moveOffset, addItem, deleteItem }) => {
           <>
             <div className="move-add-bar">
               <button className="offset-button" onClick={() => moveOffset(id, 'up')}><i class="fa-solid fa-arrow-up"></i></button>
-              <button className="offset-button"><i class="fa-solid fa-plus"></i></button>
+              <button className="offset-button" onClick={() => addItem(id)}><i class="fa-solid fa-plus"></i></button>
               <button className="offset-button" onClick={() => moveOffset(id, 'down')}><i class="fa-solid fa-arrow-down"></i></button>
             </div>
             <div className="delete-bar">
-              <button className="delete-button"><i class="fa-solid fa-trash"></i></button>
+              <button className="delete-button" onClick={() => deleteItem(id)}><i class="fa-solid fa-trash"></i></button>
             </div>
           </>
         )}

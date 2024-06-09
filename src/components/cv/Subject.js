@@ -3,21 +3,14 @@
   import TextEditor from "../TextEditor";
   import Item from "./Item";
 
-  const Subject = ({ id }) => {
+  const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject }) => {
     const [title, setTitle] = useState();
     const [cvId, setCvId] = useState();
     const [offsets, setOffsets] = useState([]);
     const [items, setItems] = useState([]);
-
-    const handleChange = (event) => {
-      setTitle(event.target.value);
-    };
-    const handleBlur = async (field, value) => {
-      await axios.put(`/api/subject/update-${field}/${id}`, {
-        title: value,
-      });
-    };
-
+    const [showButtonsSubject, setShowButtonsSubject] = useState(false);
+    const divRefSubject = useRef(null);
+    
     useEffect(() => {
       const getSubject = async () => {
         const res = await axios.get(`/api/subject/detail/${id}`);
@@ -34,6 +27,34 @@
       };
       getSubject();
     }, []);
+
+    const handleOnClickSubject = (event) => {
+      if (event.target.id === "subject-title") {
+        setShowButtonsSubject(true)
+      } else {
+        setShowButtonsSubject(false)
+      }
+    }
+    const handleClickOutside = (event) => {
+        if (divRefSubject.current && !divRefSubject.current.contains(event.target)) {
+          setShowButtonsSubject(false);
+        }
+    };
+    useEffect(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+      };
+  }, []);
+
+    const handleChange = (event) => {
+      setTitle(event.target.value);
+    };
+    const handleBlur = async (field, value) => {
+      await axios.put(`/api/subject/update-${field}/${id}`, {
+        title: value,
+      });
+    };
 
     // handle move offset
     const moveOffset = (itemId, direction) => {
@@ -61,7 +82,6 @@
           });
       }
     };
-
     //hnadle add item
     const addItem = (itemId) => {
       axios
@@ -100,7 +120,6 @@
           console.error("Error adding new div:", error);
         });
     };
-
     //handle delete item
     const deleteItem = (itemId) => {
       axios
@@ -132,7 +151,10 @@
     };
 
     return (
-      <div className="subject">
+      <div className="subject"
+      ref={divRefSubject}
+      onClick={handleOnClickSubject}
+      >
         <div className="subject-title-container">
           <input
             type="text"
@@ -142,7 +164,21 @@
             value={title}
             onChange={handleChange}
             onBlur={() => handleBlur("title", title)}
+
           />
+
+        {showButtonsSubject && (
+          <>
+            <div className="move-add-bar">
+              <button className="offset-button" onClick={() => moveOffsetSubject(id, 'up')}><i class="fa-solid fa-arrow-up"></i></button>
+              <button className="offset-button" onClick={() => addSubject(id)}><i class="fa-solid fa-plus"></i></button>
+              <button className="offset-button" onClick={() => moveOffsetSubject(id, 'down')}><i class="fa-solid fa-arrow-down"></i></button>
+            </div>
+            <div className="delete-bar">
+              <button className="delete-button" onClick={() => deleteSubject(id)}><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </>
+        )}
         </div>
 
         {offsets.map((offset) => {

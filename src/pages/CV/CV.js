@@ -28,6 +28,28 @@ export default function CV() {
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState();
   const [birthday, setBirthday] = useState();
+  const [subjects, setSubjects] = useState([]);
+
+
+  useEffect(() => {
+    const getCV = async () => {
+      const res = await axios.get("/api/cv/detail/1");
+      const cv = res.data.data;
+      setTitle(cv.title);
+      setCandidateName(cv.name);
+      setPosition(cv.position);
+      setEmail(cv.email);
+      setAddress(cv.address);
+      setPhone(cv.phone);
+      setBirthday(cv.birthday);
+      setSubjects(cv.subject);
+
+      // Convert the offfset string to an array
+      const fetchedOffsets = cv.offset.split(",");
+      setOffsets(fetchedOffsets);
+    };
+    getCV();
+  }, []);
 
   const handleChange = (event) => {
     const name = event.target.id;
@@ -61,7 +83,6 @@ export default function CV() {
       field: value,
     });
   };
-
   //handle with text editor component
   const handleOnChangeName = (data) => {
     setCandidateName(data);
@@ -71,25 +92,6 @@ export default function CV() {
       name: data,
     });
   };
-
-  useEffect(() => {
-    const getCV = async () => {
-      const res = await axios.get("/api/cv/detail/1");
-      const cv = res.data.data;
-      setTitle(cv.title);
-      setCandidateName(cv.name);
-      setPosition(cv.position);
-      setEmail(cv.email);
-      setAddress(cv.address);
-      setPhone(cv.phone);
-      setBirthday(cv.birthday);
-
-      // Convert the offfset string to an array
-      const fetchedOffsets = cv.offset.split(",");
-      setOffsets(fetchedOffsets);
-    };
-    getCV();
-  }, []);
 
   // handle dropdown
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -106,10 +108,118 @@ export default function CV() {
     setDropdownOpen(!dropdownOpen);
     setDropdownType(3);
   };
-
   const handleDropdownClose = () => {
     setDropdownOpen(false);
   };
+
+  //handle move,add,delete subject
+    const moveOffsetSubject = (subjectId, direction) => {
+      console.log(subjectId, direction)
+      const currentIndex = offsets.indexOf(subjectId.toString());
+      const targetIndex =
+        direction === "up" ? currentIndex - 1 : currentIndex + 1;
+
+      if (targetIndex >= 0 && targetIndex < offsets.length) {
+        const newOffsets = [...offsets];
+        [newOffsets[currentIndex], newOffsets[targetIndex]] = [
+          newOffsets[targetIndex],
+          newOffsets[currentIndex],
+        ];
+        setOffsets(newOffsets);
+
+        // Send request to update offset on the backend
+        const offsetString = newOffsets.join(",");
+        axios
+          .put(`/api/cv/update-offset/1`, { offset: offsetString })
+          .then((response) => {
+            console.log(response.data.message);
+          })
+          .catch((error) => {
+            console.error("Error updating offset:", error);
+          });
+      }
+    };
+    const addSubject = async (subjectId) => {
+      await axios.post("/api/subject/create", {
+          title: "Lorem ipsum",
+          c_v_id: 1,
+        })
+        .then( async (response) => {
+          const newSubject = response.data.subject;
+          await axios.post("/api/item/create", {
+            title: "<p><b>Lorem ipsum</b><br></p>",
+            content:
+              "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
+            c_v_id: 1,
+            subject_id: newSubject.id,
+          })
+          .then( async (response2) => {
+            const newItem = response2.data.item;
+            await axios.put(`/api/subject/update-offset/${newSubject.id}`, { offset: newItem.id })
+            .then((response3) => {
+              console.log(response.data.message);
+            })
+            .catch((error) => {
+              console.error("Error updating offset:", error);
+            });
+          })
+          .catch((error) => {
+            console.error("Error adding new item:", error);
+          });
+
+          // Tìm vị trí hiện tại của div có id đang được nhấn nút Add
+          const currentIndex = offsets.indexOf(subjectId.toString());
+          // Tạo một mảng offsets mới với div mới được thêm vào ngay sau div hiện tại
+          const newOffsets = [
+            ...offsets.slice(0, currentIndex + 1),
+            newSubject.id.toString(),
+            ...offsets.slice(currentIndex + 1),
+          ];
+          // setSubjects([...items, newItem]);
+          setOffsets(newOffsets);
+
+          // Send request to update offset on the backend
+          const offsetString = newOffsets.join(",");
+          axios
+            .put(`/api/cv/update-offset/1`, { offset: offsetString })
+            .then((response) => {
+              console.log(response.data.message);
+            })
+            .catch((error) => {
+              console.error("Error updating offset:", error);
+            });
+        })
+        .catch((error) => {
+          console.error("Error adding new subject:", error);
+        });
+    };
+    const deleteSubject = (subjectId) => {
+      axios.delete(`/api/subject/delete/${subjectId}`)
+        .then((response) => {
+          // Xóa div khỏi state 'divs' bằng cách lọc ra các div có id khác với id cần xóa
+          setSubjects(subjects.filter((subject) => subject.id !== subjectId));
+
+          // Cập nhật lại offsets bằng cách lọc ra các offset có giá trị khác với id cần xóa
+          const newOffsets = offsets.filter(
+            (offset) => offset !== subjectId.toString()
+          );
+          setOffsets(newOffsets);
+
+          // Chuyển đổi mảng offsets thành chuỗi và gửi yêu cầu cập nhật offsets tới backend
+          const offsetString = newOffsets.join(",");
+          axios
+            .put(`/api/cv/update-offset/1`, { offset: offsetString })
+            .then((response) => {
+              console.log(response.data.message);
+            })
+            .catch((error) => {
+              console.error("Error updating offset:", error);
+            });
+        })
+        .catch((error) => {
+          console.error("Error deleting div:", error);
+        });
+    };
 
   // handle CV download
   const cvRef = useRef();
@@ -295,7 +405,9 @@ export default function CV() {
                     <Subject
                       key={offset}
                       id={offset}
-                      // moveOffset={moveOffset}
+                      moveOffsetSubject={moveOffsetSubject}
+                      addSubject={addSubject}
+                      deleteSubject={deleteSubject}
                     />
                   );
                 })}
