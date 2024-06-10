@@ -19,17 +19,43 @@ const Banner = () => {
             </div>
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div className="jp_header_form_wrapper">
-                <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                {/* <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <input
                     type="text"
                     placeholder="Keyword e.g. (Job Title, Description, Tags)"
                   />
+                </div> */}
+                <div className="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                  <div className="jp_form_location_wrapper">
+                    <i className="fa fa-dot-circle-o first_icon"></i>
+                    <select>
+                      <option>Địa điểm</option>
+                      <option>Select Location</option>
+                      <option>Select Location</option>
+                      <option>Select Location</option>
+                      <option>Select Location</option>
+                    </select>
+                    <i className="fa fa-angle-down second_icon"></i>
+                  </div>
+                </div>
+                <div className="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+                  <div className="jp_form_exper_wrapper">
+                    <i className="fa fa-dot-circle-o first_icon"></i>
+                    <select>
+                      <option>Lĩnh vực</option>
+                      <option>Experience</option>
+                      <option>Experience</option>
+                      <option>Experience</option>
+                      <option>Experience</option>
+                    </select>
+                    <i className="fa fa-angle-down second_icon"></i>
+                  </div>
                 </div>
                 <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                   <div className="jp_form_location_wrapper">
                     <i className="fa fa-dot-circle-o first_icon"></i>
                     <select>
-                      <option>Select Location</option>
+                      <option>Kinh nghiệm</option>
                       <option>Select Location</option>
                       <option>Select Location</option>
                       <option>Select Location</option>
@@ -38,11 +64,11 @@ const Banner = () => {
                     <i className="fa fa-angle-down second_icon"></i>
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div className="col-lg-2 col-md-3 col-sm-12 col-xs-12">
                   <div className="jp_form_exper_wrapper">
                     <i className="fa fa-dot-circle-o first_icon"></i>
                     <select>
-                      <option>Experience</option>
+                      <option>Mức lương</option>
                       <option>Experience</option>
                       <option>Experience</option>
                       <option>Experience</option>
@@ -51,12 +77,12 @@ const Banner = () => {
                     <i className="fa fa-angle-down second_icon"></i>
                   </div>
                 </div>
-                <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div className="col-lg-2  col-md-2 col-sm-12 col-xs-12">
                   <div className="jp_form_btn_wrapper">
                     <ul>
                       <li>
                         <a href="#">
-                          <i className="fa fa-search"></i> Search
+                          <i className="fa fa-search"></i> Tìm kiếm
                         </a>
                       </li>
                     </ul>
@@ -106,7 +132,7 @@ const Banner = () => {
               <h3>
                 <a href="#">Developer</a>
               </h3>
-              <p>(240 jobs)</p>
+              <p>(240 công việc)</p>
             </div>
           </div>
           <div className="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
@@ -115,7 +141,7 @@ const Banner = () => {
               <h3>
                 <a href="#">Technology</a>
               </h3>
-              <p>(504 jobs)</p>
+              <p>(504 công việc)</p>
             </div>
           </div>
           <div className="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
@@ -124,7 +150,7 @@ const Banner = () => {
               <h3>
                 <a href="#">Accounting</a>
               </h3>
-              <p>(2250 jobs)</p>
+              <p>(2250 công việc)</p>
             </div>
           </div>
           <div className="jp_top_jobs_category_wrapper jp_job_cate_left_border_res">
@@ -133,7 +159,7 @@ const Banner = () => {
               <h3>
                 <a href="#">Medical</a>
               </h3>
-              <p>(202 jobs)</p>
+              <p>(202 công việc)</p>
             </div>
           </div>
           <div className="jp_top_jobs_category_wrapper">
@@ -142,7 +168,7 @@ const Banner = () => {
               <h3>
                 <a href="#">Government</a>
               </h3>
-              <p>(1457 jobs)</p>
+              <p>(1457 công việc)</p>
             </div>
           </div>
           <div className="jp_top_jobs_category_wrapper">
@@ -151,7 +177,7 @@ const Banner = () => {
               <h3>
                 <a href="#">All Jobs</a>
               </h3>
-              <p>(2000+ jobs)</p>
+              <p>(2000+ công việc)</p>
             </div>
           </div>
         </div>

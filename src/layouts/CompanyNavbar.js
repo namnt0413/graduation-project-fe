@@ -305,9 +305,9 @@ const CompanyNavbar = () => {
               <div className="user-bar col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                 <div className="jp_navi_right_btn_wrapper">
                   <div className="user-info">
-                    <li class="user-info nav-item dropdown">
+                    <li className="user-info nav-item dropdown">
                       <div
-                        class="nav-link dropdown-toggle"
+                        className="nav-link dropdown-toggle"
                         id="navbarDropdownMenuLink"
                         data-toggle="dropdown"
                         aria-haspopup="true"
@@ -318,22 +318,22 @@ const CompanyNavbar = () => {
                         {company.name}
                       </div>
                       <div
-                        class="dropdown-menu"
+                        className="dropdown-menu"
                         aria-labelledby="navbarDropdownMenuLink"
                       >
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           Account infomation
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           Change password
                         </a>
-                        <button class="dropdown-item" onClick={logoutCompany}>
+                        <button className="dropdown-item" onClick={logoutCompany}>
                           Logout
                         </button>
                       </div>
                     </li>
                     <button className="notification">
-                      <i class="fa-regular fa-bell"></i>
+                      <i className="fa-regular fa-bell"></i>
                     </button>
                   </div>
                 </div>

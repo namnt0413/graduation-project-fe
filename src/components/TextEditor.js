@@ -4,8 +4,8 @@ import sanitizeHtml from "sanitize-html";
 import "../styles/TextEditor.css";
 
 class TextEditor extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       html: ``,
       editable: true,
@@ -19,12 +19,16 @@ class TextEditor extends Component {
     })
   }
   handleChange = evt => {
-    console.log(evt.target.value)
+    // console.log(evt.target.value)
     this.setState({ html: evt.target.value });
+
+    this.props.handleOnChangeName && this.props.handleOnChangeName(evt.target.value);
+    this.props.handleOnChangeTitle && this.props.handleOnChangeTitle(evt.target.value);
+    this.props.handleOnChangeContent && this.props.handleOnChangeContent(evt.target.value);
   };
 
   sanitizeConf = {
-    allowedTags: ["b", "i", "em", "strong", "a", "p", "h1", "u", "ul", "li"],
+    allowedTags: ["b", "i", "em", "strong", "a", "p", "h1", "u", "ul", "li","div"],
     allowedAttributes: { a: ["href"] }
   };
 
@@ -33,6 +37,10 @@ class TextEditor extends Component {
       html: sanitizeHtml(this.state.html, this.sanitizeConf),
       isOpenEdit: false
     });
+
+    this.props.handleBlurData && this.props.handleBlurData(this.state.html);
+    this.props.handleBlurTitle && this.props.handleBlurTitle(this.state.html);
+    this.props.handleBlurContent && this.props.handleBlurContent(this.state.html);
   };
 
   toggleEditable = () => {

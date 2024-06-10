@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import "../styles/components/Navbar.css";
 // import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import NewDefaultCv from "../components/cv/NewDefaultCv";
 
 const Navbar = () => {
   // const user = useSelector((state) => state.user.value);
@@ -22,6 +23,11 @@ const Navbar = () => {
     }
   };
 
+    // tao du lieu default
+    const handleNewDefaultCv = async (event) => {
+      NewDefaultCv(user.id)
+    };
+
   return (
     <>
       <div className="gc_main_menu_wrapper">
@@ -29,7 +35,7 @@ const Navbar = () => {
           <div className="row">
             <div className="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
               <div className="gc_header_wrapper">
-                <div className="gc_logo" >
+                <div className="gc_logo">
                   <Link className="nav-link" to="/">
                     <img
                       src="http://localhost:3000/images/header/logo.png"
@@ -46,34 +52,42 @@ const Navbar = () => {
                 <div className="mainmenu">
                   <ul className="float_left">
                     <li className="has-mega gc_main_navigation">
-                    <Link className="nav-link" to="/">
-                        Home&nbsp;
-                    </Link>
+                      <Link className="nav-link" to="/">
+                        Trang chủ&nbsp;
+                      </Link>
                     </li>
                     <li className="has-mega gc_main_navigation">
                       <Link className="nav-link" to="/job-list">
-                        Job&nbsp;
+                        Công việc&nbsp;
                       </Link>
                     </li>
                     <li className="parent gc_main_navigation">
                       <Link className="nav-link" to="/company-list">
-                        Company&nbsp;
+                        Công ty&nbsp;
                       </Link>
                     </li>
-                    <li className="has-mega gc_main_navigation">
-                      <a href="#" className="gc_main_navigation">
-                        {" "}
-                        My CV&nbsp;<i className="fa fa-angle-down"></i>
-                      </a>
-                      <ul>
-                        <li className="parent">
-                          <a href="">My CV lists</a>
-                        </li>
-                        <li className="parent">
-                          <a href="">Create new CV</a>
-                        </li>
-                      </ul>
-                    </li>
+                    {getToken() ? (
+                      <li className="has-mega gc_main_navigation">
+                        <a href="#" className="gc_main_navigation">
+                          {" "}
+                          Quản lý CV&nbsp;<i className="fa fa-angle-down"></i>
+                        </a>
+                        <ul>
+                          <li className="parent">
+                          <Link className="nav-link" to="/my-list-cv">
+                            Danh sách CV đã tạo&nbsp;
+                          </Link>
+                          </li>
+                          <li className="parent">
+                            <div className="create-new-cv"
+                              onClick={handleNewDefaultCv}
+                            >Tạo CV mới</div>
+                          </li>
+                        </ul>
+                      </li>
+                    ) : (
+                      <></>
+                    )}
                   </ul>
                 </div>
                 <header className="mobail_menu">
@@ -275,12 +289,12 @@ const Navbar = () => {
                   <ul>
                     <li>
                       <Link className="nav-link" to="/register">
-                        <i className="fa fa-user"></i>&nbsp; SIGN UP
+                        <i className="fa fa-user"></i>&nbsp; Đăng ký
                       </Link>
                     </li>
                     <li>
                       <Link className="nav-link" to="/login">
-                        <i className="fa fa-sign-in"></i>&nbsp; LOGIN
+                        <i className="fa fa-sign-in"></i>&nbsp; Đăng nhập
                       </Link>
                     </li>
                   </ul>
@@ -290,9 +304,9 @@ const Navbar = () => {
               <div className="user-bar col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                 <div className="jp_navi_right_btn_wrapper">
                   <div className="user-info">
-                    <li class="user-info nav-item dropdown">
+                    <li className="user-info nav-item dropdown">
                       <div
-                        class="nav-link dropdown-toggle"
+                        className="nav-link dropdown-toggle"
                         id="navbarDropdownMenuLink"
                         data-toggle="dropdown"
                         aria-haspopup="true"
@@ -302,22 +316,22 @@ const Navbar = () => {
                         {user.name}
                       </div>
                       <div
-                        class="dropdown-menu"
+                        className="dropdown-menu"
                         aria-labelledby="navbarDropdownMenuLink"
                       >
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           Account infomation
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           Change password
                         </a>
-                        <button class="dropdown-item" onClick={logoutUser}>
+                        <button className="dropdown-item" onClick={logoutUser}>
                           Logout
                         </button>
                       </div>
                     </li>
                     <button className="notification">
-                      <i class="fa-regular fa-bell"></i>
+                      <i className="fa-regular fa-bell"></i>
                     </button>
                   </div>
                 </div>

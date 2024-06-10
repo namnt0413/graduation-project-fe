@@ -45,3 +45,10 @@ body, html {
 	background:#f9f9f9;
 	overflow-x:hidden;
 }
+.content {
+  margin-top: 115px;
+}
+
+.toast-position {
+  top: 8rem !important;
+}
