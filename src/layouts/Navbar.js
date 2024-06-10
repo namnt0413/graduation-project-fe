@@ -64,14 +64,16 @@ const Navbar = () => {
                       <li className="has-mega gc_main_navigation">
                         <a href="#" className="gc_main_navigation">
                           {" "}
-                          My CV&nbsp;<i className="fa fa-angle-down"></i>
+                          Quản lý CV&nbsp;<i className="fa fa-angle-down"></i>
                         </a>
                         <ul>
                           <li className="parent">
-                            <a href="">My CV lists</a>
+                          <Link className="nav-link" to="/my-list-cv">
+                            Danh sách CV đã tạo&nbsp;
+                          </Link>
                           </li>
                           <li className="parent">
-                            <a href="">Create new CV</a>
+                            <a href="">Tạo CV mới</a>
                           </li>
                         </ul>
                       </li>

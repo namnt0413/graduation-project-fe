@@ -11,8 +11,11 @@ import "jspdf-autotable";
 import TextEditor from "../../components/TextEditor";
 import ToolbarDropDown from "../../components/dropdown/ToolbarDropdown";
 import Subject from "../../components/cv/Subject";
+import { useParams } from "react-router-dom";
 
-export default function CV() {
+
+export default function CV1() {
+  const params = useParams()
   const { http, setToken } = AuthUser();
   const [password, setPassword] = useState();
 
@@ -33,7 +36,7 @@ export default function CV() {
 
   useEffect(() => {
     const getCV = async () => {
-      const res = await axios.get("/api/cv/detail/1");
+      const res = await axios.get(`/api/cv/detail/${params.id}`);
       const cv = res.data.data;
       setTitle(cv.title);
       setCandidateName(cv.name);
@@ -79,7 +82,7 @@ export default function CV() {
   };
   const handleBlur = async (field, value) => {
     // API update basic info
-    await axios.put(`/api/cv/update-${field}/1`, {
+    await axios.put(`/api/cv/update-${field}/${params.id}`, {
       field: value,
     });
   };
@@ -88,7 +91,7 @@ export default function CV() {
     setCandidateName(data);
   };
   const handleBlurName = async (data) => {
-    await axios.put(`/api/cv/update-name/1`, {
+    await axios.put(`/api/cv/update-name/${params.id}`, {
       name: data,
     });
   };
@@ -130,7 +133,7 @@ export default function CV() {
         // Send request to update offset on the backend
         const offsetString = newOffsets.join(",");
         axios
-          .put(`/api/cv/update-offset/1`, { offset: offsetString })
+          .put(`/api/cv/update-offset/${params.id}`, { offset: offsetString })
           .then((response) => {
             console.log(response.data.message);
           })
@@ -150,7 +153,7 @@ export default function CV() {
             title: "<p><b>Lorem ipsum</b><br></p>",
             content:
               "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
-            c_v_id: 1,
+            c_v_id: params.id,
             subject_id: newSubject.id,
           })
           .then( async (response2) => {
@@ -181,7 +184,7 @@ export default function CV() {
           // Send request to update offset on the backend
           const offsetString = newOffsets.join(",");
           axios
-            .put(`/api/cv/update-offset/1`, { offset: offsetString })
+            .put(`/api/cv/update-offset/${params.id}`, { offset: offsetString })
             .then((response) => {
               console.log(response.data.message);
             })
@@ -208,7 +211,7 @@ export default function CV() {
           // Chuyển đổi mảng offsets thành chuỗi và gửi yêu cầu cập nhật offsets tới backend
           const offsetString = newOffsets.join(",");
           axios
-            .put(`/api/cv/update-offset/1`, { offset: offsetString })
+            .put(`/api/cv/update-offset/${params.id}`, { offset: offsetString })
             .then((response) => {
               console.log(response.data.message);
             })
@@ -276,7 +279,7 @@ export default function CV() {
     });
   };
 
-  const CvContent = (
+  const Cv1Content = (
     <>
       <div className="jp_tittle_main_wrapper cv-section">
         <div className="cv-background">
@@ -419,5 +422,5 @@ export default function CV() {
     </>
   );
 
-  return <Layout page={CvContent} />;
+  return <Layout page={Cv1Content} />;
 }

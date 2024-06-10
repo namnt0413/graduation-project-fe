@@ -117,8 +117,7 @@ const CompanyListJob = () => {
           </table>
         </div>
       </div>
-      <ToastContainer />
-      AAA
+      <ToastContainer  className="toast-position" />
     </>
   );
 

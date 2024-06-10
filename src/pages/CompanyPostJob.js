@@ -27,7 +27,7 @@ const CompanyPostJob = () => {
   const [right, setRight] = useState([]);
   const [exp, setExp] = useState([]);
   const [salary, setSalary] = useState([]);
-  const [maxSalary, setMaxSalary] = useState([]);
+  const [maxSalary, setMaxSalary] = useState("");
   const [address, setAddress] = useState([company.address ?? company.address]);
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -275,7 +275,7 @@ const CompanyPostJob = () => {
           </form>
         </div>
       </div>
-      <ToastContainer />
+      <ToastContainer  className="toast-position" />
     </>
   );
 
