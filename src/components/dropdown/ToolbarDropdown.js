@@ -1,8 +1,15 @@
 import React, { useRef, useEffect } from "react";
 import "../../styles/components/dropdown/ToolbarDropdown.css";
 import Slider from "react-slick";
+import { Color } from "../../const/color";
 
-const ToolbarDropdown = ({ isOpen, onClose, dropdownType }) => {
+const ToolbarDropdown = ({
+  isOpen,
+  onClose,
+  dropdownType,
+  onChangeColor,
+  selectedColor,
+}) => {
   const dropdownRef = useRef(null);
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -40,44 +47,112 @@ const ToolbarDropdown = ({ isOpen, onClose, dropdownType }) => {
               <div className="theme-color-title">Màu sắc chủ đề</div>
               <div className="list-theme-color">
                 <div className="list-theme-color-row">
-                  <button
-                    className="theme-color-button selected"
-                    style={{ backgroundColor: "red" }}
-                    // style={{borderColor: BORDER_COLOR[pastdueTask.priority]}}
-                    // onClick={() =>
-                    //   test(test)
-                    // }
-                  ></button>
-                  <button
-                    className="theme-color-button"
-                    style={{ backgroundColor: "blue" }}
-                  ></button>
-                  <button
-                    className="theme-color-button"
-                    style={{ backgroundColor: "yellow" }}
-                  ></button>
-                  <button
-                    className="theme-color-button"
-                    style={{ backgroundColor: "green" }}
-                  ></button>
+                  {selectedColor === 1 ? (
+                    <button
+                      className="theme-color-button selected"
+                      style={{ backgroundColor: Color[1] }}
+                      onClick={() => onChangeColor(1)}
+                    ></button>
+                  ) : (
+                    <button
+                      className="theme-color-button"
+                      style={{ backgroundColor: Color[1] }}
+                      onClick={() => onChangeColor(1)}
+                    ></button>
+                  )}
+                  {selectedColor === 2 ? (
+                    <button
+                      className="theme-color-button selected"
+                      style={{ backgroundColor: Color[2] }}
+                      onClick={() => onChangeColor(2)}
+                    ></button>
+                  ) : (
+                    <button
+                      className="theme-color-button"
+                      style={{ backgroundColor: Color[2] }}
+                      onClick={() => onChangeColor(2)}
+                    ></button>
+                  )}
+                  {selectedColor === 3 ? (
+                    <button
+                      className="theme-color-button selected"
+                      style={{ backgroundColor: Color[3] }}
+                      onClick={() => onChangeColor(3)}
+                    ></button>
+                  ) : (
+                    <button
+                      className="theme-color-button"
+                      style={{ backgroundColor: Color[3] }}
+                      onClick={() => onChangeColor(3)}
+                    ></button>
+                  )}
+                  {selectedColor === 4 ? (
+                    <button
+                      className="theme-color-button selected"
+                      style={{ backgroundColor: Color[4] }}
+                      onClick={() => onChangeColor(4)}
+                    ></button>
+                  ) : (
+                    <button
+                      className="theme-color-button"
+                      style={{ backgroundColor: Color[4] }}
+                      onClick={() => onChangeColor(4)}
+                    ></button>
+                  )}
                 </div>
                 <div className="list-theme-color-row">
-                  <button
-                    className="theme-color-button"
-                    style={{ backgroundColor: "violet" }}
-                  ></button>
-                  <button
-                    className="theme-color-button"
-                    style={{ backgroundColor: "orange" }}
-                  ></button>
-                  <button
-                    className="theme-color-button"
-                    style={{ backgroundColor: "black" }}
-                  ></button>
-                  <button
-                    className="theme-color-button"
-                    style={{ backgroundColor: "grey" }}
-                  ></button>
+                  {selectedColor === 5 ? (
+                    <button
+                      className="theme-color-button selected"
+                      style={{ backgroundColor: Color[5] }}
+                      onClick={() => onChangeColor(5)}
+                    ></button>
+                  ) : (
+                    <button
+                      className="theme-color-button"
+                      style={{ backgroundColor: Color[5] }}
+                      onClick={() => onChangeColor(5)}
+                    ></button>
+                  )}
+                  {selectedColor === 6 ? (
+                    <button
+                      className="theme-color-button selected"
+                      style={{ backgroundColor: Color[6] }}
+                      onClick={() => onChangeColor(6)}
+                    ></button>
+                  ) : (
+                    <button
+                      className="theme-color-button"
+                      style={{ backgroundColor: Color[6] }}
+                      onClick={() => onChangeColor(6)}
+                    ></button>
+                  )}
+                  {selectedColor === 7 ? (
+                    <button
+                      className="theme-color-button selected"
+                      style={{ backgroundColor: Color[7] }}
+                      onClick={() => onChangeColor(7)}
+                    ></button>
+                  ) : (
+                    <button
+                      className="theme-color-button"
+                      style={{ backgroundColor: Color[7] }}
+                      onClick={() => onChangeColor(7)}
+                    ></button>
+                  )}
+                  {selectedColor === 8 ? (
+                    <button
+                      className="theme-color-button selected"
+                      style={{ backgroundColor: Color[8] }}
+                      onClick={() => onChangeColor(8)}
+                    ></button>
+                  ) : (
+                    <button
+                      className="theme-color-button"
+                      style={{ backgroundColor: Color[8] }}
+                      onClick={() => onChangeColor(8)}
+                    ></button>
+                  )}
                 </div>
               </div>
             </div>
