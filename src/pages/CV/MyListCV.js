@@ -6,6 +6,8 @@ import axios from "../../lib/axios";
 import { ToastContainer, toast } from "react-toastify";
 import AuthUser from "../../components/AuthUser";
 import moment from "moment";
+import { redirect } from "react-router-dom";
+import NewDefaultCv from "../../components/cv/NewDefaultCv";
 
 const MyListCv = () => {
   const [deleteCvs, setDeleteCvs] = useState([]);
@@ -21,6 +23,11 @@ const MyListCv = () => {
     };
     getListCvs();
   }, []);
+
+  // tao du lieu default
+  const handleNewDefaultCv = async (event) => {
+    NewDefaultCv(user.id)
+  };
 
   const handleCheckboxChange = (cvId) => {
     if (deleteCvs.includes(cvId)) {
@@ -74,9 +81,9 @@ const MyListCv = () => {
 
       <div className="jp_listing_single_main_wrapper">
         <div className="container">
-          <Link className="nav-link newJobBtn" to="/create-new-cv">
+          <button className="nav-link newJobBtn" onClick={handleNewDefaultCv}>
             Tao CV moi
-          </Link>
+          </button>
           <button onClick={handleDeleteSelected} className="deleteBtn">
             Delete All
           </button>

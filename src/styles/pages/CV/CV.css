@@ -137,6 +137,9 @@
 .top-toolbar .toolbar-item:hover {
     color: #23c0e9;
 }
+.top-toolbar .toolbar-item a:hover {
+    color: #23c0e9;
+}
 
 /* CSS CV part */
 .cv-ref {

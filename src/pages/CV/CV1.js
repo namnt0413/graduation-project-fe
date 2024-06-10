@@ -145,7 +145,7 @@ export default function CV1() {
     const addSubject = async (subjectId) => {
       await axios.post("/api/subject/create", {
           title: "Lorem ipsum",
-          c_v_id: 1,
+          c_v_id: params.id,
         })
         .then( async (response) => {
           const newSubject = response.data.subject;
@@ -314,7 +314,9 @@ export default function CV1() {
               </div>
               <div className="toolbar-item manage-cv">
                 <i className="fa-solid fa-id-badge toolbar-icon"></i>
-                Quản lý CV
+                <Link className="" to="/my-list-cv">
+                  Quản lý CV
+                </Link>
               </div>
               <ToolbarDropDown
                 isOpen={dropdownOpen}

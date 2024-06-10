@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import "../styles/components/Navbar.css";
 // import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import NewDefaultCv from "../components/cv/NewDefaultCv";
 
 const Navbar = () => {
   // const user = useSelector((state) => state.user.value);
@@ -21,6 +22,11 @@ const Navbar = () => {
       navigate("/");
     }
   };
+
+    // tao du lieu default
+    const handleNewDefaultCv = async (event) => {
+      NewDefaultCv(user.id)
+    };
 
   return (
     <>
@@ -73,7 +79,9 @@ const Navbar = () => {
                           </Link>
                           </li>
                           <li className="parent">
-                            <a href="">Tạo CV mới</a>
+                            <div className="create-new-cv"
+                              onClick={handleNewDefaultCv}
+                            >Tạo CV mới</div>
                           </li>
                         </ul>
                       </li>

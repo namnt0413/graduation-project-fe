@@ -806,3 +806,25 @@ li.user-info .dropdown-menu .dropdown-item:hover {
 .user-info .notification i {
     font-size: 25px;
 }
+
+.has-mega.gc_main_navigation .parent {
+	margin-left: 0;
+}
+
+.parent .create-new-cv {
+	color: #ffffff;
+	text-transform: capitalize;
+    letter-spacing: 1px;
+    padding: 8px 10px 8px 20px;
+    border-bottom: 1px solid #ffffff52;
+	display: block;
+    font-size: 14px;
+	text-decoration: none;
+	cursor: pointer;
+}
+.parent .create-new-cv:hover {
+	background-color: #23c0e9;
+    padding-left: 23px;
+    color: #ffffff !important;
+    transition: all 0.5s;
+}
