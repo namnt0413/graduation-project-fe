@@ -162,7 +162,6 @@
 
 .cv-background .cv-container .cv-content .basic-info {
     --bs-gutter-x: 0rem !important;
-    background: rgb(63, 89, 168);
     margin: 0;
     display: flex;
 }

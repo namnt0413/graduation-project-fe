@@ -12,7 +12,7 @@ import TextEditor from "../../components/TextEditor";
 import ToolbarDropDown from "../../components/dropdown/ToolbarDropdown";
 import Subject from "../../components/cv/Subject";
 import { useParams } from "react-router-dom";
-
+import { Color } from "../../const/color";
 
 export default function CV1() {
   const params = useParams()
@@ -32,7 +32,7 @@ export default function CV1() {
   const [phone, setPhone] = useState();
   const [birthday, setBirthday] = useState();
   const [subjects, setSubjects] = useState([]);
-
+  const [themeColor, setThemeColor] = useState();
 
   useEffect(() => {
     const getCV = async () => {
@@ -46,7 +46,7 @@ export default function CV1() {
       setPhone(cv.phone);
       setBirthday(cv.birthday);
       setSubjects(cv.subject);
-
+      setThemeColor(cv.theme_color)
       // Convert the offfset string to an array
       const fetchedOffsets = cv.offset.split(",");
       setOffsets(fetchedOffsets);
@@ -279,6 +279,13 @@ export default function CV1() {
     });
   };
 
+  const onChangeColor = async (data) => {
+    setThemeColor(data)
+    await axios.put(`/api/cv/update-theme-color/${params.id}`, {
+      theme_color: data,
+    });
+  }
+
   const Cv1Content = (
     <>
       <div className="jp_tittle_main_wrapper cv-section">
@@ -322,6 +329,8 @@ export default function CV1() {
                 isOpen={dropdownOpen}
                 onClose={handleDropdownClose}
                 dropdownType={dropdownType}
+                onChangeColor={onChangeColor}
+                selectedColor={themeColor}
               />
             </div>
             <div className="cv-title">
@@ -337,7 +346,9 @@ export default function CV1() {
 
             <div className="cv-ref" ref={cvRef} id="content">
               <div className="cv-content">
-                <div className="basic-info">
+                <div className="basic-info"
+                  style={{ backgroundColor: Color[themeColor] }}
+                >
                   <div className="info">
                     <div className="name-position">
                       {candidateName && (
