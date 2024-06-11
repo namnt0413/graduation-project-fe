@@ -107,9 +107,10 @@
 }
 
 .jp_job_post_right_cont p {
-    font-size: 14px;
+    font-size: 16px;
     color: #23c0e9;
     padding-top: 5px;
+    font-weight: 600;
 }
 
 .jp_job_post_right_cont li {
@@ -727,3 +728,51 @@ input[type="checkbox"]:checked+label:after {
 }
 
 /*-- jp listing sidebar Wrapper End --*/
+.search-button {
+    float: left;
+    width: 100%;
+    height: 50px;
+    border-radius: 15px;
+    background: #23c0e9;
+    color: #ffffff;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.5s;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+.search-button:hover { 
+    background: #ffffff;
+        color: #000000;
+        transition: all 0.5s;
+}
+
+.search-button i {
+    padding-right: 5px; 
+}
+
+.jp_listing_sidebar_main_wrapper {
+    padding-right: 60px;
+    padding-left: 60px;
+}
+
+.jobs-header {
+    padding: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.list-tabs {
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.job-title {
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold;
+}

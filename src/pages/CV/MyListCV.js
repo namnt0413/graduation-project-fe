@@ -71,7 +71,7 @@ const MyListCv = () => {
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div className="jp_tittle_heading_wrapper">
                 <div className="jp_tittle_heading">
-                  <h2>Danh sach CV da tao</h2>
+                  <h2>Danh sách CV đã tạo</h2>
                 </div>
               </div>
             </div>
@@ -82,18 +82,18 @@ const MyListCv = () => {
       <div className="jp_listing_single_main_wrapper">
         <div className="container">
           <button className="nav-link newJobBtn" onClick={handleNewDefaultCv}>
-            Tao CV moi
+            Tạo CV mới
           </button>
           <button onClick={handleDeleteSelected} className="deleteBtn">
-            Delete All
+            Xóa CV
           </button>
           <table className="table table-hover">
             <thead className="thead-dark">
               <tr>
                 <th scope="col">CV</th>
-                <th scope="col">Ngay tao</th>
-                <th scope="col">Trang thai tim viec</th>
-                <th scope="col">Delete</th>
+                <th scope="col">Ngày tạo</th>
+                <th scope="col">Trạng thái tìm việc</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>

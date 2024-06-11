@@ -1,6 +1,6 @@
 import "../../../styles/containers/HomeLeftContent/RecentJob.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "../../../lib/axios";
 import { NumericFormat } from "react-number-format";
 import UploadFile from "../../../components/files/UploadFile";
@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import AuthUser from "../../../components/AuthUser";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Pagination from "../../../components/Pagination";
 
 const RecentJob = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const RecentJob = () => {
   const [filename, setFilename] = useState("");
   const { getToken, getUser } = AuthUser();
   const [user,setUser] = useState(getUser());
-  const notify = () => toast("Apply successfully!!!");
+  const notify = () => toast.success("Apply successfully!!!");
 
   useEffect(() => {
     const getJobs = async () => {
@@ -46,10 +47,29 @@ const RecentJob = () => {
     window.open(url, '_self', 'noopener,noreferrer');
   };
 
+    // handle pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 8;
+    // Tính tổng số trang
+    const totalPages = Math.ceil(jobs.length / itemsPerPage);
+    // Tạo mảng chứa dữ liệu của trang hiện tại
+    const jobsSlices = jobs.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
+    // scroll to top
+    const topRef = useRef(null);
+    const handlePageChange = (page) => {
+      setCurrentPage(page);
+      if (topRef.current) {
+        topRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
   return (
     <>
       <ToastContainer  className="toast-position" />
-      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" ref={topRef}>
         <div className="cc_featured_product_main_wrapper">
           <div className="jp_hiring_heading_wrapper jp_job_post_heading_wrapper">
             <h2>Recent Jobs</h2>
@@ -86,126 +106,36 @@ const RecentJob = () => {
         <div className="tab-content">
           <div role="tabpanel" className="tab-pane fade in active" id="best">
             <div className="ss_featured_products">
-              <div className="item" data-hash="zero">
-                <div className="jp_job_post_main_wrapper_cont">
-                  <div className="jp_job_post_main_wrapper">
-                    <div className="row">
-                      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <div className="jp_job_post_side_img">
-                          <img
-                            src="images/content/job_post_img1.jpg"
-                            alt="post_img"
-                          />
-                        </div>
-                        <div className="jp_job_post_right_cont">
-                          <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                          <p>Webstrot Technology Pvt. Ltd.</p>
-                          <ul>
-                            <li>
-                              <i className="fa fa-cc-paypal"></i>&nbsp; $12K -
-                              15k P.A.
-                            </li>
-                            <li>
-                              <i className="fa fa-map-marker"></i>&nbsp;
-                              Caliphonia, PO 455001
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div className="jp_job_post_right_btn_wrapper">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <i className="fa fa-heart-o"></i>
-                              </a>
-                            </li>
-
-                            <li>
-                              <a href="#">Ứng tuyển</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
-                  <div className="jp_job_post_main_wrapper">
-                    <div className="row">
-                      <div className="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <div className="jp_job_post_side_img">
-                          <img
-                            src="images/content/job_post_img2.jpg"
-                            alt="post_img"
-                          />
-                        </div>
-                        <div className="jp_job_post_right_cont">
-                          <h4>HTML Developer (1 - 2 Yrs Exp.)</h4>
-                          <p>Webstrot Technology Pvt. Ltd.</p>
-                          <ul>
-                            <li>
-                              <i className="fa fa-cc-paypal"></i>&nbsp; $12K -
-                              15k P.A.
-                            </li>
-                            <li>
-                              <i className="fa fa-map-marker"></i>&nbsp;
-                              Caliphonia, PO 455001
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div className="jp_job_post_right_btn_wrapper">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <i className="fa fa-heart-o"></i>
-                              </a>
-                            </li>
-
-                            <li>
-                              <a href="#">Ứng tuyển</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {jobs.map((job, index) => (
+                {jobsSlices.map((jobsSlice, index) => (
                   <div className="jp_job_post_main_wrapper_cont jp_job_post_main_wrapper_cont2">
                     <div className="jp_job_post_main_wrapper">
                       <div className="row">
                         <div
                           className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
-                          // onClick={() => {
-                          //   navigate(`/job/${job.id}`);
-                          // }}
-                          onClick={() => openInNewTab(`/job/${job.id}`)}
+                          onClick={() => openInNewTab(`/job/${jobsSlice.id}`)}
                         >
                           <div className="jp_job_post_side_img">
-                            <img src={job.company.avatar_url} alt="post_img" />
+                            <img src={jobsSlice.company.avatar_url} alt="post_img" />
                           </div>
                           <div className="jp_job_post_right_cont">
-                            <h4>{job.title}</h4>
-                            <p>{job.company.name}</p>
+                            <h4>{jobsSlice.title}</h4>
+                            <p>{jobsSlice.company.name}</p>
                             <ul>
                               <li>
                                 <i className="fa fa-money"></i>&nbsp;
                                 <NumericFormat
                                   className="currency"
-                                  value={job.salary}
+                                  value={jobsSlice.salary}
                                   displayType="text"
                                   thousandSeparator={true}
                                   suffix="đ"
                                 />
-                                {job.max_salary!=null &&
+                                {jobsSlice.max_salary!=null &&
                                   <>
                                   &nbsp; - &nbsp;
                                   <NumericFormat
                                     className="currency"
-                                    value={job.max_salary}
+                                    value={jobsSlice.max_salary}
                                     displayType="text"
                                     thousandSeparator={true}
                                     suffix="đ"
@@ -215,7 +145,7 @@ const RecentJob = () => {
                               </li>
                               <li>
                                 <i className="fa fa-map-marker"></i>&nbsp;
-                                {job.city.name}
+                                {jobsSlice.city.name}
                               </li>
                             </ul>
                           </div>
@@ -231,11 +161,11 @@ const RecentJob = () => {
                               <li className="upload_btn">
                                 <UploadFile
                                   onUpload={getFilename}
-                                  jobId={job.id}
+                                  jobId={jobsSlice.id}
                                 />
                               </li>
                               <li>
-                                <button onClick={() => apply(job.id)}>
+                                <button onClick={() => apply(jobsSlice.id)}>
                                   Ứng tuyển
                                 </button>
                               </li>
@@ -249,31 +179,12 @@ const RecentJob = () => {
               </div>
             </div>
             {/* pagination */}
-            <div className="video_nav_img_wrapper">
-              <div className="video_nav_img">
-                <ul>
-                  <li>
-                    <a className="button secondary url owl_nav" href="#zero">
-                      1
-                    </a>
-                  </li>
-                  <li>
-                    <a className="button secondary url owl_nav" href="#one">
-                      2
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="button secondary url owl_nav active"
-                      href="#two"
-                    >
-                      3
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+
         </div>
       </div>
     </>

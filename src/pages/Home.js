@@ -8,10 +8,10 @@ import Pricing from "../containers/Home/Pricing";
 const Home = () => {
   const HomeContent = (
     <>
-      <TrendingJob />
+      {/* <TrendingJob /> */}
       <HomeMainContent />
-      <Statistic />
-      <Pricing />
+      {/* <Statistic /> */}
+      {/* <Pricing /> */}
     </>
   );
 
