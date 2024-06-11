@@ -753,3 +753,19 @@ input[type="checkbox"]:checked+label:after {
     padding-right: 5px; 
 }
 
+.jp_listing_sidebar_main_wrapper {
+    padding-right: 60px;
+    padding-left: 60px;
+}
+
+.jobs-header {
+    padding: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.list-tabs {
+    margin: 20px 0;
+    padding: 10px;
+}
