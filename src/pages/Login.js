@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import "../styles/pages/Login.css";
 import { useDispatch } from "react-redux";
 import { setUser } from "../slices/user";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Login() {
   const { http, setToken } = AuthUser();
@@ -15,6 +17,7 @@ export default function Login() {
   const [companyEmail, setCompanyEmail] = useState();
   const [companyPassword, setCompanyPassword] = useState();
   const dispatch = useDispatch();
+  const notifyFailed = () => toast.error("Đăng nhập thất bại");
 
   const submitForm = async () => {
     // call api login
@@ -28,6 +31,7 @@ export default function Login() {
         });
     } catch (error) {
       console.log(error);
+      notifyFailed()
     }
   };
 
@@ -42,11 +46,13 @@ export default function Login() {
         });
     } catch (error) {
       console.log(error);
+      notifyFailed()
     }
   };
 
   return (
     <>
+      <ToastContainer  className="toast-position" />
       <div className="login_section">
         <div className="login_form_wrapper">
           <div className="container">

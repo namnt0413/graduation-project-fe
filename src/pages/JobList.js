@@ -1,20 +1,16 @@
 import Layout from "../layouts/Layout";
 import "../styles/pages/JobList.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "../lib/axios";
 import AuthUser from "../components/AuthUser";
 import Select from "react-select";
 import { Salary } from "../const/salary";
 import { NumericFormat } from "react-number-format";
+import Pagination from "../components/Pagination";
 
 const JobList = () => {
   const { getToken, getUser } = AuthUser();
   const [user, setUser] = useState(getUser());
-
-  const [position, setPosition] = useState(null);
-  const [title, setTitle] = useState("");
-  const [positions, setPositions] = useState([]);
-
   const [recommendJobs, setRecommendJobs] = useState([]);
   const [categories, setCategories] = useState([]);
   const [cities, setCities] = useState([]);
@@ -92,15 +88,34 @@ const JobList = () => {
     window.open(url, "_self", "noopener,noreferrer");
   };
 
+  // handle pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  // Tính tổng số trang
+  const totalPages = Math.ceil(recommendJobs.length / itemsPerPage);
+  // Tạo mảng chứa dữ liệu của trang hiện tại
+  const recommendJobsSlices = recommendJobs.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  // scroll to top
+  const topRef = useRef(null);
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const JobListContent = (
     <>
-      <div className="jp_listing_sidebar_main_wrapper container">
+      <div className="jp_listing_sidebar_main_wrapper container" ref={topRef}>
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 hidden-sm hidden-xs">
           <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="jp_rightside_job_categories_wrapper jp_job_location_wrapper">
                 <div class="jp_rightside_job_categories_heading">
-                  <h4>Cpmpanies by Location</h4>
+                  <h4>Jobs by Location</h4>
                 </div>
                 <div class="jp_rightside_job_categories_content">
                   <div class="handyman_sec1_wrapper">
@@ -378,96 +393,96 @@ const JobList = () => {
                     <div id="grid" className="tab-pane fade in active">
                       <div className="row">
                         {/* grid jobs */}
-                        {recommendJobs.map((recommendJob, index) => (
-                          <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                              <div className="jp_job_post_main_wrapper jp_job_post_grid_main_wrapper">
-                                <div className="row">
-                                  <div
-                                    className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                                    onClick={() =>
-                                      openInNewTab(`/job/${recommendJob.id}`)
-                                    }
-                                  >
-                                    <div className="jp_job_post_side_img">
-                                      <img
-                                        src={recommendJob.company.avatar_url}
-                                        alt="post_img"
-                                      />
+                        {recommendJobsSlices.map(
+                          (recommendJobsSlice, index) => (
+                            <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
+                                <div className="jp_job_post_main_wrapper jp_job_post_grid_main_wrapper">
+                                  <div className="row">
+                                    <div
+                                      className="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                                      onClick={() =>
+                                        openInNewTab(
+                                          `/job/${recommendJobsSlice.id}`
+                                        )
+                                      }
+                                    >
+                                      <div className="jp_job_post_side_img">
+                                        <img
+                                          src={
+                                            recommendJobsSlice.company
+                                              .avatar_url
+                                          }
+                                          alt="post_img"
+                                        />
+                                      </div>
+                                      <div className="jp_job_post_right_cont jp_job_post_grid_right_cont">
+                                        <div className="job-title">
+                                          {recommendJobsSlice.title}
+                                        </div>
+                                        <p className="company-name">
+                                          {recommendJobsSlice.company.name}
+                                        </p>
+                                        <ul>
+                                          <li>
+                                            <i className="fa fa-money"></i>
+                                            &nbsp;
+                                            <NumericFormat
+                                              className="currency"
+                                              value={recommendJobsSlice.salary}
+                                              displayType="text"
+                                              thousandSeparator={true}
+                                              suffix="đ"
+                                            />
+                                            {recommendJobsSlice.max_salary !=
+                                              null && (
+                                              <>
+                                                &nbsp; - &nbsp;
+                                                <NumericFormat
+                                                  className="currency"
+                                                  value={
+                                                    recommendJobsSlice.max_salary
+                                                  }
+                                                  displayType="text"
+                                                  thousandSeparator={true}
+                                                  suffix="đ"
+                                                />
+                                              </>
+                                            )}
+                                          </li>
+                                        </ul>
+                                      </div>
                                     </div>
-                                    <div className="jp_job_post_right_cont jp_job_post_grid_right_cont">
-                                      <h4>{recommendJob.title}</h4>
-                                      <p>{recommendJob.company.name}</p>
-                                      <ul>
-                                        <li>
-                                          <i className="fa fa-money"></i>&nbsp;
-                                          <NumericFormat
-                                            className="currency"
-                                            value={recommendJob.salary}
-                                            displayType="text"
-                                            thousandSeparator={true}
-                                            suffix="đ"
-                                          />
-                                          {recommendJob.max_salary != null && (
-                                            <>
-                                              &nbsp; - &nbsp;
-                                              <NumericFormat
-                                                className="currency"
-                                                value={recommendJob.max_salary}
-                                                displayType="text"
-                                                thousandSeparator={true}
-                                                suffix="đ"
-                                              />
-                                            </>
-                                          )}
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                  <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div className="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper">
-                                      <ul>
-                                        <li>
-                                          <a href="#">
-                                            <i className="fa fa-heart-o"></i>
-                                          </a>
-                                        </li>
+                                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                      <div className="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper">
+                                        <ul>
+                                          <li>
+                                            <a href="#">
+                                              <i className="fa fa-heart-o"></i>
+                                            </a>
+                                          </li>
 
-                                        <li>
-                                          <a href="#">Apply</a>
-                                        </li>
-                                      </ul>
+                                          <li>
+                                            <a href="#">Ứng tuyển</a>
+                                          </li>
+                                        </ul>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        ))}
+                          )
+                        )}
 
                         {/* pagination */}
                         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                           <div className="pager_wrapper gc_blog_pagination">
-                            <ul className="pagination">
-                              <li>
-                                <a href="#">Priv.</a>
-                              </li>
-                              <li>
-                                <a href="#">1</a>
-                              </li>
-                              <li>
-                                <a href="#">2</a>
-                              </li>
-                              <li>
-                                <a href="#">3</a>
-                              </li>
-                              <li className="hidden-xs">
-                                <a href="#">4</a>
-                              </li>
-                              <li>
-                                <a href="#">Next</a>
-                              </li>
-                            </ul>
+                            <Pagination
+                              currentPage={currentPage}
+                              totalPages={totalPages}
+                              onPageChange={handlePageChange}
+                            />
                           </div>
                         </div>
                       </div>
@@ -476,100 +491,107 @@ const JobList = () => {
                     <div id="list" className="tab-pane fade">
                       <div className="row">
                         {/* row jobs */}
-                        {recommendJobs.map((recommendJob, index) => (
-                          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
-                              <div className="jp_job_post_main_wrapper">
-                                <div className="row">
-                                  <div
-                                    className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
-                                    onClick={() =>
-                                      openInNewTab(`/job/${recommendJob.id}`)
-                                    }
-                                  >
-                                    <div className="jp_job_post_side_img">
-                                      <img
-                                        src={recommendJob.company.avatar_url}
-                                        alt="post_img"
-                                      />
+                        {recommendJobsSlices.map(
+                          (recommendJobsSlice, index) => (
+                            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <div className="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont">
+                                <div className="jp_job_post_main_wrapper">
+                                  <div className="row">
+                                    <div
+                                      className="col-lg-8 col-md-8 col-sm-8 col-xs-12"
+                                      onClick={() =>
+                                        openInNewTab(
+                                          `/job/${recommendJobsSlice.id}`
+                                        )
+                                      }
+                                    >
+                                      <div className="jp_job_post_side_img">
+                                        <img
+                                          src={
+                                            recommendJobsSlice.company
+                                              .avatar_url
+                                          }
+                                          alt="post_img"
+                                        />
+                                      </div>
+                                      <div className="jp_job_post_right_cont">
+                                        <h3>{recommendJobsSlice.title}</h3>
+                                        <p>{recommendJobsSlice.company.name}</p>
+                                        <ul>
+                                          <li>
+                                            <i className="fa fa-money"></i>
+                                            &nbsp;
+                                            <NumericFormat
+                                              className="currency"
+                                              value={recommendJobsSlice.salary}
+                                              displayType="text"
+                                              thousandSeparator={true}
+                                              suffix="đ"
+                                            />
+                                            {recommendJobsSlice.max_salary !=
+                                              null && (
+                                              <>
+                                                &nbsp; - &nbsp;
+                                                <NumericFormat
+                                                  className="currency"
+                                                  value={
+                                                    recommendJobsSlice.max_salary
+                                                  }
+                                                  displayType="text"
+                                                  thousandSeparator={true}
+                                                  suffix="đ"
+                                                />
+                                              </>
+                                            )}
+                                          </li>
+                                          <li>
+                                            <i className="fa fa-map-marker"></i>
+                                            &nbsp;{" "}
+                                            {recommendJobsSlice.city.name}
+                                          </li>
+                                          <li>
+                                            <i class="fa-solid fa-business-time"></i>
+                                            &nbsp;Còn{" "}
+                                            <b>
+                                              {
+                                                recommendJobsSlice.remaining_date
+                                              }
+                                            </b>{" "}
+                                            ngày để ứng tuyển
+                                          </li>
+                                        </ul>
+                                      </div>
                                     </div>
-                                    <div className="jp_job_post_right_cont">
-                                      <h4>{recommendJob.title}</h4>
-                                      <p>{recommendJob.company.name}</p>
-                                      <ul>
-                                        <li>
-                                          <i className="fa fa-money"></i>&nbsp;
-                                          <NumericFormat
-                                            className="currency"
-                                            value={recommendJob.salary}
-                                            displayType="text"
-                                            thousandSeparator={true}
-                                            suffix="đ"
-                                          />
-                                          {recommendJob.max_salary != null && (
-                                            <>
-                                              &nbsp; - &nbsp;
-                                              <NumericFormat
-                                                className="currency"
-                                                value={recommendJob.max_salary}
-                                                displayType="text"
-                                                thousandSeparator={true}
-                                                suffix="đ"
-                                              />
-                                            </>
-                                          )}
-                                        </li>
-                                        <li>
-                                          <i className="fa fa-map-marker"></i>
-                                          &nbsp; {recommendJob.city.name}
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                  <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div className="jp_job_post_right_btn_wrapper">
-                                      <ul>
-                                        <li>
-                                          <a href="#">
-                                            <i className="fa fa-heart-o"></i>
-                                          </a>
-                                        </li>
+                                    <div className="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                      <div className="jp_job_post_right_btn_wrapper">
+                                        <ul>
+                                          <li>
+                                            <a href="#">
+                                              <i className="fa fa-heart-o"></i>
+                                            </a>
+                                          </li>
 
-                                        <li>
-                                          <a href="#">Apply</a>
-                                        </li>
-                                      </ul>
+                                          <li>
+                                            <a href="#">Ứng tuyển</a>
+                                          </li>
+                                        </ul>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        ))}
+                          )
+                        )}
 
                         {/* pagination */}
                         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                           <div className="pager_wrapper gc_blog_pagination">
-                            <ul className="pagination">
-                              <li>
-                                <a href="#">Priv.</a>
-                              </li>
-                              <li>
-                                <a href="#">1</a>
-                              </li>
-                              <li>
-                                <a href="#">2</a>
-                              </li>
-                              <li>
-                                <a href="#">3</a>
-                              </li>
-                              <li className="hidden-xs">
-                                <a href="#">4</a>
-                              </li>
-                              <li>
-                                <a href="#">Next</a>
-                              </li>
-                            </ul>
+                            <Pagination
+                              currentPage={currentPage}
+                              totalPages={totalPages}
+                              onPageChange={handlePageChange}
+                            />
                           </div>
                         </div>
                       </div>

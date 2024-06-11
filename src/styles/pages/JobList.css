@@ -107,9 +107,10 @@
 }
 
 .jp_job_post_right_cont p {
-    font-size: 14px;
+    font-size: 16px;
     color: #23c0e9;
     padding-top: 5px;
+    font-weight: 600;
 }
 
 .jp_job_post_right_cont li {
@@ -768,4 +769,10 @@ input[type="checkbox"]:checked+label:after {
 .list-tabs {
     margin: 20px 0;
     padding: 10px;
+}
+
+.job-title {
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold;
 }
