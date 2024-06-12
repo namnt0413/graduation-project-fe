@@ -73,7 +73,7 @@ const UploadFile = (props) => {
               style={{display: "none"}}
             />
             <label htmlFor={"CV"+props.jobId} className="upload-pdf-btn">
-                <UploadOutlined /> Tai file len
+              <i class="fa-solid fa-cloud-arrow-up"></i> Chọn CV
             </label>
         </div>
 
