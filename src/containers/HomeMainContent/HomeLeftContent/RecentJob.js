@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import axios from "../../../lib/axios";
 import { NumericFormat } from "react-number-format";
-import UploadFile from "../../../components/files/UploadFile";
-import { useSelector } from "react-redux";
 import AuthUser from "../../../components/AuthUser";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,10 +24,6 @@ const RecentJob = () => {
     };
     getJobs();
   }, []);
-
-  const apply = async (job_id) => {
-
-  }
 
   const openInNewTab = url => {
     window.open(url, '_self', 'noopener,noreferrer');
