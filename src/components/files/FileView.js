@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from "./Button";
-import { Modal } from "./Modal";
+import { ModalPdf } from "./ModalPdf";
 import {getDownloadURL, ref} from 'firebase/storage'
 import { storage } from '../../firebase';
 
@@ -20,7 +20,7 @@ const  FileView = (props) => {
     <div className="view-cv">
       <Button setModal={setModal}/>
       {modal===true&&(
-        <Modal setModal={setModal} resume={resume}/>
+        <ModalPdf setModal={setModal} resume={resume}/>
       )}
     </div>
   );

@@ -15,11 +15,14 @@ import { useParams } from "react-router-dom";
 import { Color } from "../../const/color";
 import { storage } from '../../firebase'; // Import cấu hình Firebase
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CV1() {
   const params = useParams()
   const { http, setToken } = AuthUser();
   const [password, setPassword] = useState();
+  const notifySuccess = () => toast.success("Lưu CV thành công");
 
   // handle create default data
 
@@ -340,6 +343,7 @@ export default function CV1() {
         // Hoàn thành tải lên thành công
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log('File available at', downloadURL);
+          notifySuccess()
         });
       }
     );
@@ -354,6 +358,7 @@ export default function CV1() {
 
   const Cv1Content = (
     <>
+      <ToastContainer  className="toast-position" />
       <div className="jp_tittle_main_wrapper cv-section">
         <div className="cv-background">
           <div className="cv-container">

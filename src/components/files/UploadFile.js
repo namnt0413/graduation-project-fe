@@ -63,8 +63,8 @@ const UploadFile = (props) => {
 
   return (
     <div className="upload-container">
-      <div className="offset-lg-2" style={{display: "flex"}}>
-        <div className="mt-5">
+      <div className="offset-lg-2" style={{display: "flex", margin: "15px 0"}}>
+        <div className="mt-5 col-md-6">
             <Input
               id={"CV" + props.jobId}
               type="file"
@@ -72,12 +72,12 @@ const UploadFile = (props) => {
               onChange={(files) => handleSelectedFile(files.target.files)}
               style={{display: "none"}}
             />
-            <label htmlFor={"CV"+props.jobId} className="btn" style={{ padding: '5px', background: "#333", color: "#ddd", borderRadius:"10px", cursor:"pointer"}}>
-                <UploadOutlined />
+            <label htmlFor={"CV"+props.jobId} className="upload-pdf-btn">
+                <UploadOutlined /> Tai file len
             </label>
         </div>
 
-        <div className="mt-5">
+        <div className="mt-5 col-md-6">
           <Card  bodyStyle={{ padding: "0 10px" }}>
             {file && (
               <>

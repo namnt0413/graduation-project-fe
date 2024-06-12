@@ -18,3 +18,18 @@ button.ant-btn-icon-only {
 .ant-progress {
     padding: 5px;
 }
+
+.upload-pdf-btn {
+    border-radius: 10px;
+    padding: 25px;
+    cursor: pointer;
+    color: #23c0e9;
+    font-size: 18px;
+    border: 1px dashed #23c0e9;
+    font-weight: 600;
+}
+.upload-pdf-btn:hover {
+    background-color: #23c0e9;
+    color: white;
+    transition: background-color .25s linear;
+}

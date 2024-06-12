@@ -8,9 +8,9 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
-import styles from './Modal.css'
+import styles from './ModalPdf.css'
 
-export const Modal = ({setModal, resume}) => {
+export const ModalPdf = ({setModal, resume}) => {
 
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 

@@ -1,0 +1,84 @@
+/* src/JobApplicationModal.css */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11000;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    position: relative;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .modal-body {
+    margin-top: 20px;
+  }
+  
+  .application-option {
+    border: 1px dashed rgba(161, 161, 161, 0.5);
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .application-option.selected {
+    border-color: #21a8ca;
+    border: 2px solid #21a8ca;
+  }
+  
+  .cv-selection {
+    margin-top: 10px;
+  }
+  
+  .cv-item {
+    padding: 5px;
+    cursor: pointer;
+    font-weight: 550;
+  }
+  
+  .cv-item.selected {
+    background-color: lightgray;
+  }
+  
+  .file-input {
+    margin-top: 10px;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .modal-footer button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
