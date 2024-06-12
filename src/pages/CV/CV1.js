@@ -13,11 +13,16 @@ import ToolbarDropDown from "../../components/dropdown/ToolbarDropdown";
 import Subject from "../../components/cv/Subject";
 import { useParams } from "react-router-dom";
 import { Color } from "../../const/color";
+import { storage } from '../../firebase'; // Import cấu hình Firebase
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CV1() {
   const params = useParams()
   const { http, setToken } = AuthUser();
   const [password, setPassword] = useState();
+  const notifySuccess = () => toast.success("Lưu CV thành công");
 
   // handle create default data
 
@@ -279,6 +284,71 @@ export default function CV1() {
     });
   };
 
+  // handle save cv to firebase
+  const generatePDF = async () => {
+    const element = cvRef.current;
+
+    // Tạo canvas từ nội dung CV
+    const canvas = await html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+    });
+    const imgData = canvas.toDataURL('image/jpeg', 0.8);
+
+    // Tạo file PDF từ canvas
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+    const imgProps = pdf.getImageProperties(imgData);
+    const imgHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    let heightLeft = imgHeight;
+    let position = 0;
+
+    pdf.addImage(imgData, 'JPEG', 0, position, pdfWidth, imgHeight, null, 'FAST');
+    heightLeft -= pdfHeight;
+
+    while (heightLeft >= 0) {
+      position = heightLeft - imgHeight;
+      pdf.addPage();
+      pdf.addImage(imgData, 'JPEG', 0, position, pdfWidth, imgHeight, null, 'FAST');
+      heightLeft -= pdfHeight;
+    }
+
+    return pdf;
+  };
+
+  const handleSave = async () => {
+    const pdf = await generatePDF();
+    const pdfBlob = pdf.output('blob');
+    const pdfTitle = title + '.pdf'; // Tên file PDF
+
+    // Tạo tham chiếu đến vị trí lưu trữ trên Firebase
+    const storageRef = ref(storage, `CV/${pdfTitle}`);
+    
+    // Tải file PDF lên Firebase Storage
+    const uploadTask = uploadBytesResumable(storageRef, pdfBlob);
+
+    uploadTask.on('state_changed', 
+      (snapshot) => {
+        // Quan sát trạng thái tải lên
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+      }, 
+      (error) => {
+        // Xử lý lỗi nếu có
+        console.error('Error uploading file:', error);
+      }, 
+      () => {
+        // Hoàn thành tải lên thành công
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log('File available at', downloadURL);
+          notifySuccess()
+        });
+      }
+    );
+  }
+  
   const onChangeColor = async (data) => {
     setThemeColor(data)
     await axios.put(`/api/cv/update-theme-color/${params.id}`, {
@@ -288,6 +358,7 @@ export default function CV1() {
 
   const Cv1Content = (
     <>
+      <ToastContainer  className="toast-position" />
       <div className="jp_tittle_main_wrapper cv-section">
         <div className="cv-background">
           <div className="cv-container">
@@ -325,6 +396,13 @@ export default function CV1() {
                   Quản lý CV
                 </Link>
               </div>
+              <div
+                className="toolbar-item template"
+              >
+                <i class="fa-solid fa-floppy-disk toolbar-icon"></i>
+                <button onClick={handleSave}>Lưu</button>
+              </div>
+
               <ToolbarDropDown
                 isOpen={dropdownOpen}
                 onClose={handleDropdownClose}

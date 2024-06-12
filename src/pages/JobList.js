@@ -7,6 +7,9 @@ import Select from "react-select";
 import { Salary } from "../const/salary";
 import { NumericFormat } from "react-number-format";
 import Pagination from "../components/Pagination";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Modal from "../components/apply/Modal";  
 
 const JobList = () => {
   const { getToken, getUser } = AuthUser();
@@ -19,6 +22,8 @@ const JobList = () => {
   const [exp, setExp] = useState();
   const [category, setCategory] = useState();
   const [salary, setSalary] = useState();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedJob, setSelectedJob] = useState(null);
 
   useEffect(() => {
     const getExps = async () => {
@@ -107,8 +112,25 @@ const JobList = () => {
     }
   };
 
+  // handle modal
+  const openModal = (selectedJob) => {
+    setSelectedJob(selectedJob);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedJob(null);
+  };
+
   const JobListContent = (
     <>
+      <ToastContainer  className="toast-position" />
+      <Modal 
+        show={showModal} 
+        onClose={closeModal} 
+        selectedJob={selectedJob} 
+      />
       <div className="jp_listing_sidebar_main_wrapper container" ref={topRef}>
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 hidden-sm hidden-xs">
           <div class="row">
@@ -292,7 +314,7 @@ const JobList = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <div className="col-lg-9 col-md-5 col-sm-5 col-xs-12">
                   <div className="gc_causes_search_box_wrapper gc_causes_search_box_wrapper2">
                     <div className="gc_causes_search_box jobs-header">
                       Danh sách công việc HOT
@@ -463,7 +485,9 @@ const JobList = () => {
                                           </li>
 
                                           <li>
-                                            <a href="#">Ứng tuyển</a>
+                                            <button onClick={() => openModal(recommendJobsSlice)}>
+                                              Ứng tuyển
+                                            </button>
                                           </li>
                                         </ul>
                                       </div>
@@ -572,7 +596,9 @@ const JobList = () => {
                                           </li>
 
                                           <li>
-                                            <a href="#">Ứng tuyển</a>
+                                            <button onClick={() => openModal(recommendJobsSlice)}>
+                                              Ứng tuyển
+                                            </button>
                                           </li>
                                         </ul>
                                       </div>

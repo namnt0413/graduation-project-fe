@@ -3,20 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import axios from "../../../lib/axios";
 import { NumericFormat } from "react-number-format";
-import UploadFile from "../../../components/files/UploadFile";
-import { useSelector } from "react-redux";
 import AuthUser from "../../../components/AuthUser";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Pagination from "../../../components/Pagination";
+import Modal from "../../../components/apply/Modal";  
 
 const RecentJob = () => {
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
-  const [filename, setFilename] = useState("");
   const { getToken, getUser } = AuthUser();
   const [user,setUser] = useState(getUser());
-  const notify = () => toast.success("Apply successfully!!!");
+  const [showModal, setShowModal] = useState(false);
+  const [selectedJob, setSelectedJob] = useState(null);
 
   useEffect(() => {
     const getJobs = async () => {
@@ -25,23 +24,6 @@ const RecentJob = () => {
     };
     getJobs();
   }, []);
-  console.log(jobs);
-
-  const getFilename = (data) => {
-    setFilename(data);
-  };
-
-  const apply = async (job_id) => {
-    axios.defaults.withCredentials = true;
-    const res = await axios.post('/api/apply/create', { user_id: user.id, job_id: job_id, file_url: filename ,date: '2024-06-08 22:57:03' }, {
-        xsrfHeaderName: "X-XSRF-TOKEN",
-        withCredentials: true
-    }).then(async => {
-        // setApplyBtn('Applied')
-        console.log("Apply OK")
-        notify()
-    })
-  }
 
   const openInNewTab = url => {
     window.open(url, '_self', 'noopener,noreferrer');
@@ -66,9 +48,25 @@ const RecentJob = () => {
       }
     };
 
+    // handle modal
+    const openModal = (selectedJob) => {
+      setSelectedJob(selectedJob);
+      setShowModal(true);
+    };
+  
+    const closeModal = () => {
+      setShowModal(false);
+      setSelectedJob(null);
+    };
+
   return (
     <>
       <ToastContainer  className="toast-position" />
+      <Modal 
+        show={showModal} 
+        onClose={closeModal} 
+        selectedJob={selectedJob} 
+      />
       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" ref={topRef}>
         <div className="cc_featured_product_main_wrapper">
           <div className="jp_hiring_heading_wrapper jp_job_post_heading_wrapper">
@@ -158,14 +156,8 @@ const RecentJob = () => {
                                   <i className="fa fa-heart-o"></i>
                                 </a>
                               </li>
-                              <li className="upload_btn">
-                                <UploadFile
-                                  onUpload={getFilename}
-                                  jobId={jobsSlice.id}
-                                />
-                              </li>
                               <li>
-                                <button onClick={() => apply(jobsSlice.id)}>
+                                <button onClick={() => openModal(jobsSlice)}>
                                   Ứng tuyển
                                 </button>
                               </li>
