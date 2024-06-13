@@ -5,8 +5,9 @@ import CreateNewCV from "../pages/CV/MyListCV";
 import MyListCV from "../pages/CV/MyListCV";
 import TestCV from "../pages/CV/TestCV";
 import Home from '../pages/Home';
-import CompanyPostJob from '../pages/CompanyPostJob'
-import CompanyListJob from '../pages/CompanyListJob'
+import CompanyPostJob from '../pages/CompanyPostJob';
+import CompanyListJob from '../pages/CompanyListJob';
+import CompanyAppliedByJob from '../pages/CompanyAppliedByJob';
 
 const PrivateRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const PrivateRoutes = () => {
 
       <Route path="/company-post-job" element={<CompanyPostJob />} />
       <Route path="/company-list-job" element={<CompanyListJob />} />
+      <Route path="/applied-by-job/:id" element={<CompanyAppliedByJob />} />
       <Route path="*" element={null} />
     </Routes>
   );

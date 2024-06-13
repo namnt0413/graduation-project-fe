@@ -2,7 +2,8 @@ import CompanyLayout from "../layouts/CompanyLayout";
 import axios from "../api/axios";
 import FileView from "../components/files/FileView";
 import AuthCompany from "../components/AuthCompany";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Pagination from "../components/Pagination";
 
 const CompanyHome = () => {
   const { getCompany } = AuthCompany();
@@ -30,14 +31,31 @@ const CompanyHome = () => {
   }, []);
   console.log(candidates);
 
+  // handle pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  // Tính tổng số trang
+  const totalPages = Math.ceil(applies.length / itemsPerPage);
+  // Tạo mảng chứa dữ liệu của trang hiện tại
+  const applySlices = applies.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  // scroll to top
+  const topRef = useRef(null);
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const CompanyHomeContent = (
     <>
-      {/* <div>Posted Job</div> */}
-      {/* <div>Outstanding Candidate</div> */}
-      <div style={{ marginBottom: 200, marginRight: 100, marginLeft: 100 }}>
-        <div className="p-6 bg-white border-b border-gray-200">
-          <h3 className="font-semibold text-xl text-gray-800 leading-tight" style={{fontSize: 30, marginBottom: 20}}>
-            Applied List
+      <div className="company-home-container" style={{ margin: "0px 100px" }}>
+        <div className="list-applied p-6 bg-white border-b border-gray-200" ref={topRef}>
+          <h3 className="font-semibold text-xl text-gray-800 leading-tight" style={{ fontSize: 30, marginBottom: 20 }}>
+          <i class="fa-solid fa-user-tie"></i>  &nbsp;&nbsp;Danh sách ứng tuyển
           </h3>
         </div>
         <table className="table">
@@ -50,18 +68,30 @@ const CompanyHome = () => {
             </tr>
           </thead>
           <tbody>
-            {applies.map((apply, index) => (
+            {applySlices.map((applySlice, index) => (
               <tr>
-                <td>{apply.user.name}</td>
-                <td>{apply.job.title}</td>
-                <td>{apply.date}</td>
+                <td>{applySlice.user.name}</td>
+                <td>{applySlice.job.title}</td>
+                <td>{applySlice.date}</td>
                 <td>
-                  {apply.file_url && <FileView fileName={apply.file_url} />}
+                  {applySlice.file_url && <FileView fileName={applySlice.file_url} />}
                 </td>
               </tr>
             ))}
           </tbody>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </table>
+
+        <div className="list-interview" style={{ margin: "50px 0" }}>
+          <h3 className="font-semibold text-xl text-gray-800 leading-tight" style={{ fontSize: 30, marginBottom: 20 }}>
+            <i class="fa-solid fa-calendar-days"></i> &nbsp;&nbsp;Lịch hẹn phỏng vấn
+          </h3>
+        </div>
+
       </div>
     </>
   );
