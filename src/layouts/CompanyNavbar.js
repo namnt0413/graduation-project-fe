@@ -49,36 +49,36 @@ const CompanyNavbar = () => {
                     <li className="has-mega gc_main_navigation">
                       <a href="#" className="gc_main_navigation">
                         {" "}
-                        Job Manage&nbsp;<i className="fa fa-angle-down"></i>
+                        Quảng lý công việc&nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
                         <li className="parent">
                         <Link className="nav-link" to="/company-post-job">
-                          Create a new job
+                          Tạo bài đăng công việc mới
                         </Link>
                         </li>
                         <li className="parent">
                           <Link className="nav-link" to="/company-list-job">
-                            Posted jobs
+                            Công việc đã đăng
                           </Link>
                         </li>
                       </ul>
                     </li>
                     <li className="parent gc_main_navigation">
                       <a href="#" className="gc_main_navigation">
-                        Candidates &nbsp;<i className="fa fa-angle-down"></i>
+                        Ứng viên &nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
                         <li className="parent">
-                          <a href="">Candidates list</a>
+                          <a href="">Top ứng viên tiềm năng</a>
                         </li>
                         <li className="parent">
                           {/* <Link className="nav-link" to="/company-applied-list"></Link> */}
-                          <a href="">Applied Candidates</a>
+                          <a href="">Quản lý Ứng viên đã ứng tuyển</a>
                         </li>
                         <li className="parent">
                           <a href="">
-                            Bookmarked candidates
+                            Ứng viên đang thep dõi
                           </a>
                         </li>
                       </ul>
@@ -86,7 +86,7 @@ const CompanyNavbar = () => {
                     <li className="has-mega gc_main_navigation">
                       <a href="#" className="gc_main_navigation">
                         {" "}
-                        Company infomation&nbsp;
+                        Giới thiệu công ty&nbsp;
                       </a>
                     </li>
                   </ul>

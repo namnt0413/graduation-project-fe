@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { JobStatus } from "../const/JobStatus";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const CompanyListJob = () => {
   const { getCompany } = AuthCompany();
@@ -16,6 +17,7 @@ const CompanyListJob = () => {
   const [companyJobs, setCompanyJobs] = useState([]);
   const [deleteJobs, setDeleteJobs] = useState([]);
   const notify = () => toast("Delete jobs success!");
+  console.log(companyJobs)
 
   useEffect(() => {
     const getCompanyJobs = async () => {
@@ -59,6 +61,10 @@ const CompanyListJob = () => {
     }
   };
 
+  const openInNewTab = (url) => {
+    window.open(url, "_self", "noopener,noreferrer");
+  };
+
   const CompanyListJobContent = (
     <>
       <div className="jp_tittle_main_wrapper post-job">
@@ -68,7 +74,7 @@ const CompanyListJob = () => {
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div className="jp_tittle_heading_wrapper">
                 <div className="jp_tittle_heading">
-                  <h2>List Posted Job</h2>
+                  <h2>Danh sách công việc đã đăng</h2>
                 </div>
               </div>
             </div>
@@ -87,11 +93,11 @@ const CompanyListJob = () => {
             <thead className="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Job</th>
-                <th scope="col">Deadline</th>
-                <th scope="col">Applied</th>
-                <th scope="col">Status</th>
-                <th scope="col">Delete</th>
+                <th scope="col">Công việc</th>
+                <th scope="col">Thời hạn</th>
+                <th scope="col">Đã ứng tuyển</th>
+                <th scope="col">Trạng thái</th>
+                <th scope="col">Xóa Công việc</th>
               </tr>
             </thead>
             <tbody>
@@ -99,8 +105,14 @@ const CompanyListJob = () => {
                 <tr>
                   <th scope="row">{index + 1}</th>
                   <td>{companyJob.title}</td>
-                  <td>{companyJob.deadline}</td>
-                  <td>50 nguoi / Danh sach</td>
+                  <td>{moment(companyJob.deadline).format("DD MMM, YYYY")}</td>
+                  <td style={{ cursor: "pointer" }} 
+                    onClick={() =>
+                      openInNewTab(`/applied-by-job/${companyJob.id}`)
+                    }
+                  >
+                    {companyJob.apply_count}  ứng viên
+                  </td>
                   <td style={{ color: JobStatus[companyJob.status][1] }}>
                     {JobStatus[companyJob.status][0]}
                   </td>
