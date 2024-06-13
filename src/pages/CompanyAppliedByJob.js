@@ -98,6 +98,7 @@ const CompanyAppliedByJob = () => {
     
     const CompanyAppliedByJobContent = (
         <>
+        <ToastContainer  className="toast-position" />
             <div className="jp_tittle_main_wrapper post-job">
                 <div className="jp_tittle_img_overlay"></div>
                 <div className="container">

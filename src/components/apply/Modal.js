@@ -14,9 +14,8 @@ const Modal = ({ show, onClose, selectedJob }) => {
     const [selectedCV, setSelectedCV] = useState(null);
     const [listCvs, setListCvs] = useState([]);
     const [filename, setFilename] = useState();
-    const notifySuccess = () => toast.success("Apply successfully!!!");
-    const notifyWarning = () => toast.warning("chon 1 phuong thuc");
-    const notifyFailed = () => toast.error("That bai");
+    const notifySuccess = () => toast.success("Ứng tuyển thành công!");
+    const notifyFailed = () => toast.error("Ứng tuyển thất bại!");
 
     useEffect(() => {
         const getListCvs = async () => {
