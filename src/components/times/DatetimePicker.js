@@ -18,7 +18,7 @@ const DatetimePicker = ({ onChange }) => {
       timeFormat="HH:mm"
       timeIntervals={15}
       dateFormat="dd/MM/yyyy HH:mm"
-      placeholderText="Select job's deadline"
+      placeholderText="dd/mm/yyyy"
     />
   );
 };

@@ -49,7 +49,7 @@ const CompanyNavbar = () => {
                     <li className="has-mega gc_main_navigation">
                       <a href="#" className="gc_main_navigation">
                         {" "}
-                        Quảng lý công việc&nbsp;<i className="fa fa-angle-down"></i>
+                        Quản lý công việc&nbsp;<i className="fa fa-angle-down"></i>
                       </a>
                       <ul>
                         <li className="parent">

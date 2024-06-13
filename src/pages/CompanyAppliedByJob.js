@@ -10,6 +10,7 @@ import { JobStatus } from "../const/JobStatus";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import FileView from "../components/files/FileView";
+import InterviewModal from "../components/interview/InterviewModal";
 
 const CompanyAppliedByJob = () => {
     const params = useParams()
@@ -20,7 +21,7 @@ const CompanyAppliedByJob = () => {
     const [bookmarks, setBookmarks] = useState([]);
     const [bookmarkedApply, setBookmarkedApply] = useState([]);
     const [unbookmarkedApply, setUnbookmarkedApply] = useState([]);
-    const notify = () => toast("Delete jobs success!");
+    const [selectedCandidate, setSelectedCandidate] = useState(null);
 
     useEffect(() => {
         const getApplied = async () => {
@@ -88,8 +89,13 @@ const CompanyAppliedByJob = () => {
             })
             .catch(error => console.error(error));
         }
-      };
+    };
 
+    const handleSchedule = (id) => {
+        const candidate = [...bookmarkedApply, ...unbookmarkedApply].find(c => c.user.id === id);
+        setSelectedCandidate(candidate);
+    };
+    
     const CompanyAppliedByJobContent = (
         <>
             <div className="jp_tittle_main_wrapper post-job">
@@ -137,6 +143,7 @@ const CompanyAppliedByJob = () => {
                                         ></i></td>
                                         <td><i class="fa-solid fa-envelope"
                                             style={{ marginLeft: "25px", padding: "5px", cursor: "pointer" }}
+                                            onClick={() => handleSchedule(apply.user.id)}
                                         ></i></td>
                                     </tr>
                                 ))}
@@ -172,15 +179,21 @@ const CompanyAppliedByJob = () => {
                                         ></i></td>
                                         <td><i class="fa-solid fa-envelope"
                                             style={{ marginLeft: "25px", padding: "5px", cursor: "pointer" }}
+                                            onClick={() => handleSchedule(apply.user.id)}
                                         ></i></td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
+            {selectedCandidate && (
+                <InterviewModal
+                    candidate={selectedCandidate}
+                    onClose={() => setSelectedCandidate(null)}
+                />
+            )}
             <ToastContainer className="toast-position" />
         </>
     );
