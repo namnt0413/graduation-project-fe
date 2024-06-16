@@ -1,0 +1,86 @@
+
+/* CV2 */
+.cv-2 .basic-info {
+    background-color: #fff !important;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .list-info {
+    display: block;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .list-info .info-field span {
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 20px;
+    color: #333;
+    padding: 5px;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .list-info .info-field input {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.cv-2 .list-info-avatar {
+    display: flex;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position #candidateName {
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+    height: auto;
+    padding: 5px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position #position {
+    font-size: 16px;
+    color: #333;
+    font-size: 20px;
+    text-align: center;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position #name p {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.cv-2 .subject-title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .cv-avatar { 
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+    /* Đảm bảo ảnh không vượt quá chiều rộng của container */
+    width: 250px;
+    height: 250px;
+    margin-top: 0px;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .cv-avatar img {
+    margin-top: 0;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info {
+    width: 100%;
+}
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position {
+}
+
+.cv-2 .cv-background .cv-container .cv-content .subject .subject-title-container #subject-title {
+    text-align: center;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position #name{
+    text-align: center;
+}

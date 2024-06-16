@@ -2,8 +2,9 @@
   import axios from "../../lib/axios";
   import TextEditor from "../TextEditor";
   import Item from "./Item";
+  import { Color } from "../../const/color";
 
-  const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject }) => {
+  const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject, themeColor }) => {
     const [title, setTitle] = useState();
     const [cvId, setCvId] = useState();
     const [offsets, setOffsets] = useState([]);
@@ -160,11 +161,10 @@
             type="text"
             id="subject-title"
             className="subject-title"
-            style={{ color: "rgb(63, 89, 168)" }}
+            style={{ color: Color[themeColor] }}
             value={title}
             onChange={handleChange}
             onBlur={() => handleBlur("title", title)}
-
           />
 
         {showButtonsSubject && (

@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "../../lib/axios";
-import "../../styles/pages/CV/TestCV.css";
-import "../../styles/pages/CV/CV.css";
 import AuthUser from "../../components/AuthUser";
 import { Link } from "react-router-dom";
 import Layout from "../../layouts/Layout";
@@ -17,13 +15,14 @@ import { storage } from '../../firebase'; // Import cấu hình Firebase
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "../../styles/pages/CV/CV1.css";
+import "../../styles/pages/CV/CV2.css";
 
-export default function CV1() {
+export default function CV() {
   const params = useParams()
   const { http, setToken } = AuthUser();
   const [password, setPassword] = useState();
   const notifySuccess = () => toast.success("Lưu CV thành công");
-
   // handle create default data
 
   // handle offset subject
@@ -38,6 +37,7 @@ export default function CV1() {
   const [birthday, setBirthday] = useState();
   const [subjects, setSubjects] = useState([]);
   const [themeColor, setThemeColor] = useState();
+  const [template, setTemplate] = useState();
 
   useEffect(() => {
     const getCV = async () => {
@@ -52,6 +52,7 @@ export default function CV1() {
       setBirthday(cv.birthday);
       setSubjects(cv.subject);
       setThemeColor(cv.theme_color)
+      setTemplate(cv.template_id)
       // Convert the offfset string to an array
       const fetchedOffsets = cv.offset.split(",");
       setOffsets(fetchedOffsets);
@@ -356,10 +357,19 @@ export default function CV1() {
     });
   }
 
+  const onChangeTemplate = async (data) => {
+    setTemplate(data)
+    await axios.put(`/api/cv/update-template/${params.id}`, {
+      template_id: data,
+    });
+  }
+
+
+
   const Cv1Content = (
     <>
       <ToastContainer  className="toast-position" />
-      <div className="jp_tittle_main_wrapper cv-section">
+      <div className="cv-1 jp_tittle_main_wrapper cv-section">
         <div className="cv-background">
           <div className="cv-container">
             <div className="top-toolbar">
@@ -409,6 +419,8 @@ export default function CV1() {
                 dropdownType={dropdownType}
                 onChangeColor={onChangeColor}
                 selectedColor={themeColor}
+                onChangeTemplate={onChangeTemplate}
+                selectedTemplate={template}
               />
             </div>
             <div className="cv-title">
@@ -502,6 +514,7 @@ export default function CV1() {
                       moveOffsetSubject={moveOffsetSubject}
                       addSubject={addSubject}
                       deleteSubject={deleteSubject}
+                      themeColor={themeColor}
                     />
                   );
                 })}
@@ -513,5 +526,172 @@ export default function CV1() {
     </>
   );
 
-  return <Layout page={Cv1Content} />;
+  const Cv2Content = (
+    <>
+      <ToastContainer  className="toast-position" />
+      <div className="cv-2 jp_tittle_main_wrapper cv-section">
+        <div className="cv-background">
+          <div className="cv-container">
+            <div className="top-toolbar">
+              <div
+                className="toolbar-item text-font"
+                onClick={handleOpenFontDropdown}
+              >
+                <i className="fa-solid fa-a toolbar-icon"></i>
+                Phông chữ
+              </div>
+              <div
+                className="toolbar-item theme-color"
+                onClick={handleOpenColorDropdown}
+              >
+                <i className="fa-solid fa-palette toolbar-icon"></i>
+                Màu sắc
+              </div>
+              <div
+                className="toolbar-item template"
+                onClick={handleOpenTemplateDropdown}
+              >
+                <i className="fa-solid fa-file toolbar-icon"></i>
+                Mẫu CV
+              </div>
+              <div className="download">
+                <button onClick={handleDownload} className="download-btn">
+                  <i className="toolbar-icon fa-solid fa-download"></i>
+                  Tải xuống
+                </button>
+              </div>
+              <div className="toolbar-item manage-cv">
+                <i className="fa-solid fa-id-badge toolbar-icon"></i>
+                <Link className="" to="/my-list-cv">
+                  Quản lý CV
+                </Link>
+              </div>
+              <div
+                className="toolbar-item template"
+              >
+                <i class="fa-solid fa-floppy-disk toolbar-icon"></i>
+                <button onClick={handleSave}>Lưu</button>
+              </div>
+
+              <ToolbarDropDown
+                isOpen={dropdownOpen}
+                onClose={handleDropdownClose}
+                dropdownType={dropdownType}
+                onChangeColor={onChangeColor}
+                selectedColor={themeColor}
+                onChangeTemplate={onChangeTemplate}
+                selectedTemplate={template}
+              />
+            </div>
+            <div className="cv-title">
+              <input
+                type="text"
+                id="title"
+                className="cv-title-input"
+                value={title}
+                onChange={handleChange}
+                onBlur={() => handleBlur("title", title)}
+              />
+            </div>
+
+            <div className="cv-ref" ref={cvRef} id="content">
+              <div className="cv-content">
+                <div className="basic-info"
+                >
+                  <div className="info">
+                    <div className="name-position">
+                      {candidateName && (
+                        <TextEditor
+                          data={candidateName}
+                          id="name"
+                          handleOnChangeName={handleOnChangeName}
+                          handleBlurData={handleBlurName}
+                          themeColor={themeColor}
+                        />
+                      )}
+                      <div className="position-container" style={{ textAlign: "center" }}>
+                        <input
+                          type="text"
+                          id="position"
+                          value={position}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("position", position)}
+                        />
+                      </div>
+                    </div>
+                    <div className="list-info-avatar">
+                    <div className="list-info col-8">
+                      <div className="info-field col-6">
+                        <span>Email</span>
+                        <input
+                          type="text"
+                          id="email"
+                          value={email}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("email", email)}
+                        />
+                      </div>
+                      <div className="info-field col-6">
+                        <span>Phone</span>
+                        <input
+                          type="text"
+                          id="phone"
+                          value={phone}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("phone", phone)}
+                        />
+                      </div>
+                      <div className="info-field col-6">
+                        <span>Birthday</span>
+                        <input
+                          type="text"
+                          id="birthday"
+                          value={birthday}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("birthday", birthday)}
+                        />
+                      </div>
+                      <div className="info-field col-6">
+                        <span>Address</span>
+                        <input
+                          type="text"
+                          id="address"
+                          value={address}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("address", address)}
+                        />
+                      </div>
+                    </div>
+                  <div className="cv-avatar col-4">
+                    <img src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM=" />
+                  </div>
+                  </div>
+                    </div>
+                </div>
+                {offsets.map((offset) => {
+                  return (
+                    <Subject
+                      key={offset}
+                      id={offset}
+                      moveOffsetSubject={moveOffsetSubject}
+                      addSubject={addSubject}
+                      deleteSubject={deleteSubject}
+                      themeColor={themeColor}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
+  if (template && template === 1 ) {
+    return <Layout page={Cv1Content} />;
+  } else {
+    return <Layout page={Cv2Content}/>;
+  }
+
 }

@@ -72,11 +72,11 @@
     border: none;
     color: #fff;
     padding: 5px;
-    width: 25%;
+    width: 40%;
 }
 
 .cv-background .cv-container .top-toolbar {
-    width: 740px;
+    width: 740px !important;
     height: 48px;
     border: 1px solid #333;
     background-color: #425061;
@@ -316,4 +316,3 @@
 .delete-bar .delete-button:hover {
     color: #23c0e9;
 }
-

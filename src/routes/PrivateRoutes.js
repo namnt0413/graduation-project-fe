@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import User from "../pages/User";
-import CV1 from "../pages/CV/CV1";
+import CV from "../pages/CV/CV";
 import CreateNewCV from "../pages/CV/MyListCV";
 import MyListCV from "../pages/CV/MyListCV";
 import TestCV from "../pages/CV/TestCV";
@@ -13,7 +13,7 @@ const PrivateRoutes = () => {
   return (
     <Routes>
       <Route path="/user" element={<User />} />
-      <Route path="/cv1/:id" element={<CV1 />} />
+      <Route path="/cv/:id" element={<CV />} />
       <Route path="/create-new-cv" element={<CreateNewCV />} />
       <Route path="/my-list-cv" element={<MyListCV />} />
 
