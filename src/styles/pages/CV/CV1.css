@@ -172,24 +172,40 @@
 .cv-background .cv-container .cv-content .basic-info .info .name-position {
     padding: 30px;
     /* display: grid; */
+    margin-top: 15px;
 }
 
-.cv-background .cv-container .cv-content .basic-info .info .name-position #candidateName {
-    font-size: 35px;
+.cv-background .cv-container .cv-content .basic-info .info .name-position #name {
+    font-size: 42px;
     font-weight: 600;
     margin-bottom: 10px;
     color: #fff;
-    height: auto;
-    padding: 5px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    height: 40px;
+    /* padding: 5px; */
+    /* text-align: center; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.cv-1 .name-position .text-editor .edit-buttons {
+    width: 120px;
+    position: absolute;
+    top: -32px;
+    right: 10px;
+    font-size: 16px;
+    background: rgba(140,140,140);
+    border-radius: 3px;
+}
+
+.cv-1 .name-position .text-editor .editable {
+    height: 42px;
 }
 
 .cv-background .cv-container .cv-content .basic-info .info .name-position #position {
     font-size: 16px;
     color: #fff;
     font-size: 20px;
+    padding: 5px;
 }
 
 .cv-background .cv-container .cv-content .basic-info .info .list-info {

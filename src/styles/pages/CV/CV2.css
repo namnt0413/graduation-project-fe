@@ -8,6 +8,10 @@
     display: block;
 }
 
+.cv-2 .list-info .info-field {
+    margin: 20px 0 !important;
+}
+
 .cv-2 .cv-background .cv-container .cv-content .basic-info .info .list-info .info-field span {
     font-size: 16px;
     font-weight: 700;
@@ -20,6 +24,7 @@
     font-size: 16px;
     color: #333;
     margin-bottom: 0px;
+    width: 100%;
 }
 
 .cv-2 .list-info-avatar {
@@ -52,6 +57,23 @@
     color: #333;
 }
 
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position #name {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.cv-2 .name-position .text-editor .edit-buttons {
+    width: 120px;
+    position: absolute;
+    top: -32px;
+    right: 10px;
+    font-size: 16px;
+    background: rgba(140,140,140);
+    border-radius: 3px;
+}
+
 .cv-2 .subject-title-container {
     display: flex;
     justify-content: center;
@@ -69,18 +91,34 @@
 
 .cv-2 .cv-background .cv-container .cv-content .basic-info .cv-avatar img {
     margin-top: 0;
+    padding: 40px;
 }
 
 .cv-2 .cv-background .cv-container .cv-content .basic-info .info {
     width: 100%;
 }
 .cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position {
+    margin-top: 40px;
 }
 
 .cv-2 .cv-background .cv-container .cv-content .subject .subject-title-container #subject-title {
     text-align: center;
 }
 
+.cv-2 .cv-title input.cv-title-input {
+    width: 40%;
+    text-align: center;
+}
+
 .cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position #name{
     text-align: center;
+}
+
+.cv-2 .position-container {
+    margin: 10px 0;
+}
+
+.cv-2 #name .editable {
+    height: 40px;
+    font-size: 42px;
 }

@@ -621,7 +621,7 @@ export default function CV() {
                     </div>
                     <div className="list-info-avatar">
                     <div className="list-info col-8">
-                      <div className="info-field col-6">
+                      <div className="info-field">
                         <span>Email</span>
                         <input
                           type="text"
@@ -631,7 +631,7 @@ export default function CV() {
                           onBlur={() => handleBlur("email", email)}
                         />
                       </div>
-                      <div className="info-field col-6">
+                      <div className="info-field">
                         <span>Phone</span>
                         <input
                           type="text"
@@ -641,7 +641,7 @@ export default function CV() {
                           onBlur={() => handleBlur("phone", phone)}
                         />
                       </div>
-                      <div className="info-field col-6">
+                      <div className="info-field">
                         <span>Birthday</span>
                         <input
                           type="text"
@@ -651,7 +651,7 @@ export default function CV() {
                           onBlur={() => handleBlur("birthday", birthday)}
                         />
                       </div>
-                      <div className="info-field col-6">
+                      <div className="info-field">
                         <span>Address</span>
                         <input
                           type="text"
