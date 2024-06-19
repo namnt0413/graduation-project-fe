@@ -170,7 +170,7 @@ const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject, themeColor,
     <div className="subject"
       ref={divRefSubject}
       onClick={handleOnClickSubject}
-    >
+    > 
       <div className="subject-title-container"
         style={{ borderBottomColor: Color[themeColor] }}
       >
@@ -180,7 +180,7 @@ const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject, themeColor,
           </div>
         : ""
         }
-        {template === 4 ?
+        { template === 4 ?
           <input
             type="text"
             id="subject-title"
@@ -192,15 +192,27 @@ const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject, themeColor,
             ref={fileInputRef}
           />
           :
-          <input
-            type="text"
-            id="subject-title"
-            className="subject-title"
-            style={{ color: Color[themeColor] }}
-            value={title}
-            onChange={handleChange}
-            onBlur={() => handleBlur("title", title)}
-          />
+          template === 5 ?
+            <input
+              type="text"
+              id="subject-title"
+              className="subject-title"
+              style={{ backgroundColor: Color[themeColor] }}
+              value={title}
+              onChange={handleChange}
+              onBlur={() => handleBlur("title", title)}
+            />
+            :
+            // default input
+            <input
+              type="text"
+              id="subject-title"
+              className="subject-title"
+              style={{ color: Color[themeColor] }}
+              value={title}
+              onChange={handleChange}
+              onBlur={() => handleBlur("title", title)}
+            />
         }
 
         {showButtonsSubject && (

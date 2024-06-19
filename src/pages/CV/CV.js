@@ -19,7 +19,7 @@ import "../../styles/pages/CV/CV1.css";
 import "../../styles/pages/CV/CV2.css";
 import "../../styles/pages/CV/CV3.css";
 import "../../styles/pages/CV/CV4.css";
-// import "../../styles/pages/CV/CV5.css";
+import "../../styles/pages/CV/CV5.css";
 
 export default function CV() {
   const params = useParams()
@@ -242,12 +242,35 @@ export default function CV() {
     const pdfHeight = pdf.internal.pageSize.getHeight();
     const scale = 2; // Tăng scale để có chất lượng tốt hơn
 
+    // Fix bug print input : Thay thế các thẻ <input> bằng <div>
+    const inputs = element.querySelectorAll('input');
+    inputs.forEach(input => {
+      const div = document.createElement('div');
+      div.textContent = input.value;
+      div.style.fontSize = window.getComputedStyle(input).fontSize;
+      div.style.fontWeight = window.getComputedStyle(input).fontWeight;
+      div.style.padding = window.getComputedStyle(input).padding;
+      div.style.margin = window.getComputedStyle(input).margin;
+      div.style.border = window.getComputedStyle(input).border;
+      div.style.width = window.getComputedStyle(input).width;
+      div.style.color = window.getComputedStyle(input).color;
+      div.style.backgroundColor = window.getComputedStyle(input).backgroundColor;
+      div.style.filter = window.getComputedStyle(input).filter;
+      div.className = input.className;
+      div.id = input.id;
+      div.type = input.type;
+      div.onChange = input.onChange;
+      div.onBlur = input.onBlur;
+      div.setAttribute('data-input', 'true'); // Gắn cờ cho các thẻ div tạm thời
+      input.parentNode.replaceChild(div, input);
+    });
+
     html2canvas(element, {
       scale: scale,
       useCORS: true,
       allowTaint: true,
     }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/jpeg", 0.8);
+      const imgData = canvas.toDataURL("image/jpeg", 0.9);
       const pdf = new jsPDF("p", "mm", "a4");
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
@@ -283,6 +306,29 @@ export default function CV() {
         );
         heightLeft -= pdfHeight;
       }
+
+    // Khôi phục lại các thẻ <input>
+    const tempDivs = element.querySelectorAll('div[data-input="true"]');
+    tempDivs.forEach(div => {
+      const input = document.createElement('input');
+      input.value = div.textContent;
+      input.style.fontSize = window.getComputedStyle(div).fontSize;
+      input.style.fontWeight = window.getComputedStyle(div).fontWeight;
+      input.style.padding = window.getComputedStyle(div).padding;
+      input.style.margin = window.getComputedStyle(div).margin;
+      input.style.border = window.getComputedStyle(div).border;
+      input.style.width = window.getComputedStyle(div).width;
+      input.style.color = window.getComputedStyle(div).color;
+      input.style.backgroundColor = window.getComputedStyle(div).backgroundColor;
+      input.style.filter = window.getComputedStyle(div).filter;
+      // Gán các thuộc tính khác từ div vào input
+      input.className = div.className;
+      input.id = div.id;
+      input.type = div.type;
+      input.onChange = div.onChange;
+      input.onBlur = div.onBlur;
+      div.parentNode.replaceChild(input, div);
+    });
 
       pdf.save("my_cv.pdf");
     });
@@ -367,7 +413,8 @@ export default function CV() {
     });
   }
 
-
+  const leftOffsetSubjects = offsets.filter((_, index) => index % 2 !== 0); // Chỉ số lẻ
+  const rightOffsetSubjects = offsets.filter((_, index) => index % 2 === 0); // Chỉ số chẵn
 
   const Cv1Content = (
     <>
@@ -518,6 +565,7 @@ export default function CV() {
                       addSubject={addSubject}
                       deleteSubject={deleteSubject}
                       themeColor={themeColor}
+                      template={template}
                     />
                   );
                 })}
@@ -683,6 +731,7 @@ export default function CV() {
                       addSubject={addSubject}
                       deleteSubject={deleteSubject}
                       themeColor={themeColor}
+                      template={template}
                     />
                   );
                 })}
@@ -1017,6 +1066,183 @@ export default function CV() {
     </>
   );
 
+  const Cv5Content = (
+    <>
+      <ToastContainer  className="toast-position" />
+      <div className="cv-5 jp_tittle_main_wrapper cv-section">
+        <div className="cv-background">
+          <div className="cv-container">
+            <div className="top-toolbar">
+              <div
+                className="toolbar-item text-font"
+                onClick={handleOpenFontDropdown}
+              >
+                <i className="fa-solid fa-a toolbar-icon"></i>
+                Phông chữ
+              </div>
+              <div
+                className="toolbar-item theme-color"
+                onClick={handleOpenColorDropdown}
+              >
+                <i className="fa-solid fa-palette toolbar-icon"></i>
+                Màu sắc
+              </div>
+              <div
+                className="toolbar-item template"
+                onClick={handleOpenTemplateDropdown}
+              >
+                <i className="fa-solid fa-file toolbar-icon"></i>
+                Mẫu CV
+              </div>
+              <div className="download">
+                <button onClick={handleDownload} className="download-btn">
+                  <i className="toolbar-icon fa-solid fa-download"></i>
+                  Tải xuống
+                </button>
+              </div>
+              <div className="toolbar-item manage-cv">
+                <i className="fa-solid fa-id-badge toolbar-icon"></i>
+                <Link className="" to="/my-list-cv">
+                  Quản lý CV
+                </Link>
+              </div>
+              <div
+                className="toolbar-item template"
+              >
+                <i class="fa-solid fa-floppy-disk toolbar-icon"></i>
+                <button onClick={handleSave}>Lưu</button>
+              </div>
+
+              <ToolbarDropDown
+                isOpen={dropdownOpen}
+                onClose={handleDropdownClose}
+                dropdownType={dropdownType}
+                onChangeColor={onChangeColor}
+                selectedColor={themeColor}
+                onChangeTemplate={onChangeTemplate}
+                selectedTemplate={template}
+              />
+            </div>
+
+            <div className="cv-title">
+              <input
+                type="text"
+                id="title"
+                className="cv-title-input"
+                value={title}
+                onChange={handleChange}
+                onBlur={() => handleBlur("title", title)}
+              />
+            </div>
+
+            <div className="cv-ref" ref={cvRef} id="content">
+              <div className="cv-content">
+                <div className="name-position-contact-info">
+                  <div className="col-5 name-position" style={{ backgroundColor: Color[themeColor] }}>
+                    {candidateName && (
+                      <TextEditor
+                        data={candidateName}
+                        id="name"
+                        handleOnChangeName={handleOnChangeName}
+                        handleBlurData={handleBlurName}
+                      />
+                    )}
+                    <input
+                      type="text"
+                      id="position"
+                      value={position}
+                      onChange={handleChange}
+                      onBlur={() => handleBlur("position", position)}
+                    />
+                  </div>
+                  <div className="col-8 contact-info">
+                    <div className="list-info">
+                      <div className="info-field col-6">
+                        <span>Email</span>
+                        <input
+                          type="text"
+                          id="email"
+                          value={email}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("email", email)}
+                        />
+                      </div>
+                      <div className="info-field col-6">
+                        <span>Phone</span>
+                        <input
+                          type="text"
+                          id="phone"
+                          value={phone}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("phone", phone)}
+                        />
+                      </div>
+                    </div>
+                    <div className="list-info">
+                      <div className="info-field col-6">
+                        <span>Birthday</span>
+                        <input
+                          type="text"
+                          id="birthday"
+                          value={birthday}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("birthday", birthday)}
+                        />
+                      </div>
+                      <div className="info-field col-6">
+                        <span>Address</span>
+                        <input
+                          type="text"
+                          id="address"
+                          value={address}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("address", address)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="subject-list">
+                  <div className="subject-left col-5" style={{ backgroundColor: Color[themeColor] }}>
+                    {leftOffsetSubjects.map((offset) => {
+                      return (
+                        <Subject
+                          key={offset}
+                          id={offset}
+                          moveOffsetSubject={moveOffsetSubject}
+                          addSubject={addSubject}
+                          deleteSubject={deleteSubject}
+                          themeColor={themeColor}
+                          template={template}
+                        />
+                      );
+                    })}
+                    </div>
+                    <div className="subject-right col-8">
+                    {rightOffsetSubjects.map((offset) => {
+                      return (
+                        <Subject
+                          key={offset}
+                          id={offset}
+                          moveOffsetSubject={moveOffsetSubject}
+                          addSubject={addSubject}
+                          deleteSubject={deleteSubject}
+                          themeColor={themeColor}
+                        />
+                      );
+                    })}
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
   if (template && template === 1 ) {
     return <Layout page={Cv1Content} />;
   } 
@@ -1029,8 +1255,8 @@ export default function CV() {
   else if (template && template === 4 ) {
     return <Layout page={Cv4Content}/>;
   } 
-  else {
-    return <Layout page={Cv1Content} />;
+  else if (template && template === 5 ) {
+    return <Layout page={Cv5Content} />;
   }
 
 }

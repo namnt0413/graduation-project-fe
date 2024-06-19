@@ -64,3 +64,13 @@
     border-bottom: 3.5px solid #adadad;
     margin-bottom: 0;
 }
+
+.cv-4 .name-position .text-editor .edit-buttons {
+    width: 120px;
+    position: absolute;
+    top: -32px;
+    right: 10px;
+    font-size: 16px;
+    background: rgba(140,140,140);
+    border-radius: 3px;
+}

@@ -1,0 +1,105 @@
+.cv-5 .name-position-contact-info {
+    display: flex;
+}
+
+.cv-5 .name-position-contact-info .name-position {
+    padding: 40px 25px;
+}
+
+.cv-5 .name-position-contact-info .name-position #name {
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+    height: 40px;
+}
+
+.cv-5 .name-position .text-editor .edit-buttons {
+    width: 120px;
+    position: absolute;
+    top: -32px;
+    right: 10px;
+    font-size: 16px;
+    background: rgba(140,140,140);
+    border-radius: 3px;
+}
+
+.cv-5 .name-position-contact-info .name-position #position {
+    font-size: 16px;
+    color: #fff;
+    padding: 5px;
+}
+
+.cv-5 .name-position-contact-info .name-position input {
+    background-color: transparent;
+}
+
+.cv-5 .name-position-contact-info .contact-info {
+    padding: 40px 30px;
+}
+
+.cv-5 .contact-info .list-info {
+    display: flex;
+}
+
+.cv-5 .contact-info .list-info .info-field {
+    display: flex;
+}
+
+.cv-5 .contact-info .info-field span {
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 20px;
+    color: #111;
+    padding: 5px;
+}
+
+.cv-5 .contact-info .info-field input {
+    font-size: 16px;
+    color: #111;
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.cv-5 .cv-content .subject-list {
+    display: flex;
+}
+
+.cv-5 .cv-content .subject-list .subject-left {
+
+}
+
+.cv-5 .cv-content .subject-list .subject-left .subject{
+    padding: 10px 0;
+}
+
+.cv-5 .cv-content .subject-list .subject-left .subject-title-container {
+    margin-bottom: 10px;
+    /* background-color: inherit; */
+}
+
+.cv-5 .cv-content .subject-list .subject-left .subject-title-container #subject-title {
+    color: #fff !important;
+    padding: 5px 25px;
+    filter: brightness(85%);
+    font-size: 24px;
+}
+
+.cv-5 .cv-content .subject-list .subject-left .item {
+} 
+
+.cv-5 .cv-content .subject-list .subject-left .item .item-title-container .text-editor p {
+    color: #fff !important;
+    font-size: 16px !important;
+} 
+
+.cv-5 .cv-content .subject-list .subject-left .item .item-content-container .text-editor p,
+.cv-5 .cv-content .subject-list .subject-left .item .item-content-container .text-editor li,
+.cv-5 .cv-content .subject-list .subject-left .item .item-content-container .text-editor div {
+    color: #fff !important;
+    font-size: 16px !important;
+} 
+
+.cv-5 .cv-content .subject-list .subject-right {
+    
+}
