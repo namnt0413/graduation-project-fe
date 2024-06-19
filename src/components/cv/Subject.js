@@ -174,6 +174,12 @@ const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject, themeColor,
       <div className="subject-title-container"
         style={{ borderBottomColor: Color[themeColor] }}
       >
+        {template === 3 ?
+          <div className="subject-icon">
+            <i class="fa-solid fa-circle" style={{ color: Color[themeColor] }}></i>
+          </div>
+        : ""
+        }
         {template === 4 ?
           <input
             type="text"

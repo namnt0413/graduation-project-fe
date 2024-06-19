@@ -9,7 +9,7 @@
 }
 
 .cv-2 .list-info .info-field {
-    margin: 20px 0 !important;
+    margin: 10px 0 20px!important;
 }
 
 .cv-2 .cv-background .cv-container .cv-content .basic-info .info .list-info .info-field span {
@@ -81,7 +81,7 @@
 
 .cv-2 .cv-background .cv-container .cv-content .basic-info .cv-avatar { 
     display: block;
-    margin: 0 auto 20px;
+    margin: 0 auto 0px;
     max-width: 100%;
     /* Đảm bảo ảnh không vượt quá chiều rộng của container */
     width: 250px;
@@ -91,14 +91,14 @@
 
 .cv-2 .cv-background .cv-container .cv-content .basic-info .cv-avatar img {
     margin-top: 0;
-    padding: 40px;
+    padding: 20px 40px;
 }
 
 .cv-2 .cv-background .cv-container .cv-content .basic-info .info {
     width: 100%;
 }
 .cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position {
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 .cv-2 .cv-background .cv-container .cv-content .subject .subject-title-container #subject-title {
@@ -121,4 +121,32 @@
 .cv-2 #name .editable {
     height: 40px;
     font-size: 42px;
+}
+
+.cv-2 .list-info-title {
+    padding: 0px 30px;
+}
+
+.cv-2 .list-info-title .list-info-title-content {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-family: inherit;
+    line-height: inherit;
+    border-bottom: 0.5px solid #adadad;
+    padding: 10px 20px;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .name-position {
+    padding: 15px 0px;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .info .list-info {
+    padding: 0px 30px;
+}
+
+.cv-2 .cv-background .cv-container .cv-content .basic-info .cv-avatar img {
+    margin-bottom: 0;
 }
