@@ -102,7 +102,7 @@ const MyListCv = () => {
                   <td
                     className="cv-item"
                     onClick={() =>
-                      openInNewTab(`/cv${cv.template_id}/${cv.id}`)
+                      openInNewTab(`/cv/${cv.id}`)
                     }
                   >
                     {cv.title}

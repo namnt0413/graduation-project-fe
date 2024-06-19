@@ -1,0 +1,57 @@
+.cv-3 .basic-info {
+    background-color: #fff !important;
+}
+
+.cv-3 .cv-background .cv-container .cv-content .basic-info .info .list-info .info-field span {
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 20px;
+    color: #333;
+    padding: 5px;
+}
+
+.cv-3 .cv-background .cv-container .cv-content .basic-info .info .list-info .info-field input {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.cv-3 .cv-background .cv-container .cv-content .basic-info .info .name-position #position {
+    font-size: 16px;
+    color: #333;
+    font-size: 20px;
+}
+
+.cv-3 .cv-background .cv-container .cv-content .basic-info .info .name-position {
+    margin-top: 50px !important;
+} 
+
+.cv-3 .cv-background .cv-container .cv-content .basic-info .cv-avatar img {
+    margin-top: 50px;
+}
+
+.cv-3 .name-position .text-editor .edit-buttons {
+    width: 120px;
+    position: absolute;
+    top: -32px;
+    right: 10px;
+    font-size: 16px;
+    background: rgba(140,140,140);
+    border-radius: 3px;
+}
+
+.cv-3 #name .editable {
+    height: 40px;
+    font-size: 42px;
+}
+
+.cv-3 .subject-title-container {
+    display: flex;
+}
+
+.cv-3 .subject-title-container .subject-icon i {
+    padding: 8px;
+    margin-right: 5px;
+}
+

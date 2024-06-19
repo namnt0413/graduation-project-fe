@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ContentEditable from "react-contenteditable";
 import sanitizeHtml from "sanitize-html";
 import "../styles/TextEditor.css";
+import { Color } from "../const/color";
 
 class TextEditor extends Component {
   constructor(props) {
@@ -10,14 +11,22 @@ class TextEditor extends Component {
       html: ``,
       editable: true,
       isOpenEdit: false,
+      themeColor: ""
     };
   }
   componentDidMount() {
     // console.log(this.props)
     this.setState({
-      html: this.props.data
+      html: this.props.data,
+      themeColor: this.props.themeColor
     })
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.themeColor !== this.state.themeColor) {
+      this.setState({ themeColor: prevProps.themeColor });
+    }
+  }
+
   handleChange = evt => {
     // console.log(evt.target.value)
     this.setState({ html: evt.target.value });
@@ -73,6 +82,7 @@ class TextEditor extends Component {
           onChange={this.handleChange} // handle innerHTML change
           onBlur={this.sanitize}
           onClick={this.handleShowEditButtons}
+          style={{ color: Color[this.state.themeColor] }}
         />
       </div>
     );
