@@ -74,3 +74,9 @@
     background: rgba(140,140,140);
     border-radius: 3px;
 }
+
+.cv-4 .cv-title input.cv-title-input {
+    width: 40%;
+    text-align: center;
+}
+

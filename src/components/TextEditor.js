@@ -28,7 +28,6 @@ class TextEditor extends Component {
   }
 
   handleChange = evt => {
-    // console.log(evt.target.value)
     this.setState({ html: evt.target.value });
 
     this.props.handleOnChangeName && this.props.handleOnChangeName(evt.target.value);
@@ -46,6 +45,7 @@ class TextEditor extends Component {
       html: sanitizeHtml(this.state.html, this.sanitizeConf),
       isOpenEdit: false
     });
+    console.log(this.state.html)
 
     this.props.handleBlurData && this.props.handleBlurData(this.state.html);
     this.props.handleBlurTitle && this.props.handleBlurTitle(this.state.html);

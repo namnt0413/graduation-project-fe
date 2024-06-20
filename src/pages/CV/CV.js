@@ -731,9 +731,11 @@ export default function CV() {
                         />
                       </div>
                     </div>
-                  <div className="cv-avatar col-4">
-                    <img src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM=" />
-                  </div>
+                      <div className="cv-avatar col-4">
+                        <UploadCVAvatar avatar={avatar} setAvatar={setAvatar} isShowingAvatar={isShowingAvatar}
+                          cvId={params.id} toggleAvatarVisibility={toggleAvatarVisibility}
+                        />
+                      </div>
                   </div>
                     </div>
                 </div>
@@ -895,7 +897,9 @@ export default function CV() {
                     </div>
                   </div>
                   <div className="cv-avatar">
-                    <img src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM=" />
+                    <UploadCVAvatar avatar={avatar} setAvatar={setAvatar} isShowingAvatar={isShowingAvatar}
+                      cvId={params.id} toggleAvatarVisibility={toggleAvatarVisibility}
+                    />
                   </div>
                 </div>
                 {offsets.map((offset) => {
@@ -992,7 +996,9 @@ export default function CV() {
                 <div className="basic-info"
                 >
                   <div className="cv-avatar">
-                    <img src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM=" />
+                    <UploadCVAvatar avatar={avatar} setAvatar={setAvatar} isShowingAvatar={isShowingAvatar}
+                      cvId={params.id} toggleAvatarVisibility={toggleAvatarVisibility}
+                    />
                   </div>
                   <div className="info">
                     <div className="name-position">

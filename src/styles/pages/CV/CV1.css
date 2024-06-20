@@ -333,3 +333,9 @@
 .delete-bar .delete-button:hover {
     color: #23c0e9;
 }
+
+.cv-1 .cv-title input.cv-title-input {
+    width: 40%;
+    text-align: center;
+}
+
