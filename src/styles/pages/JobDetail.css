@@ -604,12 +604,13 @@
 	transition: all 0.5s;
 }
 .jp_listing_right_bar_btn li:first-child a:hover{
-	background:#f36964;
+	background:#23c0e9;
 	-webkit-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	-ms-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;
+	opacity: 0.7;
 }
 .jp_listing_right_bar_btn li:last-child{
 	margin-top:70px;
@@ -634,12 +635,38 @@
 	transition: all 0.5s;
 }
 .jp_listing_right_bar_btn li:last-child a:hover{
-	background:#23c0e9;
+	background:#ff5353;
+	opacity: 0.7;
 	-webkit-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	-ms-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;
 }
+
+.job-category {
+	text-align: center;
+    background: #f4f5f5;
+    border-radius: 15px;
+    color: #212f3f;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    justify-content: center;
+    letter-spacing: .12px;
+    line-height: 16px;
+    padding: 5px;
+	margin-top: 8px;
+	cursor: pointer;
+}
+
+.job-categories {
+	display: grid;
+}
+
+.job-apply .jp_listing_right_bar_btn ul {
+	margin-top: 0;
+}
+
 /*-- jp listing Single cont Wrapper End --*/
 /************************* ---- Listing Single CSS End---- *************************/
