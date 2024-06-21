@@ -30,7 +30,7 @@ const TopCompany = () => {
   };
 
   const openInNewTab = url => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, '_self', 'noopener,noreferrer');
   };
 
   return (
@@ -46,9 +46,6 @@ const TopCompany = () => {
                 <div className="company-item">
                   <div
                     className="jp_hiring_content_main_wrapper"
-                    // onClick={() => {
-                    //   navigate(`/company/${company.id}`);
-                    // }}
                     onClick={() => openInNewTab(`/company/${company.id}`)}
                   >
                     <div className="jp_hiring_content_wrapper">
@@ -61,7 +58,7 @@ const TopCompany = () => {
                       <p>{company.city.name}</p>
                       <ul>
                         <li>
-                          <a href="#">4 Jobs Opening</a>
+                          <a href="#">{company.job_count} công việc mới</a>
                         </li>
                       </ul>
                     </div>
