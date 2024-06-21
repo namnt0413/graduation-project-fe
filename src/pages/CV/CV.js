@@ -14,6 +14,7 @@ import { Color } from "../../const/color";
 import { storage } from '../../firebase'; // Import cấu hình Firebase
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { ToastContainer, toast } from 'react-toastify';
+import UploadCVAvatar from "../../components/files/UploadCvAvatar";
 import 'react-toastify/dist/ReactToastify.css';
 import "../../styles/pages/CV/CV1.css";
 import "../../styles/pages/CV/CV2.css";
@@ -41,6 +42,8 @@ export default function CV() {
   const [subjects, setSubjects] = useState([]);
   const [themeColor, setThemeColor] = useState();
   const [template, setTemplate] = useState();
+  const [avatar, setAvatar] = useState();
+  const [isShowingAvatar, setIsShowingAvatar] = useState();
 
   useEffect(() => {
     const getCV = async () => {
@@ -59,6 +62,8 @@ export default function CV() {
       // Convert the offfset string to an array
       const fetchedOffsets = cv.offset.split(",");
       setOffsets(fetchedOffsets);
+      setAvatar(cv.avatar);
+      setIsShowingAvatar(cv.is_showing_avatar)
     };
     getCV();
   }, []);
@@ -416,6 +421,14 @@ export default function CV() {
   const leftOffsetSubjects = offsets.filter((_, index) => index % 2 !== 0); // Chỉ số lẻ
   const rightOffsetSubjects = offsets.filter((_, index) => index % 2 === 0); // Chỉ số chẵn
 
+  // toggle show cv avatar
+  const toggleAvatarVisibility =  async () => {
+    setIsShowingAvatar(!isShowingAvatar);
+    await axios.put(`/api/cv/update-showing-avatar/${params.id}`, {
+      is_showing_avatar: !isShowingAvatar,
+    });
+  };
+
   const Cv1Content = (
     <>
       <ToastContainer  className="toast-position" />
@@ -553,7 +566,9 @@ export default function CV() {
                     </div>
                   </div>
                   <div className="cv-avatar">
-                    <img src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM=" />
+                    <UploadCVAvatar avatar={avatar} setAvatar={setAvatar} isShowingAvatar={isShowingAvatar}
+                      cvId={params.id} toggleAvatarVisibility={toggleAvatarVisibility}
+                    />
                   </div>
                 </div>
                 {offsets.map((offset) => {
@@ -716,9 +731,11 @@ export default function CV() {
                         />
                       </div>
                     </div>
-                  <div className="cv-avatar col-4">
-                    <img src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM=" />
-                  </div>
+                      <div className="cv-avatar col-4">
+                        <UploadCVAvatar avatar={avatar} setAvatar={setAvatar} isShowingAvatar={isShowingAvatar}
+                          cvId={params.id} toggleAvatarVisibility={toggleAvatarVisibility}
+                        />
+                      </div>
                   </div>
                     </div>
                 </div>
@@ -880,7 +897,9 @@ export default function CV() {
                     </div>
                   </div>
                   <div className="cv-avatar">
-                    <img src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM=" />
+                    <UploadCVAvatar avatar={avatar} setAvatar={setAvatar} isShowingAvatar={isShowingAvatar}
+                      cvId={params.id} toggleAvatarVisibility={toggleAvatarVisibility}
+                    />
                   </div>
                 </div>
                 {offsets.map((offset) => {
@@ -977,7 +996,9 @@ export default function CV() {
                 <div className="basic-info"
                 >
                   <div className="cv-avatar">
-                    <img src="https://media.istockphoto.com/id/610003972/vector/vector-businessman-black-silhouette-isolated.jpg?s=612x612&w=0&k=20&c=Iu6j0zFZBkswfq8VLVW8XmTLLxTLM63bfvI6uXdkacM=" />
+                    <UploadCVAvatar avatar={avatar} setAvatar={setAvatar} isShowingAvatar={isShowingAvatar}
+                      cvId={params.id} toggleAvatarVisibility={toggleAvatarVisibility}
+                    />
                   </div>
                   <div className="info">
                     <div className="name-position">

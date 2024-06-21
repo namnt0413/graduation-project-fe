@@ -103,3 +103,9 @@
 .cv-5 .cv-content .subject-list .subject-right {
     
 }
+
+.cv-5 .cv-title input.cv-title-input {
+    width: 40%;
+    text-align: center;
+}
+
