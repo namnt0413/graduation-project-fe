@@ -58,7 +58,7 @@ const TopCompany = () => {
                       <p>{company.city.name}</p>
                       <ul>
                         <li>
-                          <a href="#">{company.job_count} công việc mới</a>
+                          <a>{company.job_count} công việc mới</a>
                         </li>
                       </ul>
                     </div>
