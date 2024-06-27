@@ -18,9 +18,14 @@
     padding: 4px 6px;
   }
   
-  .editable ul , li {
+  .editable ul , .editable li {
     /* list-style-type: disc; */
     margin-left: 10px;
+    color: black;
+    font-family: sans-serif;
+  }
+  .editable p {
+    font-family: sans-serif;
   }
   .editable ul {
     /* margin-left: 15px; */

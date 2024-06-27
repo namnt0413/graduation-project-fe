@@ -35,3 +35,23 @@
     width: 155px;
     height: 155px;
 }
+
+.map.jp_listing_overview_list_main_wrapper {
+	padding-top: 20px;
+}
+
+.address.jp_listing_overview_list_main_wrapper2 {
+	padding-top: 0px;
+}
+
+.jp_job_post_right_cont li:last-child {
+	margin-left: 0;
+}
+
+.jp_job_post_right_cont li {
+	padding: 2px 0;
+}
+
+.salary-address {
+	display: inline-grid;
+}
