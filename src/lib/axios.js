@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 const axios = Axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: "https://find-job-pro.up.railway.app",
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
     },
