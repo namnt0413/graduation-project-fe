@@ -38,7 +38,7 @@ const Navbar = () => {
                 <div className="gc_logo">
                   <Link className="nav-link" to="/">
                     <img
-                      src="http://localhost:3000/images/header/logo.png"
+                      src="https://find-job-pro.vercel.app/images/header/logo.png"
                       alt="Logo"
                       title="Job Pro"
                       className="img-responsive"
