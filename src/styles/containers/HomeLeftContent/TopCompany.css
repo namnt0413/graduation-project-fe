@@ -1,0 +1,203 @@
+*---------- jp first sidebar Wrapper Start -------*/
+.jp_first_sidebar_main_wrapper{
+	float:left;
+	width:100%;
+	margin-top:30px;
+}
+.jp_hiring_slider_main_wrapper{
+	float:left;
+	width:100%;
+	background:#ffffff;
+	border:1px solid #e9e9e9;
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:40px;
+	padding-bottom:40px;
+}
+.jp_hiring_heading_wrapper h2{
+	font-size:20px;
+	color:#000000;
+	font-weight:900;
+	text-transform:uppercase;
+	position:relative;
+}
+.jp_hiring_heading_wrapper h2:after{
+	content:'';
+	border:1px solid #23c0e9;
+	width:30px;
+	position:absolute;
+	bottom: -15px;
+    left: 11px;
+}
+.jp_hiring_heading_wrapper h2:before{
+	content:'';
+	border:1px solid #23c0e9;
+	width:8px;
+	position:absolute;
+	bottom: -15px;
+    left: 0;
+}
+.jp_hiring_slider_wrapper{
+	float:left;
+	width:100%;
+	margin-top: 50px;
+}
+.jp_hiring_slider_wrapper  .owl-theme .owl-dots{
+	display:none;
+}
+.jp_hiring_slider_wrapper .owl-theme .owl-nav {
+    position: absolute;
+    top: -74px;
+    margin: 0;
+    left: 0;
+    right: 0;
+	z-index:1000;
+	display:block;
+}
+.jp_hiring_slider_wrapper .owl-theme .owl-nav .owl-prev{
+    font-size: 26px;
+    margin: 0;
+    padding: 0;
+    right: 30px;
+	top:0;
+	color:#dedede;
+	background:none;
+    position: absolute;
+    text-align: center;
+	-webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.jp_hiring_slider_wrapper  .owl-theme .owl-nav .owl-next{
+    font-size: 26px;
+    margin: 0;
+    padding: 0;
+    right: 0;
+	top:0;
+	right:0;
+    position: absolute;
+	color:#dedede;
+	background:none;
+    text-align: center;
+	-webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.jp_hiring_slider_wrapper .owl-theme .owl-nav .owl-prev:hover, .jp_hiring_slider_wrapper  .owl-theme .owl-nav .owl-next:hover{
+	color:#23c0e9;
+	-webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.jp_hiring_content_main_wrapper{
+	float:left;
+	width:100%;
+	background:#ffffff;
+	border:1px solid #e9e9e9;
+	border-bottom:2px solid #23c0e9;
+	text-align:center;
+	padding-top:40px;
+	padding-bottom:40px;
+	-webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.jp_hiring_content_wrapper{
+	display:inline-block;
+}
+.jp_hiring_content_wrapper h4{
+	font-size:14px;
+	color:#000000;
+	text-transform:uppercase;
+	font-weight:bold;
+	padding-top:30px;
+}
+.jp_hiring_content_wrapper p{
+	font-size:14px;
+	padding-top:5px;
+}
+.jp_hiring_content_wrapper li a{
+	float:left;
+	width:110px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	color:#ffffff;
+	background:#0e1427;
+	font-size:12px;
+	font-weight:bold;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	border-radius:8px;
+	-webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.jp_hiring_content_wrapper img{
+	width:auto !important;
+	display:inline-block !important;
+}
+.jp_hiring_content_main_wrapper:hover{
+	border-bottom:2px solid #f36969;
+	-webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.jp_hiring_content_main_wrapper:hover .jp_hiring_content_wrapper li a{
+	background:#f36969;
+	-webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/*---------- jp first sidebar Wrapper End -------*/
+
+.jp_hiring_heading_wrapper.top-company-title {
+    text-align: left;
+}
+
+.company-item {
+    padding-right: 20px;
+}
+
+.jp_hiring_content_wrapper p {
+    margin-bottom: 10px;
+}
+
+.top-campany-list button.slick-arrow {
+    background: #dedede;
+    z-index: 10 !important;
+    height: 32px !important;
+    width: 32px !important;
+    border-radius: 50% !important;
+}
+.top-campany-list button.slick-arrow:hover {
+    background: #23c0e9;
+    transition: all 0.5s;
+}
+.top-campany-list button.slick-arrow.slick-prev {
+    top: -60px;
+    left: 690px;
+}
+.top-campany-list button.slick-arrow.slick-next {
+    top: -60px;
+    right: 16px;
+}
+
+.company-item .company-avatar {
+	width: 60px;
+	height: 60px;
+}

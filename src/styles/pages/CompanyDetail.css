@@ -1,0 +1,57 @@
+.jp_cs_com_info_wrapper{
+	float:left;
+	width:100%;
+	background:#f9f9f9;
+	padding:20px;
+	margin-top:25px;
+}
+.jp_cs_com_info_img{
+	float:left;
+	width:155px;
+}
+.jp_cs_com_info_img_cont{
+	float:left;
+	width:calc(100% - 155px);
+	padding-left:20px;
+	padding-top:40px;
+}
+.jp_cs_com_info_img_cont h2{
+	font-size:18px;
+	color:#344154;
+}
+.jp_cs_tittle_main_wrapper{
+	padding-bottom:0;
+}
+.jp_cs_com_info_img_cont h3{
+	font-family: 'Lato', sans-serif;
+	font-size:16px;
+	color:#797979;
+}
+.jp_cs_com_info_img_cont p{
+	padding-top:10px;
+}
+
+.jp_cs_com_info_img img {
+    width: 155px;
+    height: 155px;
+}
+
+.map.jp_listing_overview_list_main_wrapper {
+	padding-top: 20px;
+}
+
+.address.jp_listing_overview_list_main_wrapper2 {
+	padding-top: 0px;
+}
+
+.jp_job_post_right_cont li:last-child {
+	margin-left: 0;
+}
+
+.jp_job_post_right_cont li {
+	padding: 2px 0;
+}
+
+.salary-address {
+	display: inline-grid;
+}

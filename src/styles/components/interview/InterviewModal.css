@@ -1,0 +1,113 @@
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 11000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 500px;
+    max-width: 90%;
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form-row.full-width {
+    flex-direction: column;
+}
+
+.form-row label {
+    width: 48%;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.modal-content button {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.meeting-schedule-form {
+    padding: 10px;
+    margin-left: 30px;
+}
+
+.meeting-title-container {
+    display: flex;
+}
+
+.meeting-title {
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.meeting-title-container .close-button {
+    width: 40px;
+    height: 40px;
+}
+
+.meeting-schedule-form label p {
+    font-size: 20px;
+    color: #21a8ca;
+    font-family: 'Montserrat';
+}
+.modal-content .cancel-button {
+    background: #ebeaea;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 30px;
+  }
+  .modal-content .cancel-button:hover {
+    opacity: 0.7;
+  }
+  .modal-content .send-button {
+    background: #21a8ca;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: 600;
+    margin-right: 10px;
+  }
+  .modal-content .send-button:hover {
+    opacity: 0.7;
+  }

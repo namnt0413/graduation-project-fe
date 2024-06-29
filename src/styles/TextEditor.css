@@ -1,0 +1,56 @@
+  .text-editor {
+    font-family: Georgia, serif;
+    position: relative;
+  }
+  
+  .editable {
+    font-family: sans-serif;
+    padding: 5px;
+    resize: none;
+  }
+  
+  textarea.editable {
+    font-family: monospace, monospace;
+  }
+  
+  button {
+    min-width: 30px;
+    padding: 4px 6px;
+  }
+  
+  .editable ul , .editable li {
+    /* list-style-type: disc; */
+    margin-left: 10px;
+    color: black;
+    font-family: sans-serif;
+  }
+  .editable p {
+    font-family: sans-serif;
+  }
+  .editable ul {
+    /* margin-left: 15px; */
+  }
+
+  .edit-buttons {
+    width: 120px;
+    position: absolute;
+    top: -32px;
+    right: 10px;
+    background: rgba(140,140,140);
+    border-radius: 3px;
+  }
+  .edit-buttons button:hover {
+  }
+  .edit-buttons button i {
+    color: rgb(214, 214, 214);
+  }
+  .edit-buttons button i:hover {
+    color: #fff;
+  }
+  
+
+  p {
+    margin-bottom: 0;
+    color: black;
+    font-size: 20px;
+  }
