@@ -8,7 +8,7 @@ import AuthUser from "../../components/AuthUser";
 import moment from "moment";
 import { redirect } from "react-router-dom";
 import NewDefaultCv from "../../components/cv/NewDefaultCv";
-import LoadingOverlay from 'react-loading-overlay';
+// import LoadingOverlay from 'react-loading-overlay';
 
 const MyListCv = () => {
   const [deleteCvs, setDeleteCvs] = useState([]);
@@ -66,10 +66,10 @@ const MyListCv = () => {
 
   const MyListCvContent = (
     <>
-      <LoadingOverlay
+      {/* <LoadingOverlay
         active={isActive}
         spinner
-      >
+      > */}
       <div className="jp_tittle_main_wrapper">
         <div className="jp_tittle_img_overlay"></div>
         <div className="container">
@@ -130,7 +130,7 @@ const MyListCv = () => {
         </div>
       </div>
       <ToastContainer className="toast-position" />
-</LoadingOverlay>
+{/* </LoadingOverlay> */}
     </>
   );
 
