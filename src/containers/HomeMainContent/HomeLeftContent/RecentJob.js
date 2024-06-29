@@ -141,7 +141,7 @@ const RecentJob = () => {
                                   </>
                                 }
                               </li>
-                              <li>
+                              <li style={{ marginLeft: "10px" }}>
                                 <i className="fa fa-map-marker"></i>&nbsp;
                                 {jobsSlice.city.name}
                               </li>
