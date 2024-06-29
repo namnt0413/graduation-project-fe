@@ -30,7 +30,7 @@ export default function AuthUser(){
     }
 
     const http = axios.create({
-        baseURL:"http://localhost:8000/api",
+        baseURL:"https://find-job-pro.up.railway.app/api",
         headers:{
             "Content-type" : "application/json",
             "Authorization" : `Bearer ${token}`
