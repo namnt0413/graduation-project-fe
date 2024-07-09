@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "../../lib/axios";
 import TextEditor from "../TextEditor";
 
-const Item = ({ id, moveOffset, addItem, deleteItem, closeButton }) => {
+const Item = ({ id, moveOffset, addItem, deleteItem, closeButton, textFont }) => {
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
   const [type, setType] = useState();
@@ -66,6 +66,7 @@ const Item = ({ id, moveOffset, addItem, deleteItem, closeButton }) => {
             <TextEditor data={title} id="item-title" className="item-title" 
               handleOnChangeTitle={handleOnChangeTitle}
               handleBlurTitle={handleBlurTitle}
+              textFont={textFont}
             />
           )}
         </div>
@@ -78,6 +79,7 @@ const Item = ({ id, moveOffset, addItem, deleteItem, closeButton }) => {
               className="item-content"
               handleOnChangeContent={handleOnChangeContent}
               handleBlurContent={handleBlurContent}
+              textFont={textFont}
             />
           )}
         </div>
@@ -110,6 +112,7 @@ const Item = ({ id, moveOffset, addItem, deleteItem, closeButton }) => {
               className="item-content"
               handleOnChangeContent={handleOnChangeContent}
               handleBlurContent={handleBlurContent}
+              textFont={textFont}
             />
           )}
         </div>

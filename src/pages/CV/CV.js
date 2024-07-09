@@ -42,6 +42,7 @@ export default function CV() {
   const [subjects, setSubjects] = useState([]);
   const [themeColor, setThemeColor] = useState();
   const [template, setTemplate] = useState();
+  const [textFont, setTextFont] = useState();
   const [avatar, setAvatar] = useState();
   const [isShowingAvatar, setIsShowingAvatar] = useState();
 
@@ -59,6 +60,7 @@ export default function CV() {
       setSubjects(cv.subject);
       setThemeColor(cv.theme_color)
       setTemplate(cv.template_id)
+      setTextFont(cv.text_font)
       // Convert the offfset string to an array
       const fetchedOffsets = cv.offset.split(",");
       setOffsets(fetchedOffsets);
@@ -418,6 +420,13 @@ export default function CV() {
     });
   }
 
+  const onChangeTextFont = async (data) => {
+    setTextFont(data)
+    await axios.put(`/api/cv/update-text-font/${params.id}`, {
+      text_font: data,
+    });
+  }
+
   const leftOffsetSubjects = offsets.filter((_, index) => index % 2 !== 0); // Chỉ số lẻ
   const rightOffsetSubjects = offsets.filter((_, index) => index % 2 === 0); // Chỉ số chẵn
 
@@ -484,7 +493,10 @@ export default function CV() {
                 selectedColor={themeColor}
                 onChangeTemplate={onChangeTemplate}
                 selectedTemplate={template}
+                onChangeTextFont={onChangeTextFont}
+                selectedTextFont={textFont}
               />
+
             </div>
             <div className="cv-title">
               <input
@@ -532,7 +544,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field col-6">
-                        <span>Phone</span>
+                        <span>SĐT</span>
                         <input
                           type="text"
                           id="phone"
@@ -544,7 +556,7 @@ export default function CV() {
                     </div>
                     <div className="list-info">
                       <div className="info-field col-6">
-                        <span>Birthday</span>
+                        <span>Ngày sinh</span>
                         <input
                           type="text"
                           id="birthday"
@@ -554,7 +566,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field col-6">
-                        <span>Address</span>
+                        <span>Địa chỉ</span>
                         <input
                           type="text"
                           id="address"
@@ -581,6 +593,7 @@ export default function CV() {
                       deleteSubject={deleteSubject}
                       themeColor={themeColor}
                       template={template}
+                      textFont={textFont}
                     />
                   );
                 })}
@@ -647,6 +660,8 @@ export default function CV() {
                 selectedColor={themeColor}
                 onChangeTemplate={onChangeTemplate}
                 selectedTemplate={template}
+                onChangeTextFont={onChangeTextFont}
+                selectedTextFont={textFont}
               />
             </div>
             <div className="cv-title">
@@ -701,7 +716,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field">
-                        <span>Phone</span>
+                        <span>SĐT</span>
                         <input
                           type="text"
                           id="phone"
@@ -711,7 +726,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field">
-                        <span>Birthday</span>
+                        <span>Ngày sinh</span>
                         <input
                           type="text"
                           id="birthday"
@@ -721,7 +736,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field">
-                        <span>Address</span>
+                        <span>Địa chỉ</span>
                         <input
                           type="text"
                           id="address"
@@ -749,6 +764,7 @@ export default function CV() {
                       deleteSubject={deleteSubject}
                       themeColor={themeColor}
                       template={template}
+                      textFont={textFont}
                     />
                   );
                 })}
@@ -815,6 +831,8 @@ export default function CV() {
                 selectedColor={themeColor}
                 onChangeTemplate={onChangeTemplate}
                 selectedTemplate={template}
+                onChangeTextFont={onChangeTextFont}
+                selectedTextFont={textFont}
               />
             </div>
             <div className="cv-title">
@@ -863,7 +881,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field col-6">
-                        <span>Phone</span>
+                        <span>SĐT</span>
                         <input
                           type="text"
                           id="phone"
@@ -875,7 +893,7 @@ export default function CV() {
                     </div>
                     <div className="list-info">
                       <div className="info-field col-6">
-                        <span>Birthday</span>
+                        <span>Ngày sinh</span>
                         <input
                           type="text"
                           id="birthday"
@@ -885,7 +903,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field col-6">
-                        <span>Address</span>
+                        <span>Địa chỉ</span>
                         <input
                           type="text"
                           id="address"
@@ -912,6 +930,7 @@ export default function CV() {
                       deleteSubject={deleteSubject}
                       themeColor={themeColor}
                       template={template}
+                      textFont={textFont}
                     />
                   );
                 })}
@@ -978,6 +997,8 @@ export default function CV() {
                 selectedColor={themeColor}
                 onChangeTemplate={onChangeTemplate}
                 selectedTemplate={template}
+                onChangeTextFont={onChangeTextFont}
+                selectedTextFont={textFont}
               />
             </div>
             <div className="cv-title">
@@ -1031,7 +1052,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field col-6">
-                        <span>Phone</span>
+                        <span>SĐT</span>
                         <input
                           type="text"
                           id="phone"
@@ -1043,7 +1064,7 @@ export default function CV() {
                     </div>
                     <div className="list-info">
                       <div className="info-field col-6">
-                        <span>Birthday</span>
+                        <span>Ngày sinh</span>
                         <input
                           type="text"
                           id="birthday"
@@ -1053,7 +1074,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field col-6">
-                        <span>Address</span>
+                        <span>Địa chỉ</span>
                         <input
                           type="text"
                           id="address"
@@ -1076,6 +1097,7 @@ export default function CV() {
                       deleteSubject={deleteSubject}
                       themeColor={themeColor}
                       template={template}
+                      textFont={textFont}
                     />
                   );
                 })}
@@ -1142,6 +1164,8 @@ export default function CV() {
                 selectedColor={themeColor}
                 onChangeTemplate={onChangeTemplate}
                 selectedTemplate={template}
+                onChangeTextFont={onChangeTextFont}
+                selectedTextFont={textFont}
               />
             </div>
 
@@ -1189,7 +1213,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field col-6">
-                        <span>Phone</span>
+                        <span>SĐT</span>
                         <input
                           type="text"
                           id="phone"
@@ -1201,7 +1225,7 @@ export default function CV() {
                     </div>
                     <div className="list-info">
                       <div className="info-field col-6">
-                        <span>Birthday</span>
+                        <span>Ngày sinh</span>
                         <input
                           type="text"
                           id="birthday"
@@ -1211,7 +1235,7 @@ export default function CV() {
                         />
                       </div>
                       <div className="info-field col-6">
-                        <span>Address</span>
+                        <span>Địa chỉ</span>
                         <input
                           type="text"
                           id="address"
@@ -1236,6 +1260,7 @@ export default function CV() {
                           deleteSubject={deleteSubject}
                           themeColor={themeColor}
                           template={template}
+                          textFont={textFont}
                         />
                       );
                     })}
@@ -1250,6 +1275,7 @@ export default function CV() {
                           addSubject={addSubject}
                           deleteSubject={deleteSubject}
                           themeColor={themeColor}
+                          textFont={textFont}
                         />
                       );
                     })}

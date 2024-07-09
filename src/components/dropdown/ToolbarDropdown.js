@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import "../../styles/components/dropdown/ToolbarDropdown.css";
 import Slider from "react-slick";
 import { Color } from "../../const/color";
+import { TextFont } from "../../const/TextFont";
 
 const ToolbarDropdown = ({
   isOpen,
@@ -10,7 +11,9 @@ const ToolbarDropdown = ({
   onChangeColor,
   selectedColor,
   onChangeTemplate,
-  selectedTemplate
+  selectedTemplate,
+  onChangeTextFont,
+  selectedTextFont
 }) => {
   const dropdownRef = useRef(null);
 
@@ -44,7 +47,17 @@ const ToolbarDropdown = ({
       {isOpen && (
         <div className="toolbar-dropdown-content">
           {dropdownType !== undefined && dropdownType === 1 ? (
-            <div className="dropdown-font">Dropdown Font</div>
+            <div className="dropdown-font">
+              <div className="text-font" onClick={() => onChangeTextFont(1)}>
+                {TextFont[1]} {selectedTextFont===1?"[x]":""}
+              </div>
+              <div className="text-font" onClick={() => onChangeTextFont(2)}>
+                {TextFont[2]} {selectedTextFont===2?"[x]":""}
+              </div>
+              <div className="text-font" onClick={() => onChangeTextFont(3)}>
+                {TextFont[3]} {selectedTextFont===3?"[x]":""}
+              </div>
+            </div>
           ) : dropdownType === 2 ? (
             <div className="dropdown-color">
               <div className="theme-color-title">Màu sắc chủ đề</div>
