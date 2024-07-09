@@ -1,18 +1,16 @@
   .text-editor {
-    font-family: Georgia, serif;
     position: relative;
   }
   
   .editable {
-    font-family: sans-serif;
     padding: 5px;
     resize: none;
   }
-  
-  textarea.editable {
-    font-family: monospace, monospace;
+
+  .item .editable {
+    color: black;
   }
-  
+
   button {
     min-width: 30px;
     padding: 4px 6px;
@@ -22,13 +20,15 @@
     /* list-style-type: disc; */
     margin-left: 10px;
     color: black;
-    font-family: sans-serif;
   }
   .editable p {
-    font-family: sans-serif;
   }
-  .editable ul {
-    /* margin-left: 15px; */
+
+  .editable div {
+    color: black;
+  }
+  .editable i {
+    color: rgb(121, 121, 121); 
   }
 
   .edit-buttons {
@@ -47,7 +47,6 @@
   .edit-buttons button i:hover {
     color: #fff;
   }
-  
 
   p {
     margin-bottom: 0;

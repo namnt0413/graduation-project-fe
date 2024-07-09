@@ -236,7 +236,7 @@
 }
 
 .cv-background .cv-container .cv-content .basic-info .info .list-info .info-field input#address {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .cv-background .cv-container .cv-content .basic-info .cv-avatar {
@@ -339,3 +339,7 @@
     text-align: center;
 }
 
+.basic-info .info .list-info .info-field span {
+    display: inline-flex;
+    align-items: center;
+}

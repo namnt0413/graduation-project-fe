@@ -3,6 +3,7 @@ import ContentEditable from "react-contenteditable";
 import sanitizeHtml from "sanitize-html";
 import "../styles/TextEditor.css";
 import { Color } from "../const/color";
+import { TextFont } from "../const/TextFont";
 
 class TextEditor extends Component {
   constructor(props) {
@@ -11,19 +12,23 @@ class TextEditor extends Component {
       html: ``,
       editable: true,
       isOpenEdit: false,
-      themeColor: ""
+      themeColor: "",
+      textFont: ""
     };
   }
   componentDidMount() {
-    // console.log(this.props)
     this.setState({
       html: this.props.data,
-      themeColor: this.props.themeColor
+      themeColor: this.props.themeColor,
+      textFont: this.props.textFont
     })
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.themeColor !== this.state.themeColor) {
-      this.setState({ themeColor: prevProps.themeColor });
+    if (prevProps.themeColor !== this.props.themeColor) {
+      this.setState({ themeColor: this.props.themeColor });
+    }
+    if (prevProps.textFont !== this.props.textFont) {
+      this.setState({ textFont: this.props.textFont });
     }
   }
 
@@ -45,7 +50,7 @@ class TextEditor extends Component {
       html: sanitizeHtml(this.state.html, this.sanitizeConf),
       isOpenEdit: false
     });
-    console.log(this.state.html)
+    // console.log(this.state.html)
 
     this.props.handleBlurData && this.props.handleBlurData(this.state.html);
     this.props.handleBlurTitle && this.props.handleBlurTitle(this.state.html);
@@ -64,7 +69,6 @@ class TextEditor extends Component {
 
   render = () => {
     let { isOpenEdit } = this.state
-    // console.log(this.state.html)
     return (
       <div className="text-editor" id={this.props.id}>
         {isOpenEdit === true && (
@@ -77,12 +81,12 @@ class TextEditor extends Component {
         )}
         <ContentEditable
           className="editable"
-          html={this.state.html} // innerHTML of the editable div
-          disabled={!this.state.editable} // use true to disable edition
-          onChange={this.handleChange} // handle innerHTML change
+          html={this.state.html} 
+          disabled={!this.state.editable} 
+          onChange={this.handleChange} 
           onBlur={this.sanitize}
           onClick={this.handleShowEditButtons}
-          style={{ color: Color[this.state.themeColor] }}
+          style={{ color: Color[this.state.themeColor], fontFamily: TextFont[this.state.textFont] }}
         />
       </div>
     );

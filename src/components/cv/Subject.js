@@ -3,8 +3,9 @@ import axios from "../../lib/axios";
 import TextEditor from "../TextEditor";
 import Item from "./Item";
 import { Color } from "../../const/color";
+import { TextFont } from "../../const/TextFont";
 
-const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject, themeColor, template }) => {
+const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject, themeColor, template, textFont }) => {
   const [title, setTitle] = useState();
   const [cvId, setCvId] = useState();
   const [offsets, setOffsets] = useState([]);
@@ -237,6 +238,7 @@ const Subject = ({ id, moveOffsetSubject, addSubject, deleteSubject, themeColor,
             moveOffset={moveOffset}
             addItem={addItem}
             deleteItem={deleteItem}
+            textFont={textFont}
           />
         );
       })}

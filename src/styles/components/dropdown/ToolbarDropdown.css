@@ -116,3 +116,13 @@
     color: white;
 }
 
+.dropdown-font .text-font {
+    padding: 5px;
+    margin:  10px 20px;
+    cursor: pointer;
+    color: white;
+}
+
+.dropdown-font .text-font:hover {
+    color: #46b0e1;
+}
