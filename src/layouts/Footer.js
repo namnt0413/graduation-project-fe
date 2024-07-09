@@ -12,7 +12,7 @@ const Footer = () => {
               <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div className="jp_newsletter_text">
                   <img
-                    src="https://find-job-pro.vercel.app/images/content/news_logo.png"
+                    src="http://localhost:3000//images/content/news_logo.png"
                     className="img-responsive"
                     alt="news_logo"
                   />
@@ -39,7 +39,7 @@ const Footer = () => {
                       <div className="jp_footer_logo">
                         <a href="#">
                           <img
-                            src="https://find-job-pro.vercel.app/images/content/resume_logo.png"
+                            src="http://localhost:3000//images/content/resume_logo.png"
                             alt="footer_logo"
                           />
                         </a>
