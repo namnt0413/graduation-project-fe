@@ -9,17 +9,17 @@ const RegisterSection = () => {
           <div className="jp_regis_left_side_box_wrapper">
             <div className="jp_regis_left_side_box">
               <img src="images/content/regis_icon.png" alt="icon" />
-              <h4>I’m an COMPANY</h4>
+              <h4>TÔI LÀ NHÀ TUYỂN DỤNG</h4>
               <p>
-                Signed in companies are able to post new
-                <br /> job offers, searching for candidate...
+                Đăng ký để có thể đăng công việc
+                <br /> và tìm kiếm ứng viên
               </p>
               <ul>
                 <li>
-                  <a href="#">
-                    <i className="fa fa-plus-circle"></i> &nbsp;REGISTER AS
-                    COMPANY
-                  </a>
+                  <Link className="nav-link" to="/register">
+                  <i className="fa fa-plus-circle"></i> &nbsp;ĐĂNG KÝ
+                    TÀI KHOẢN CÔNG TY
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -28,16 +28,16 @@ const RegisterSection = () => {
             <div className="jp_regis_right_img_overlay"></div>
             <div className="jp_regis_right_side_box">
               <img src="images/content/regis_icon2.png" alt="icon" />
-              <h4>I’m an candidate</h4>
+              <h4>Tôi là ứng viên</h4>
               <p>
-                Signed in companies are able to post new
-                <br /> job offers, searching for candidate...
+                Đăng ký để ứng tuyển công việc
+                <br /> và tự tạo những bản CV thu hút
               </p>
               <ul>
                 <li>
                   <Link className="nav-link" to="/register">
-                    <i className="fa fa-plus-circle"></i> &nbsp;REGISTER AS
-                    CANDIDATE
+                    <i className="fa fa-plus-circle"></i> &nbsp;ĐĂNG KÝ
+                    TÀI KHOẢN ỨNG VIÊN
                   </Link>
                 </li>
               </ul>

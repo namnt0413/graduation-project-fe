@@ -70,36 +70,9 @@ const RecentJob = () => {
       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12" ref={topRef}>
         <div className="cc_featured_product_main_wrapper">
           <div className="jp_hiring_heading_wrapper jp_job_post_heading_wrapper">
-            <h2>Recent Jobs</h2>
+            <h2>Công việc HOT</h2>
           </div>
           {/* job types */}
-          <ul className="nav nav-tabs" role="tablist">
-            <li role="presentation" className="active">
-              <a href="#best" aria-controls="best" role="tab" data-toggle="tab">
-                Featured
-              </a>
-            </li>
-            <li role="presentation">
-              <a href="#hot" aria-controls="hot" role="tab" data-toggle="tab">
-                Remotely
-              </a>
-            </li>
-            <li role="presentation">
-              <a
-                href="#trand"
-                aria-controls="trand"
-                role="tab"
-                data-toggle="tab"
-              >
-                Part Time
-              </a>
-            </li>
-            <li role="presentation">
-              <a href="#best" aria-controls="best" role="tab" data-toggle="tab">
-                Full Time{" "}
-              </a>
-            </li>
-          </ul>
         </div>
         <div className="tab-content">
           <div role="tabpanel" className="tab-pane fade in active" id="best">

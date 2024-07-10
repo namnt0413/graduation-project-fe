@@ -30,21 +30,21 @@ export default function Register() {
         <div className="register_tab_wrapper">
           <div className="container">
             <div className="row">
-              <h1 className="register-title">REGISTER NEW ACCOUNT</h1>
+              <h1 className="register-title">ĐĂNG KÝ TÀI KHOẢN MỚI</h1>
               <div className="col-md-10 col-md-offset-1">
                 <div role="tabpanel">
                   {/* <!-- Nav tabs --> */}
                   <ul id="tabOne" className="nav register-tabs">
                     <li className="active">
                       <a href="#contentOne-1" data-toggle="tab">
-                        personal account <br />
-                        <span>i am looking for a job</span>
+                        Ứng viên <br />
+                        <span>Tôi đang tìm kiếm công việc</span>
                       </a>
                     </li>
                     <li>
                       <a href="#contentOne-2" data-toggle="tab">
-                        company account <br />{" "}
-                        <span>We are hiring Employees</span>
+                        Công ty <br />{" "}
+                        <span>Tôi đang tìm kiếm nhân lực</span>
                       </a>
                     </li>
                   </ul>
@@ -56,7 +56,7 @@ export default function Register() {
                     >
                       <div className="row">
                         <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                          <label htmlFor="">Name</label>
+                          <label htmlFor="">Họ và tên</label>
                           <input
                             className="field-name"
                             id="name"
@@ -78,7 +78,7 @@ export default function Register() {
                           />
                         </div>
                         <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                          <label htmlFor="">Password</label>
+                          <label htmlFor="">Mật khẩu</label>
                           <input
                             className="field-name"
                             id="password"
@@ -89,7 +89,7 @@ export default function Register() {
                           />
                         </div>
                         <div className="form-group col-md-6 col-sm-6 col-xs-12">
-                          <label htmlFor="">Confirm Password</label>
+                          <label htmlFor="">Xác nhận mật khẩu</label>
                           <input
                             className="field-name"
                             type="password"
@@ -104,15 +104,15 @@ export default function Register() {
                             className="btn btn-primary login_btn"
                             onClick={submitForm}
                           >
-                            register
+                            Đăng ký
                           </button>
                         </div>
                       </div>
                       <div className="login_message">
                         <p>
-                          Already a member?
+                          Đã có tài khoản ?
                           <Link className="nav-link" to="/login">
-                            Login Here
+                            Đăng nhập ngay
                           </Link>
                         </p>
                       </div>

@@ -41,7 +41,7 @@ export default function Register() {
                             onChange={e => setPassword(e.target.value)}
                         id="pwd" />
                     </div>
-                    <button type="button" onClick={submitForm} className="btn btn-primary mt-4">Register</button>
+                    <button type="button" onClick={submitForm} className="btn btn-primary mt-4">Đăng ký</button>
                 </div>
             </div>
         </div>

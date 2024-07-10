@@ -320,13 +320,13 @@ const Navbar = () => {
                         aria-labelledby="navbarDropdownMenuLink"
                       >
                         <a className="dropdown-item" href="#">
-                          Account infomation
+                          Thông tin tài khoản
                         </a>
                         <a className="dropdown-item" href="#">
-                          Change password
+                          Đổi mật khẩu
                         </a>
                         <button className="dropdown-item" onClick={logoutUser}>
-                          Logout
+                          Đăng xuất
                         </button>
                       </div>
                     </li>

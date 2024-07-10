@@ -58,20 +58,20 @@ export default function Login() {
           <div className="container">
             <div className="row">
               <div className="col-md-8 col-md-offset-2">
-                <h1>LOGIN TO YOUR ACCOUNT</h1>
+                <h1>ĐĂNG NHẬP TÀI KHOẢN</h1>
                 <div role="tabpanel">
                   {/* <!-- Nav tabs --> */}
                   <ul id="tabOne" className="nav register-tabs">
                     <li className="active">
                       <a href="#contentOne-1" data-toggle="tab">
-                        personal account <br />
-                        <span>i am looking for a job</span>
+                        Ứng viên <br />
+                        <span>Tôi đang tìm kiếm công việc</span>
                       </a>
                     </li>
                     <li>
                       <a href="#contentOne-2" data-toggle="tab">
-                        company account <br />{" "}
-                        <span>We are hiring Employees</span>
+                        Công ty <br />{" "}
+                        <span>Tôi đang tìm kiếm nhân lực</span>
                       </a>
                     </li>
                   </ul>
@@ -80,14 +80,14 @@ export default function Login() {
                       <div className="col-lg-6 col-md-6 col-xs-12 col-sm-6">
                         <a href="#" className="btn btn-primary">
                           {" "}
-                          <span>Login with Facebook</span>{" "}
+                          <span>Đăng nhập với Facebook</span>{" "}
                           <i className="fa fa-facebook"></i>{" "}
                         </a>
                       </div>
                       <div className="col-lg-6 col-md-6 col-xs-12 col-sm-6">
                         <a href="#" className="btn btn-primary google-plus">
                           {" "}
-                          Login with Google{" "}
+                          Đăng nhập với Google{" "}
                           <i className="fa fa-google-plus"></i>{" "}
                         </a>
                       </div>
@@ -123,12 +123,12 @@ export default function Login() {
                       </div>
                       <div className="login_remember_box">
                         <label className="control control--checkbox">
-                          Remember me
+                          Lưu thông tin đăng nhập
                           <input type="checkbox" />
                           <span className="control__indicator"></span>
                         </label>
                         <a href="#" className="forget_password">
-                          Forgot Password
+                          Quên mật khẩu
                         </a>
                       </div>
                       <div className="login_btn_wrapper">
@@ -138,14 +138,14 @@ export default function Login() {
                           onClick={submitForm}
                         >
                           {" "}
-                          Login{" "}
+                          Đăng nhập{" "}
                         </button>
                       </div>
                       <div className="login_message">
                         <p>
-                          Don’t have an account ?
+                          Chưa có tài khoản ?
                           <Link className="nav-link" to="/register">
-                            Register Now
+                            Đăng ký ngay
                           </Link>
                         </p>
                       </div>
@@ -181,12 +181,12 @@ export default function Login() {
                       </div>
                       <div className="login_remember_box">
                         <label className="control control--checkbox">
-                          Remember me
+                          Ghi nhớ đăng nhập
                           <input type="checkbox" />
                           <span className="control__indicator"></span>
                         </label>
-                        <a href="#" className="company_forget_password">
-                          Forgot Password
+                        <a href="#" className="company_forget_password" style={{ float: "right" }}>
+                          Quên mật khẩu
                         </a>
                       </div>
                       <div className="login_btn_wrapper">
@@ -196,14 +196,14 @@ export default function Login() {
                           onClick={companySubmitForm}
                         >
                           {" "}
-                          Login{" "}
+                          ĐĂNG NHẬP{" "}
                         </button>
                       </div>
                       <div className="login_message">
                         <p>
-                          Don’t have an account ?
+                          Chưa có tài khoản ?
                           <Link className="nav-link" to="/register">
-                            Register Now
+                            Đăng ký ngay
                           </Link>
                         </p>
                       </div>

@@ -11,9 +11,9 @@ const Banner = () => {
               <div className="jp_job_heading_wrapper">
                 <div className="jp_job_heading">
                   <h1>
-                    <span>3,000+</span> Browse Jobs
+                    <span>1,000+</span> Việc làm hot
                   </h1>
-                  <p>Find Jobs, Employment & Career Opportunities</p>
+                  <p>Tìm kiếm công việc & Phát triển sự nghiệp</p>
                 </div>
               </div>
             </div>
@@ -23,7 +23,7 @@ const Banner = () => {
                 <div className="jp_banner_main_jobs">
                   <ul>
                     <li>
-                      <i className="fa fa-tags"></i> Trending Keywords :
+                      <i className="fa fa-tags"></i> Từ khóa hot :
                     </li>
                     <li>
                       <a href="#">ui designer,</a>
@@ -58,7 +58,7 @@ const Banner = () => {
             <div className="jp_top_jobs_category">
               <i className="fa fa-code"></i>
               <h3>
-                <a href="#">Developer</a>
+                <a href="#">Lập trình viên</a>
               </h3>
               <p>(240 công việc)</p>
             </div>
@@ -67,25 +67,25 @@ const Banner = () => {
             <div className="jp_top_jobs_category">
               <i className="fa fa-laptop"></i>
               <h3>
-                <a href="#">Technology</a>
+                <a href="#">Tin học văn phòng</a>
               </h3>
-              <p>(504 công việc)</p>
+              <p>(204 công việc)</p>
             </div>
           </div>
           <div className="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
             <div className="jp_top_jobs_category">
               <i className="fa fa-bar-chart"></i>
               <h3>
-                <a href="#">Accounting</a>
+                <a href="#">Kế toán</a>
               </h3>
-              <p>(2250 công việc)</p>
+              <p>(250 công việc)</p>
             </div>
           </div>
           <div className="jp_top_jobs_category_wrapper jp_job_cate_left_border_res">
             <div className="jp_top_jobs_category">
               <i className="fa fa-medkit"></i>
               <h3>
-                <a href="#">Medical</a>
+                <a href="#">Y tế</a>
               </h3>
               <p>(202 công việc)</p>
             </div>
@@ -94,18 +94,18 @@ const Banner = () => {
             <div className="jp_top_jobs_category">
               <i className="fa fa-university"></i>
               <h3>
-                <a href="#">Government</a>
+                <a href="#">Hành chính, công vụ</a>
               </h3>
-              <p>(1457 công việc)</p>
+              <p>(157 công việc)</p>
             </div>
           </div>
           <div className="jp_top_jobs_category_wrapper">
             <div className="jp_top_jobs_category">
               <i className="fa fa-th-large"></i>
               <h3>
-                <a href="#">All Jobs</a>
+                <a href="#">Tất cả công việc</a>
               </h3>
-              <p>(2000+ công việc)</p>
+              <p>(1000+ công việc)</p>
             </div>
           </div>
         </div>

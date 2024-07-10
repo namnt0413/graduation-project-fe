@@ -38,7 +38,7 @@ const TopCompany = () => {
       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div className="jp_hiring_slider_main_wrapper">
           <div className="jp_hiring_heading_wrapper top-company-title">
-            <h2>Top Hiring Companies</h2>
+            <h2>Các công ty nổi bật</h2>
           </div>
           <div className="jp_hiring_slider_wrapper top-campany-list">
             <Slider {...settings}>

@@ -21,8 +21,8 @@ const Footer = () => {
               <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div className="jp_newsletter_field">
                   <i className="fa fa-envelope-o"></i>
-                  <input type="text" placeholder="Enter Your Email" />
-                  <button type="submit">Submit</button>
+                  <input type="text" placeholder="Nhập email của bạn" />
+                  <button type="submit">ĐĂNG KÝ</button>
                 </div>
               </div>
             </div>
@@ -76,11 +76,6 @@ const Footer = () => {
                           <li className="hidden-xs">
                             <a href="#">
                               <i className="fa fa-google-plus"></i>
-                            </a>
-                          </li>
-                          <li className="hidden-xs">
-                            <a href="#">
-                              <i className="fa fa-vimeo"></i>
                             </a>
                           </li>
                         </ul>
