@@ -74,7 +74,7 @@ const CompanyPostJob = () => {
         position_id: position,
         city_id: city,
         deadline: selectedDate,
-        exp: exp,
+        exp_id: exp,
         right: right,
         address: address[0],
         max_salary: maxSalary ? maxSalary : ""
