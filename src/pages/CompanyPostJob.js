@@ -97,7 +97,7 @@ const CompanyPostJob = () => {
             <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div className="jp_tittle_heading_wrapper">
                 <div className="jp_tittle_heading">
-                  <h2>Add a new Job</h2>
+                  <h2>Đăng công việc mới</h2>
                 </div>
               </div>
             </div>
@@ -109,12 +109,12 @@ const CompanyPostJob = () => {
           <form onSubmit={handleJob} className="p-5 bg-white">
             <div className="row">
               <div className="jp_adp_form_heading_wrapper">
-                <h2>Job Infomation</h2>
+                <h2>Thông tin công việc</h2>
               </div>
               <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div className="jp_adp_form_wrapper">
                   <input
-                    placeholder="Job Title"
+                    placeholder="Tiêu đề công việc"
                     type="text"
                     id="title"
                     className="form-control"
@@ -129,7 +129,7 @@ const CompanyPostJob = () => {
                       setCity(e.target.value);
                     }}
                   >
-                    <option value="">Job Location</option>
+                    <option value="">Địa điểm</option>
                     {cities.map((city, index) => (
                       <option key={index} value={city.id || ""}>
                         {city.name}
@@ -141,7 +141,7 @@ const CompanyPostJob = () => {
                   <div className="col-lg-6 col-md-6 col-md-6 col-xs-12">
                     <div className="jp_adp_form_wrapper">
                       <input
-                        placeholder="Salary From"
+                        placeholder="Mức lương từ"
                         type="number"
                         id="salary"
                         className="form-control"
@@ -153,7 +153,7 @@ const CompanyPostJob = () => {
                   <div className="col-lg-6 col-md-6 col-md-6 col-xs-12">
                     <div className="jp_adp_form_wrapper">
                       <input
-                        placeholder="To"
+                        placeholder="đến"
                         type="number"
                         id="maxSalary"
                         className="form-control"
@@ -183,7 +183,7 @@ const CompanyPostJob = () => {
                       setExp(e.target.value);
                     }}
                   >
-                    <option value="">Experince</option>
+                    <option value="">Yêu cầu kinh nghiệm</option>
                     {EXP.map((exp, index) => (
                       <option key={index + 1} value={index + 1 || ""}>
                         {exp}
@@ -193,7 +193,7 @@ const CompanyPostJob = () => {
                 </div>
                 <div className="jp_adp_form_wrapper">
                   <input
-                    placeholder="Address"
+                    placeholder="Địa chỉ"
                     type="text"
                     id="address"
                     className="form-control"
@@ -212,7 +212,7 @@ const CompanyPostJob = () => {
                       setPosition(e.target.value);
                     }}
                   >
-                    <option value="">Position</option>
+                    <option value="">Vị trí</option>
                     {positions.map((position, index) => (
                       <option key={index} value={position.id || ""}>
                         {position.name}
@@ -225,7 +225,7 @@ const CompanyPostJob = () => {
                 <div className="jp_adp_textarea_main_wrapper">
                   <textarea
                     rows="5"
-                    placeholder="Job Description"
+                    placeholder="Mô tả công việc"
                     id="description"
                     className="form-control"
                     value={description}
@@ -237,7 +237,7 @@ const CompanyPostJob = () => {
                 <div className="jp_adp_textarea_main_wrapper">
                   <textarea
                     rows="5"
-                    placeholder="Job Requirement"
+                    placeholder="Yêu cầu công việc"
                     id="requirement"
                     className="form-control"
                     value={requirement}
@@ -249,7 +249,7 @@ const CompanyPostJob = () => {
                 <div className="jp_adp_textarea_main_wrapper">
                   <textarea
                     rows="5"
-                    placeholder="Job Right"
+                    placeholder="Quyền lợi"
                     id="right"
                     className="form-control"
                     value={right}
@@ -264,7 +264,7 @@ const CompanyPostJob = () => {
                     <li>
                       <input
                         type="submit"
-                        value="Post"
+                        value="Đăng công việc"
                         className="post-button"
                       />
                     </li>
